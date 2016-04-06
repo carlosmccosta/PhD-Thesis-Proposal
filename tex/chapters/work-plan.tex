@@ -1,0 +1,35 @@
+\chapter{Work plan}\label{chap:work-plan}
+
+\section*{}
+
+The milestones for the 4 year work-plan are detailed below.
+
+
+\subsection{Milestone 1: Literature review (3 months)}
+
+The literature review will extend the knowledge that the candidate has built over the years in the areas of 3D perception [13,14], computer vision [15,16] and augmented reality [17] along with the extensive experience that the supervisors have in the robotics fields. Given the high accuracy recognition that industrial assembly operations require, the literature review will start with an analysis of the 3D perception algorithms capable of successfully classify, track and detect damage in the types of objects that the system is expected to assemble. Then it will be performed an in-depth comparison of the learning techniques that can be employed when acquiring assembly skills through the interpretation of operator hand / body movements. Later on it will be done an analysis of the augmented reality platforms and systems that are suitable for human-robot interaction in industrial operations. Finally, similar research projects such as Saphari, Rosetta, JAHIR, Charm, RoboEarth, KnowRob, ROS-Industrial (among others), will be tested and analyzed to list the software components that might be useful to the proposed system (such as robot arm motion planners, semantic databases, distributed computing to speedup perception / learning...).
+
+
+\subsection{Milestone 2: Setup of testing platforms (1 month)}
+
+Before starting the design and implementation, it will be necessary to define the hardware and software setup in which the proposed system will be deployed. This will include the selection of the robotic arm(s) and projector(s) to be used, along with the type, position and number of perception sensors that will be required to have an adequate view of the workspace. Moreover, it will be necessary to select the types of objects that will be assembled giving their complexity and relevance in relation to the industrial needs of typical assembly lines. Finally, the physical setup will be replicated in simulation in order to allow fast testing of the algorithms in a wide range of configurations safely.
+
+
+\subsection{Milestone 3: Creation of perception and learning datasets (2 month)}
+
+In order to have consistent test results, the perception and learning algorithms must be applied to the same sensor data. As such, it will be necessary to create several datasets containing the assembly objects distributed in different configurations / positions in the workspace and in different phases of the assembly tasks. Moreover, it will be added unknown objects along with damaged assembled parts in order to test the accuracy and robustness of the perception modules.
+
+
+\subsection{Milestone 4: Definition of system architecture (3 months)}
+
+The high level system architecture including the data / control flow of the main algorithms will be defined in this milestone. The architecture will start at the perception layer, identifying the types of sensor data that will be available and which algorithms will be used to perform object recognition, tracking and damage detection. Then it will move on to the learning stages, including the methods and control flow required to extract semantic knowledge from the operator movements in order to build assembly skills. Later on, it will specify which strategies should be used to translate assembly skills into motion in robotic arms with different hardware / joints configurations. After this stage, the user interface using gesture detection and augmented reality will be designed.
+
+
+\subsection{Milestone 5: System implementation (26 months)}
+
+In this phase it will be performed the implementation of each software module specified in the previous milestone. The perception (6 months) and learning (9 months) modules will be implemented first, given their level of complexity. Later on, the interaction modules through gesture recognition (5 months) and augmented reality (6 months) will be implemented with the feedback of end users in order to select the most appropriate interface design and interaction protocols.
+
+
+\subsection{Milestone 6: Validation of system in industrial conditions (6 months)}
+
+After extensive testing of the proposed system in the initial workspace conditions, the system will be validated in a real industrial scenario in order to evaluate the robustness of the perception and learning software modules and assess if the human-robot interface needs to be modified / improved given new assembly conditions / operations. Milestone 7: Writing of articles and thesis (7 months) The publication of the developed research will be spread across the work plan and will include the writing of scientific articles and the doctoral thesis along with the collection and analysis of the testing results.

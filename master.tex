@@ -1,0 +1,86 @@
+% !TeX encoding = UTF-8
+% !TeX root = master.tex
+% !TeX spellcheck = en_US
+
+\input{tex/preamble}
+\input{macros/macros}
+\input{tex/glossaries}
+
+
+\begin{document}
+
+
+%---------------------------------------------------------------------------------------------------
+% Top matter | Information about author, supervisors and committee
+%---------------------------------------------------------------------------------------------------
+
+\title{Human-robot cooperative assembly with semantic learning by demonstration}
+\author{Carlos Miguel Correia da Costa}
+\thesisdate{April 6, 2016}
+\copyrightnotice{Carlos Miguel Correia da Costa, 2016}
+\supervisor{Supervisor}{Germano Manuel Correia dos Santos Veiga (Ph.D.)}
+\supervisor{Second Supervisor}{Armando Jorge Miranda de Sousa (Ph.D.)}
+
+\iftoggle{showcommittee} {
+	\committeetext{Approved in oral examination by the committee:}
+	\committeemember{Chair}{Doctor ...}
+	\committeemember{External Examiner}{Doctor ...}
+	\committeemember{Supervisor}{Doctor Germano Veiga}
+	\committeemember{Second Supervisor}{Doctor Armando Sousa}
+	\signature
+}
+
+\logo{uporto-feup.pdf}
+\additionalfronttext{Research Planning}
+
+
+%---------------------------------------------------------------------------------------------------
+% Prolog
+%---------------------------------------------------------------------------------------------------
+
+\begin{Prolog}
+  \input{tex/prolog/abstract}
+  \input{tex/prolog/acknowledgements}
+  \input{tex/prolog/quote}
+  \cleardoublepage
+  \pdfbookmark[0]{Table of Contents}{contents}
+  \tableofcontents
+  \cleardoublepage
+  \pdfbookmark[0]{List of Figures}{figures}
+  \listoffigures
+  \cleardoublepage
+  \pdfbookmark[0]{List of Tables}{tables}
+  \listoftables
+%  \listofalgorithms
+%  \glsaddall
+  \printglossary[type=\acronymtype,title=Abbreviations]
+  \printglossary[title=Nomenclature]
+\end{Prolog}
+
+
+
+%---------------------------------------------------------------------------------------------------
+% Chapters
+%---------------------------------------------------------------------------------------------------
+
+\StartBody
+
+\input{tex/chapters/introduction}
+\input{tex/chapters/related-work}
+\input{tex/chapters/work-plan}
+\input{tex/chapters/conclusions}
+
+
+
+%---------------------------------------------------------------------------------------------------
+% Appendixes, bibliography and index
+%---------------------------------------------------------------------------------------------------
+
+%\appendix
+%\include{appendix1}
+
+%\PrintBib{references/references}
+%\PrintIndex
+
+
+\end{document}
