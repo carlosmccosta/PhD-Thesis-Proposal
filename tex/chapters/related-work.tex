@@ -2,11 +2,7 @@
 
 \section*{}
 
-Automation of complex assembly tasks have revolutionized the manufacturing of products for a long time. However, these systems are usually programmed for very specific tasks and require expensive reprogramming in order to perform different assembly operations. With the arrival of more cooperative and flexible robotic arm designs, this industrial trend is changing and a significant amount of tasks that are currently being performed by humans due to its assembly complexity or cognitive requirements are now being transitioned to hybrid cooperative systems [1] and in the future they might even become fully automated. These promising industrial applications lead to the creation of several research projects such as Saphari, Rosetta, JAHIR, Charm, RoboEarth, KnowRob and ROS-Industrial (among others).
-
-Human-robot interaction systems capable of learning from demonstration offer great flexibility to industrial applications in which the assembly lines have limited / customized production [2]. They allow fast reprogramming of robots and allow cooperative assembly of complex and delicate tasks [3,4]. These systems can perform active perception of the environment [5,6] with a wide range of sensors (ToF, RGB-D, visual, audio, tactile, laser) and a multitude of recognition algorithms such as visual / geometric feature association, template / shape matching, color / intensity / texture segmentation (among many others). Moreover, by semantic analyzing the operator movements [7] through hand / skeletal tracking they are able to extract the skills / knowledge [8,9] that is required to assemble a new composite object. Besides learning new assembly skills through techniques such as Support Vector Machines, clustering, neural networks, boosting, Hidden Markov Models, Gaussian Mixture of Models (to name a few), these perception systems can also be used to implement communication protocols, allowing a more natural interaction (gesture, posture, voice) between the robot and the operator [10-12].
-
-The proposed project builds upon the candidate experience in 3D perception [13-16], computer vision [17,18], augmented reality [19] and projection mapping, and unlike previous research that focuses on specific assembly applications using traditional interfaces, the proposed project aims to provide a generic, intuitive and immersive cooperative robot assembly system capable of interacting with the operator using augmented reality and gesture recognition while also learning the necessary assembly skills from demonstration.
+Human-robot interaction systems capable of learning from demonstration offer great flexibility to industrial applications in which the assembly lines have limited / customized production \cite{Patel2012}. They allow fast reprogramming of robots and allow cooperative assembly of complex and delicate tasks \cite{Sumi2009,Edsinger2007}. These systems can perform active perception of the environment \cite{Yan2014,Goodrich2007} with a wide range of sensors (\gls{tof}, RGB-D, visual, audio, tactile, laser) and a multitude of recognition algorithms such as visual / geometric feature association, template / shape matching, color / intensity / texture segmentation (among many others). Moreover, by semantic analyzing the operator movements \cite{Roitberg2014} through hand / skeletal tracking they are able to extract the skills / knowledge \cite{Nikolaidis14,Goto2013} that is required to assemble a new composite object. Besides learning new assembly skills through techniques such as \glspl{svm}, clustering, \gls{nn}, boosting, \gls{hmm}, \gls{gmm} (to name a few), these perception systems can also be used to implement communication protocols, allowing a more natural interaction (gesture, posture, voice) between the robot and the operator \cite{Gleeson2013,Calisgan2012,Haddadi2013}.
 
 
 \section{Robotic manipulators}
@@ -19,7 +15,28 @@ FF
 FF
 
 
+\subsection{Motion planners}
+
+FF
+
+
+Articles:\\
+- Integrated Grasp and Motion Planning using Independent Contact Regions\\
+- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks\\
+- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task
+
+
 \subsection{Robotic grippers}
+
+FF
+
+
+\subsection{Gripping algorithms}
+
+FF
+
+
+\subsection{Force control}
 
 FF
 
@@ -53,10 +70,62 @@ FF
 
 FF
 
+Articles:\\
+- 3DNet - Large-Scale Object Class Recognition from CAD Models\\
+- 3D Visual Perception System for Bin Picking in Automotive Sub-Assembly Automation
 
-\section{Leaning systems}
+
+\section{Knowledge management}
 
 FF
+
+\subsection{Ontologies}
+
+FF
+
+Articles:\\
+- An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions
+
+
+\subsection{Skills}
+
+FF
+
+Articles:\\
+- Definition of Hardware-Independent Robot Skills for Industrial Robotic Co-workers\\
+- A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks
+
+
+\subsection{Cloud robotics}
+
+FF
+
+Articles:\\
+- On Distributed Knowledge Bases for Robotized Small-Batch Assembly\\
+- Knowledge-based Specification of Robot Motions\\
+- KnowRob - A Knowledge Processing Infrastructure for cognition-enabled robots\\
+- OPEN-EASE - A Knowledge Processing Service for Robots and Robotics - AI Researchers\\
+- Representation and exchange of knowledge about actions, objects, and environments in the roboearth framework\\
+- RoboBrain - Large-Scale Knwoledge Engine for Robots\\
+- CRAM - A Cognitive Robot Abstract Machine for Everyday Manipulation in Human Environments\\
+- Rapyuta - The RoboEarth Cloud Engine
+
+
+\section{Leaning algorithms}
+
+FF
+
+Articles:\\
+- Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed)
+
+
+\section{Teaching systems}
+
+FF
+
+Articles:\\
+- Toward Efficient Robot Teach-In and Semantic Process Descriptions for Small Lot Sizes\\
+- Efficient Model Learning from Joint-Action Demonstrations for Human-Robot Collaborative Tasks
 
 
 \section{Human Machine Interface systems}
@@ -78,11 +147,41 @@ FF
 
 FF
 
+Articles:\\
+- Human Activity Recognition in the Context of Industrial Human-Robot Interaction
+
+
+\subsection{Natural language processing}
+
+FF
+
+Articles:\\
+- Connecting natural language to task demonstrations and low-level control of industrial robots\\
+- Describing constraint-based assembly tasks in unstructured natural language
+
+
+\subsection{Human-robot cooperation}
+
+FF
+
+Articles:\\
+- Coordination Mechanisms in Human-Robot Collaboration\\
+- Human-Robot Interaction for Cooperative Manipulation - Handing Objects to One Another\\
+- Identifying Nonverbal Cues for Automated Human-Robot Turn-taking\\
+- Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
 
 \section{Assembly systems}
 
 FF
 
+Articles:\\
+- A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
+- Error-tolerant execution of complex robot tasks based on skill primitives\\
+- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
++ Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
+- A new skill based robot programming language using uml-p statecharts\\
+- Modeling Reusable, Platform-Independent Robot Assembly Processes\\
+- Flexible assembly through integrated assembly sequence planning and grasp planning
 
 \section{Software frameworks}
 
@@ -98,8 +197,11 @@ FF
 
 \begin{multicols}{4}
 	\begin{enumerate}
-		\item Saphari
+		\item RoboEarth
+		\item KnowRob
+		\item RoboHow
 		\item ROSETTA
+		\item Saphari
 		\item JAHIR
 		\item Charm
 		\item PISA
@@ -109,8 +211,6 @@ FF
 		\item SARAFun
 		\item CogIMon
 		\item CHRIS
-		\item RoboEarth
-		\item KnowRob
 		\item Rapyuta
 		\item DAvinci
 		\item C2TAM
