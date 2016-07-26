@@ -1,17 +1,32 @@
 \chapter{Work plan}\label{chap:work-plan}
 
-FF
+This chapter presents an overview of the research methodology and a detailed description of the tasks planned for the 3 year work plan of this thesis proposal along with the associated Gantt (chart shown in \cref{fig:gantt-chart}).
 
 
 \section{Methodology}
 
-FF
+The development of this thesis will have the following methodology:
+
+\begin{itemize}
+	\item Detailed description of the intended functionality and final users of each software module
+	\item Selection of the hardware and software platform in which the research will be performed
+	\item Selection / creation of representative testing datasets for each of the main software modules
+	\begin{itemize}
+		\item 2d / 3D perception of geometry / objects and operator movements
+		\item Learning new skills
+		\item Human Machine Interface
+	\end{itemize}
+	\item Test and comparison of current state of the art methods for each software module
+	\item Development of new / improved methods / algorithms when required
+	\item Focus research on reliably learning new assembly skills
+	\item Industrial testing of each software module with the final users
+\end{itemize}
+
 
 
 \section{Tasks}
 
-The main tasks for the 3 year work plan are detailed below, and build upon the extensive experience that the supervisors have in the robotics field and also on the research already made by the candidate in the areas of 3D perception \cite{Costa2015Diss,Costa2015ICIT,Costa2015Intech,Costa2016Elsevier}, computer vision \cite{Costa2014,Costa2016ICARSC}, augmented reality\footnote{\url{https://github.com/carlosmccosta/AR-Chess}}, projection mapping and also on the industrial research experience gained during the \gls{carlos} and \gls{clarissa} European research projects.
-
+The main tasks for the 3 year work plan are detailed below.
 
 
 \subsection{Use cases definition (1 month)}
@@ -46,7 +61,7 @@ The high-level hardware and software architecture, including the data / control 
 The first main software development task will include the design of a knowledge database in which the assembly operation skills along with the associated metadata (\gls{cad} models, robot tools configurations, workspace layout) will be stored, with possibility of inspection using a \gls{gui}.
 
 
-\subsection{Extraction of assembly knowledge from Standard Operating Procedures (3 months)}
+\subsection{Extraction of assembly knowledge from \glsentrytext{sop}s (3 months)}
 
 In order to speedup the repurposing and teaching of the assembly system, it will be developed a software module capable of extracting assembly information from \glspl{sop}.
 
@@ -77,20 +92,10 @@ The publication of the developed research will be spread across the work plan an
 
 
 
-\section{Gantt chart}
-
-FF \cref{fig:gantt-chart}.
-
-\begin{sidewaysfigure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{gantt-chart}
+	\includegraphics[height=.135\textheight,angle=90]{gantt-chart}
 	\caption{Gantt chart with main tasks and milestones}
 	\label{fig:gantt-chart}
-\end{sidewaysfigure}
-
-
-
-\section{Expected publications}
-
-FF
+\end{figure}
 

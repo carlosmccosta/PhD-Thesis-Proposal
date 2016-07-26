@@ -68,7 +68,8 @@
 \usepackage{subcaption}
 \captionsetup{justification=centering}
 \usepackage{footnote}
-\usepackage{footmisc}
+\usepackage[hang,flushmargin]{footmisc}
+\renewcommand*{\footnotelayout}{\scriptsize\sffamily}
 \usepackage{hyperref}
 \usepackage[all]{hypcap}
 \usepackage[noabbrev,nameinlink]{cleveref}
@@ -96,4 +97,4 @@
 \let\l@table\l@figure
 \makeatother
 
-\overfullrule=2mm
+\overfullrule=0.5mm

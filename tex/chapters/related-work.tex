@@ -2,17 +2,24 @@
 
 \section*{}
 
-Human-robot interaction systems capable of learning from demonstration offer great flexibility to industrial applications in which the assembly lines have limited / customized production \cite{Patel2012}. They allow fast reprogramming of robots and allow cooperative assembly of complex and delicate tasks \cite{Sumi2009,Edsinger2007}. These systems can perform active perception of the environment \cite{Yan2014,Goodrich2007} with a wide range of sensors (\gls{tof}, RGB-D, visual, audio, tactile, laser) and a multitude of recognition algorithms such as visual / geometric feature association, template / shape matching, color / intensity / texture segmentation (among many others). Moreover, by semantic analyzing the operator movements \cite{Roitberg2014} through hand / skeletal tracking they are able to extract the skills / knowledge \cite{Nikolaidis14,Goto2013} that is required to assemble a new composite object. Besides learning new assembly skills through techniques such as \glspl{svm}, clustering, \gls{nn}, boosting, \gls{hmm}, \gls{gmm} (to name a few), these perception systems can also be used to implement communication protocols, allowing a more natural interaction (gesture, posture, voice) between the robot and the operator \cite{Gleeson2013,Calisgan2012,Haddadi2013}.
+This chapter presents an overview of both the hardware and software relevant for performing flexible learning and assembly of complex objects.
 
 
 \section{Robotic manipulators}
 
 FF
 
+Articles:\\
+- A unified notation for serial, parallel, and hybrid kinematic structures
+
 
 \subsection{Robotic arms}
 
 FF
+
+Articles:\\
+- Collaborative robot - Robotiq ebook
+- Dual arm manipulation - A survey
 
 
 \subsection{Motion planners}
@@ -21,24 +28,30 @@ FF
 
 
 Articles:\\
+- A new probabilistic path planning algorithm for (dis) assembly tasks\\
+- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
+- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\
+- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
 - Integrated Grasp and Motion Planning using Independent Contact Regions\\
-- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks\\
-- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task
+- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
+
 
 
 \subsection{Robotic grippers}
 
 FF
 
+Articles:\\
+- An overview of 3D object grasp synthesis algorithms
 
-\subsection{Gripping algorithms}
-
-FF
 
 
 \subsection{Force control}
 
 FF
+
+Articles:\\
+- An Adaptive Feedback Scheduling Algorithm for Robot Assembly and Real-Time Control Systems
 
 
 \subsection{Automatic tool change}
@@ -189,18 +202,24 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 FF
 
-\subsection{2D computer vision}
-
-FF
-
-
-\subsection{3D perception}
-
-FF
-
 Articles:\\
+- Combined 2D-3D Categorization and Classification for Multimodal Perception Systems
+
+
+Articles 2d:\\
+- Evaluation of Interest Point Detectors and Feature Descriptors for Visual Tracking\\
+- Evaluation of interest point detectors for image information extraction\\
+- Local Invariant Feature Detectors - A Survey
+- Object Recognition from Local Scale-Invariant Features
+
+Articles 3d:\\
 - 3DNet - Large-Scale Object Class Recognition from CAD Models\\
-- 3D Visual Perception System for Bin Picking in Automotive Sub-Assembly Automation
+- 3D Visual Perception System for Bin Picking in Automotive Sub-Assembly Automation\\
+- CAD-Model Recognition and 6DOF Pose Estimation Using 3D Cues\\
+- Detecting and Segmenting Objects for Mobile Manipulation\\
+- Development of a 3D model based part recognition system for industrial applications - Main challenges\\
+- A Global Hypothesis Verification Framework for 3D Object Recognition in Clutter
+- Scene Perception and Recognition in Industrial Environments for Human-Robot Interaction
 
 
 \section{Knowledge management}
@@ -213,6 +232,7 @@ FF
 
 Articles:\\
 - An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions
+- Knowledge-based instruction of manipulation tasks for industrial robotics
 
 
 \subsection{Skills}
@@ -220,8 +240,11 @@ Articles:\\
 FF
 
 Articles:\\
+- A new framework for task oriented sensor based robot programming and verification\\
+- A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks\\
 - Definition of Hardware-Independent Robot Skills for Industrial Robotic Co-workers\\
-- A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks
+- Error-tolerant execution of complex robot tasks based on skill primitives\\
+- Skills for Vision-based Applications in Robotics Application to aeronautics assembly pilot station
 
 
 \subsection{Cloud robotics}
@@ -239,36 +262,41 @@ Articles:\\
 - Rapyuta - The RoboEarth Cloud Engine
 
 
-\section{Leaning algorithms}
-
-FF
-
-Articles:\\
-- Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed)
-
 
 \section{Teaching systems}
 
 FF
 
 Articles:\\
-- Toward Efficient Robot Teach-In and Semantic Process Descriptions for Small Lot Sizes\\
 - Efficient Model Learning from Joint-Action Demonstrations for Human-Robot Collaborative Tasks
+- Robust control of force-coupled human–robot-interaction in assembly processes\\
+- Toward Efficient Robot Teach-In and Semantic Process Descriptions for Small Lot Sizes
+- Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed)
+- TensorFlow - Large-Scale Machine Learning on Heterogeneous Distributed Systems
 
 
 \section{Human Machine Interface systems}
 
 FF
 
+Articles:\\
+- A Survey on Perception Methods for Human-Robot Interaction in Social Robots\\
+- Human-Robot Interaction - A Survey
+
 
 \subsection{Augmented reality}
 
 FF
 
+Articles:\\
+- Intuitive Robot Tasks with Augmented Reality and Virtual Obstacles\\
+- iSarProjection - A KinectFusion Based Handheld Dynamic Spatial Augmented Reality System\\
+- Spatial Augmented Reality Merging Real and VirtualWorlds\\
+- The Office of the Future - A Unified Approach to Image-Based Modeling and Spatially Immersive Displays
 
-\subsection{Projection mapping}
-
-FF
+Articles projection mapping:\\
+- A Flexible Fringe Projection Vision System with Extended Mathematical Model for Accurate Three-Dimensional Measurement\\
+- Geometrically-Correct Projection-Based Texture Mapping onto a Deformable Object
 
 
 \subsection{Gesture recognition}
@@ -276,7 +304,10 @@ FF
 FF
 
 Articles:\\
-- Human Activity Recognition in the Context of Industrial Human-Robot Interaction
+- Analysis of Task-Based Gestures in Human-Robot Interaction\\
+- Gestures for Industry - Intuitive Human-Robot Communication from Human Observation\\
+- Human Activity Recognition in the Context of Industrial Human-Robot Interaction\\
+- Human-Robot Communication for Collaborative Assembly
 
 
 \subsection{Natural language processing}
@@ -285,7 +316,9 @@ FF
 
 Articles:\\
 - Connecting natural language to task demonstrations and low-level control of industrial robots\\
-- Describing constraint-based assembly tasks in unstructured natural language
+- Describing constraint-based assembly tasks in unstructured natural language\\
+- Natural Language Programming of Industrial Robots\\
+- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web
 
 
 \subsection{Human-robot cooperation}
@@ -294,22 +327,26 @@ FF
 
 Articles:\\
 - Coordination Mechanisms in Human-Robot Collaboration\\
+- Development of Collaborative Robots for Flexible Human Integrated Assembly Automation\\
+- Dynamic Emotion-Based Human-Robot Collaborative Assembly in Manufacturing\\
+- Human-Robot Collaborative Assembly by On-line Human Action Recognition Based on an FSM Task Model\\
 - Human-Robot Interaction for Cooperative Manipulation - Handing Objects to One Another\\
 - Identifying Nonverbal Cues for Automated Human-Robot Turn-taking\\
 - Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
+
+
 
 \section{Assembly systems}
 
 FF
 
 Articles:\\
-- A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
-- Error-tolerant execution of complex robot tasks based on skill primitives\\
-- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
-+ Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
 - A new skill based robot programming language using uml-p statecharts\\
-- Modeling Reusable, Platform-Independent Robot Assembly Processes\\
-- Flexible assembly through integrated assembly sequence planning and grasp planning
+- A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
+- Enabling robots in small-part assembly lines\\
+- Designing Effective Step-By-Step Assembly Instructions\\
+- Flexible assembly through integrated assembly sequence planning and grasp planning\\
+- Modeling Reusable, Platform-Independent Robot Assembly Processes
 
 
 
@@ -458,11 +495,6 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 
 
 
-\section{Main limitations of current approaches}
-
-FF
-
-
 \section{Related research projects}
 
 \begin{multicols}{4}
@@ -491,6 +523,7 @@ FF
 		\item ACat
 	\end{enumerate}
 \end{multicols}
+
 
 \section{Related research groups}
 
