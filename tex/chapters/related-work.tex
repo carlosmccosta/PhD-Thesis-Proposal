@@ -33,6 +33,7 @@ Articles:\\
 - Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\
 - Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
 - Integrated Grasp and Motion Planning using Independent Contact Regions\\
+- Knowledge-based Specification of Robot Motions\\
 - MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
 
 
@@ -66,12 +67,12 @@ FF
 
 \section{Perception sensors}
 
-FF
+Perception sensors for object recognition have evolved dramatically in the last few years, with the emergence of RGB-D and \gls{tof} sensors (such as the Kinect 1 and 2) as an affordable and reasonably accurate technological solution. Other perception sensors commonly used include 2D and stereo cameras and also camera-laser systems.
 
 
 \subsection{Image acquisition}\label{sec:image-acquisition}
 
-FF
+With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting planar objects. Moreover, when used to observe the environment from several perspective, they can achieve good geometry reconstruction and allow accurate 3D perception of objects.
 
 
 \subsection{Point cloud acquisition}\label{sec:point-cloud-acquisition}
@@ -81,7 +82,7 @@ Point clouds can be retrieved with a wide range of sensors with varying levels o
 
 \subsubsection{Camera-Laser}
 
-FF
+Camera lasers systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of laser that is projected into the scene at incremental positions. They can achieve very accurate results, but given the need to physically move the laser, they require longer acquisitive periods than the methods presented below.
 
 
 \subsubsection{Stereo vision}
@@ -200,153 +201,168 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 \section{Perception systems}
 
-FF
+There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Gauglitz2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. They usually rely on feature detection / description and matching algorithms in order to be able to detect the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers in order to detect class of objects that have similar geometry \cite{Costa2014,Rocha2015}.
 
-Articles:\\
-- Combined 2D-3D Categorization and Classification for Multimodal Perception Systems
+%Articles:\\
+%+ Combined 2D-3D Categorization and Classification for Multimodal Perception Systems | Marton2011
+%
+%Articles 2d:\\
+%+ Evaluation of Interest Point Detectors and Feature Descriptors for Visual Tracking\\
+%- Evaluation of interest point detectors for image information extraction\\
+%- Local Invariant Feature Detectors - A Survey
+%- Object Recognition from Local Scale-Invariant Features
+%
+%Articles 3d:\\
+%+ 3DNet - Large-Scale Object Class Recognition from CAD Models\\ | Wohlkinger2012
+%- 3D Visual Perception System for Bin Picking in Automotive Sub-Assembly Automation\\
+%+ CAD-Model Recognition and 6DOF Pose Estimation Using 3D Cues\\ | Aldoma
+%- Detecting and Segmenting Objects for Mobile Manipulation\\
+%- Development of a 3D model based part recognition system for industrial applications - Main challenges\\ | Rocha2015
+%+ A Global Hypothesis Verification Framework for 3D Object Recognition in Clutter
+%- Scene Perception and Recognition in Industrial Environments for Human-Robot Interaction
 
-
-Articles 2d:\\
-- Evaluation of Interest Point Detectors and Feature Descriptors for Visual Tracking\\
-- Evaluation of interest point detectors for image information extraction\\
-- Local Invariant Feature Detectors - A Survey
-- Object Recognition from Local Scale-Invariant Features
-
-Articles 3d:\\
-- 3DNet - Large-Scale Object Class Recognition from CAD Models\\
-- 3D Visual Perception System for Bin Picking in Automotive Sub-Assembly Automation\\
-- CAD-Model Recognition and 6DOF Pose Estimation Using 3D Cues\\
-- Detecting and Segmenting Objects for Mobile Manipulation\\
-- Development of a 3D model based part recognition system for industrial applications - Main challenges\\
-- A Global Hypothesis Verification Framework for 3D Object Recognition in Clutter
-- Scene Perception and Recognition in Industrial Environments for Human-Robot Interaction
 
 
 \section{Knowledge management}
 
-FF
+Creation and management of reusable knowledge across robots with different hardware configurations is a challenging task. that can be solved by using cloud robotics coupled with ontologies databases and skills frameworks, that will be presented in the next sections.
+
 
 \subsection{Ontologies}
 
-FF
+Ontologies allow to model world information in a structured and object oriented approach \cite{Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper objects coupling).
 
-Articles:\\
-- An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions
-- Knowledge-based instruction of manipulation tasks for industrial robotics
+%Articles:\\
+%+ An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions | Perzylo2015
+%+ Knowledge-based instruction of manipulation tasks for industrial robotics | Stenmark2015
 
 
 \subsection{Skills}
 
-FF
+Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language using \gls{uml} \cite{ThomasICRA2013}.
 
-Articles:\\
-- A new framework for task oriented sensor based robot programming and verification\\
-- A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks\\
-- Definition of Hardware-Independent Robot Skills for Industrial Robotic Co-workers\\
-- Error-tolerant execution of complex robot tasks based on skill primitives\\
-- Skills for Vision-based Applications in Robotics Application to aeronautics assembly pilot station
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{related-work/skiros}
+	\caption[Skill-based Architecture SkiROS]{Skill-based Architecture SkiROS \cite{Holz2015}}
+	\label{fig:skiros}
+\end{figure}
+
+%Articles:\\
+%+ A new skill based robot programming language using uml-p statecharts\\
+%+ A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
+%+ Enabling robots in small-part assembly lines\\
+%+ Flexible assembly through integrated assembly sequence planning and grasp planning\\
+%+ Modeling Reusable, Platform-Independent Robot Assembly Processes
+%
+%Articles:\\
+%- A new framework for task oriented sensor based robot programming and verification\\
+%+ A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks\\
+%+ Definition of Hardware-Independent Robot Skills for Industrial Robotic Co-workers\\
+%+ Error-tolerant execution of complex robot tasks based on skill primitives\\
+%- Skills for Vision-based Applications in Robotics Application to aeronautics assembly pilot station
 
 
 \subsection{Cloud robotics}
 
-FF
+Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013} and could also allow to offload heavy computations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
 
-Articles:\\
-- On Distributed Knowledge Bases for Robotized Small-Batch Assembly\\
-- Knowledge-based Specification of Robot Motions\\
-- KnowRob - A Knowledge Processing Infrastructure for cognition-enabled robots\\
-- OPEN-EASE - A Knowledge Processing Service for Robots and Robotics - AI Researchers\\
-- Representation and exchange of knowledge about actions, objects, and environments in the roboearth framework\\
-- RoboBrain - Large-Scale Knwoledge Engine for Robots\\
-- CRAM - A Cognitive Robot Abstract Machine for Everyday Manipulation in Human Environments\\
-- Rapyuta - The RoboEarth Cloud Engine
+%Articles:\\
+%- On Distributed Knowledge Bases for Robotized Small-Batch Assembly\\
+%+ KnowRob - A Knowledge Processing Infrastructure for cognition-enabled robots\\ | Tenorth2013
+%+ OPEN-EASE - A Knowledge Processing Service for Robots and Robotics - AI Researchers\\ | Beetz2015
+%+ Representation and exchange of knowledge about actions, objects, and environments in the roboearth framework\\ | Tenorth2013
+%+ RoboBrain - Large-Scale Knwoledge Engine for Robots\\ | Saxena2014
+%+ CRAM - A Cognitive Robot Abstract Machine for Everyday Manipulation in Human Environments\\ | Beetz2010
+%+ Rapyuta - The RoboEarth Cloud Engine | Hunziker2013
+%+ Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed) | Witten2005
 
 
 
 \section{Teaching systems}
 
-FF
+There are several approaches to teaching new skills to robots ranging from advanced teach pendent / lead through programming, to the easy and intuitive usage of task level and \gls{cad} based specifications using tactile interfaces \cite{Perzylo2015a}. However, the teaching can be faster and more intuitive if the robot manages to learn new assembly knowledge \cite{tensorflow} by human demonstration \cite{Argall2009,Hamabe2015,Wang2015} using machine learning algorithms such as those shown in \cref{fig:machinelearningalgorithms}.
 
-Articles:\\
-- Efficient Model Learning from Joint-Action Demonstrations for Human-Robot Collaborative Tasks
-- Robust control of force-coupled human–robot-interaction in assembly processes\\
-- Toward Efficient Robot Teach-In and Semantic Process Descriptions for Small Lot Sizes
-- Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed)
-- TensorFlow - Large-Scale Machine Learning on Heterogeneous Distributed Systems
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{related-work/machinelearningalgorithms}
+	\caption[Machine learning algorithms mind map]{Machine learning algorithms mind map\protect\footnotemark}
+	\label{fig:machinelearningalgorithms}
+\end{figure}
+\footnotetext{\url{https://jixta.wordpress.com/2015/07/17/machine-learning-algorithms-mindmap/}}
+
+%Articles:\\
+%- Efficient Model Learning from Joint-Action Demonstrations for Human-Robot Collaborative Tasks
+%- Robust control of force-coupled human–robot-interaction in assembly processes\\
+%+ Toward Efficient Robot Teach-In and Semantic Process Descriptions for Small Lot Sizes | Perzylo2015a
+%+ TensorFlow - Large-Scale Machine Learning on Heterogeneous Distributed Systems | tensorflow
+%+ A Programming by Demonstration System for Human-Robot Collaborative Assembly Tasks
+%+ Multi-class Assembly Parts Recognition using Composite Feature and Random Forest for Robot Programming by Demonstration
+
 
 
 \section{Human Machine Interface systems}
 
-FF
+There is a wide range of technologies that allow the exchange of information between humans and machines\cite{Goodrich2008}, from the typical display devices (screens, projectors) to natural interaction using visual and audio \cite{Yan2014} communication protocols. The next sections will provide a brief overview of the human machine interface systems that are useful for cooperative assembly operations.
 
-Articles:\\
-- A Survey on Perception Methods for Human-Robot Interaction in Social Robots\\
-- Human-Robot Interaction - A Survey
+%Articles:\\
+%- A Survey on Perception Methods for Human-Robot Interaction in Social Robots\\ | Yan2014
+%- Human-Robot Interaction - A Survey | Goodrich2008
 
 
 \subsection{Augmented reality}
 
-FF
+Augmented reality interfaces provide an immersive way of exchanging of information between the a human operator and a machine \cite{Bimber2005}, and when using projection mapping systems \cite{Tan2013,Fujimoto2014}, they allow to perform environment marking of information, which are useful to indicate which object the operator should pick up next and where it should install it or for welding / cutting operations (example in \cref{fig:laser-projection}) it could allow accurate part positioning by projecting the place of weld (avoiding manual measurements by the human operator).
 
-Articles:\\
-- Intuitive Robot Tasks with Augmented Reality and Virtual Obstacles\\
-- iSarProjection - A KinectFusion Based Handheld Dynamic Spatial Augmented Reality System\\
-- Spatial Augmented Reality Merging Real and VirtualWorlds\\
-- The Office of the Future - A Unified Approach to Image-Based Modeling and Spatially Immersive Displays
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{related-work/laser-projection}
+	\caption[Projection mapping of cutting information]{Projection mapping of cutting information\protect\footnotemark}
+	\label{fig:laser-projection}
+\end{figure}
+\footnotetext{\url{http://www.3dgage.com/laserprojection.html}}
 
-Articles projection mapping:\\
-- A Flexible Fringe Projection Vision System with Extended Mathematical Model for Accurate Three-Dimensional Measurement\\
-- Geometrically-Correct Projection-Based Texture Mapping onto a Deformable Object
-
-
-\subsection{Gesture recognition}
-
-FF
-
-Articles:\\
-- Analysis of Task-Based Gestures in Human-Robot Interaction\\
-- Gestures for Industry - Intuitive Human-Robot Communication from Human Observation\\
-- Human Activity Recognition in the Context of Industrial Human-Robot Interaction\\
-- Human-Robot Communication for Collaborative Assembly
+%Articles:\\
+%- Intuitive Robot Tasks with Augmented Reality and Virtual Obstacles\\
+%+ iSarProjection - A KinectFusion Based Handheld Dynamic Spatial Augmented Reality System\\ | Tan2013
+%+ Spatial Augmented Reality Merging Real and VirtualWorlds\\ | Bimber2005
+%+ The Office of the Future - A Unified Approach to Image-Based Modeling and Spatially Immersive Displays | Raskar1998
+%
+%Articles projection mapping:\\
+%- A Flexible Fringe Projection Vision System with Extended Mathematical Model for Accurate Three-Dimensional Measurement\\
+%- Geometrically-Correct Projection-Based Texture Mapping onto a Deformable Object
 
 
 \subsection{Natural language processing}
 
-FF
+Natural language processing of unstructured textual representations can be very useful to extract assembly information from \glspl{sop} / operator manuals \cite{Stenmark2014,Stenmark2013} and speedup the robot leaning process \cite{Tenorth2010} (for example identifying which objects will be assembled, in which order and their approximate spatial distribution).
 
-Articles:\\
-- Connecting natural language to task demonstrations and low-level control of industrial robots\\
-- Describing constraint-based assembly tasks in unstructured natural language\\
-- Natural Language Programming of Industrial Robots\\
-- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web
+%Articles:\\
+%- Connecting natural language to task demonstrations and low-level control of industrial robots\\
+%- Describing constraint-based assembly tasks in unstructured natural language\\
+%- Natural Language Programming of Industrial Robots\\
+%- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web | Tenorth2010
 
 
 \subsection{Human-robot cooperation}
 
-FF
-
-Articles:\\
-- Coordination Mechanisms in Human-Robot Collaboration\\
-- Development of Collaborative Robots for Flexible Human Integrated Assembly Automation\\
-- Dynamic Emotion-Based Human-Robot Collaborative Assembly in Manufacturing\\
-- Human-Robot Collaborative Assembly by On-line Human Action Recognition Based on an FSM Task Model\\
-- Human-Robot Interaction for Cooperative Manipulation - Handing Objects to One Another\\
-- Identifying Nonverbal Cues for Automated Human-Robot Turn-taking\\
-- Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
+Gesture recognition of operators hand movements \cite{Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation and exchange of information between humans and robots requires perception of the human body movements \cite{Roitberg2014} in order to recognize the operator intentions and detect when the robot should initiate or stop the interaction.
 
 
-
-\section{Assembly systems}
-
-FF
-
-Articles:\\
-- A new skill based robot programming language using uml-p statecharts\\
-- A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
-- Enabling robots in small-part assembly lines\\
-- Designing Effective Step-By-Step Assembly Instructions\\
-- Flexible assembly through integrated assembly sequence planning and grasp planning\\
-- Modeling Reusable, Platform-Independent Robot Assembly Processes
+%Articles:\\
+%- Analysis of Task-Based Gestures in Human-Robot Interaction\\
+%+ Gestures for Industry - Intuitive Human-Robot Communication from Human Observation\\
+%+ Human Activity Recognition in the Context of Industrial Human-Robot Interaction\\ | Roitberg2014
+%- Human-Robot Communication for Collaborative Assembly
+%
+%Articles:\\
+%- Coordination Mechanisms in Human-Robot Collaboration\\
+%- Development of Collaborative Robots for Flexible Human Integrated Assembly Automation\\
+%- Dynamic Emotion-Based Human-Robot Collaborative Assembly in Manufacturing\\
+%- Human-Robot Collaborative Assembly by On-line Human Action Recognition Based on an FSM Task Model\\
+%- Human-Robot Interaction for Cooperative Manipulation - Handing Objects to One Another\\
+%- Identifying Nonverbal Cues for Automated Human-Robot Turn-taking\\
+%- Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
 
 
 
@@ -494,8 +510,27 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 \footnotetext{\url{http://gazebosim.org/tutorials?tut=ros_control}}
 
 
+\section{Related research groups}
+
+In the list below are some of the most known research groups working in cognitive robotics and assembly systems.
+
+\begin{enumerate}
+	\item Aalborg Universitet
+	\item DLR - Deutsches Zentrum für Luft- und Raumfahrt
+	\item ETH Zurich
+	\item fortiss
+	\item Fraunhofer Institute for Manufacturing Engineering and Automation
+	\item Lunds Universitet
+	\item Technische Universität Chemnitz
+	\item Technische Universität München
+	\item TU/e
+	\item Universität Bremen
+\end{enumerate}
+
 
 \section{Related research projects}
+
+Automation of assembly operations is a multidisciplinary research field with a very active community in both academia and also in the industry. In the list below is presented some of the most important projects in the area of cognitive robotics in the last decades.
 
 \begin{multicols}{4}
 	\begin{enumerate}
@@ -525,16 +560,28 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 \end{multicols}
 
 
-\section{Related research groups}
-
-FF
-
 
 \section{Main conferences}
 
-FF
+List of the most prestigious conferences in robotics is presented below.
+
+\begin{itemize}
+	\item ICRA - IEEE International Conference on Robotics and Automation
+	\item IROS - IEEE/RSJ International Conference on Intelligent Robots and Systems
+	\item ICCV - IEEE International Conference on Computer Vision
+\end{itemize}
+
 
 
 \section{Main journals}
 
-FF
+List of the most prestigious journals in robotics is presented below.
+
+\begin{itemize}
+	\item International Journal of Robotics Research (SJR - 4.184)
+	\item IEEE Transactions on Industrial Informatics (SJR - 2.973)
+	\item IEEE Transactions on Robotics (SJR - 2.884)
+	\item IEEE Robotics and Automation Magazine (SJR - 1.832)
+	\item Robotics and Computer-Integrated Manufacturing (SJR - 1.621)
+	\item Robotics and Autonomous Systems (SJR - 1.377)
+\end{itemize}
