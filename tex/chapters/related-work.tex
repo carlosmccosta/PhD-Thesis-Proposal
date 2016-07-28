@@ -7,7 +7,7 @@ This chapter presents an overview of the knowledge developed over the years in t
 
 \section{Robotic manipulators}
 
-Robotic manipulators have evolved over the years to fit the automation demand of the industry in a wide range of tasks that required the ability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
+Robotic manipulators have evolved over the years to fit the automation demand of the industry that required the ability to move the end-effector with accuracy and speed in order to perform a wide range of tasks, which in the case of assembly operations required the capability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
 
 
 \subsection{Robotic arms}
@@ -17,109 +17,138 @@ Robotic arms give the mechanical support for the end effectors (for example grip
 
 \subsubsection{Cartesian robotic arms}
 
-Cartesian robots have three linear axis of motion (diagram shown in \cref{fig:cartesian-robot}) and are used in operations that require mainly translations of the end effector (example in \cref{fig:cartesian-robot-festo-3d-gantry}), such as moving objects within large workplaces or spraying / milling / drilling / cutting material using \glspl{cnc} machines.
+Cartesian robots have three linear axis of motion (diagrams shown in \cref{fig:cartesian-robot}) and are used in operations that require mainly translations of the end effector (example in \cref{fig:cartesian-robot-festo-3d-gantry}), such as moving objects within large workplaces or spraying / milling / drilling / cutting material using \glspl{cnc} machines.
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.145\textheight]{robots/cartesian-robot}}
-		{\caption[Diagram of a Cartesian robot]{Diagram of a Cartesian robot\protect\footnotemark}\label{fig:cartesian-robot}}
+		{\includegraphics[height=.15\textheight]{robots/cartesian-robot}
+		\includegraphics[height=.15\textheight]{robots/cartesian-robot-model}}
+		{\caption[Diagrams of a Cartesian robot]{Diagrams of a Cartesian robot\protect\footnotemark}\label{fig:cartesian-robot}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.145\textheight]{robots/cartesian-robot-festo-3d-gantry}}
+		{\includegraphics[height=.15\textheight]{robots/cartesian-robot-festo-3d-gantry}}
 		{\caption[Cartesian robot with a dual finger gripper]{Cartesian robot with a dual finger gripper\protect\footnotemark}\label{fig:cartesian-robot-festo-3d-gantry}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
 \footnotetext[\value{footnote}]{\url{http://www.linearmotiontips.com/switching-robot-systems-cartesian-handling-systems/}}
 
 
 \subsubsection{Cylindrical robotic arms}
 
-Cylindrical robots have two linear axis and one rotation axis around the origin (diagram shown in \cref{fig:cylindrical-robot}) and are useful for tasks such as sorting / packaging that require the movement of high payload packages (example in \cref{fig:cylindrical-robot-plate-crane}.
+Cylindrical robots have two linear axis and one rotation axis around the origin (diagrams shown in \cref{fig:cylindrical-robot}) and are useful for tasks such as sorting / packaging (example in \cref{fig:cylindrical-robot-plate-crane}) that require the movement of high payload packages.
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.155\textheight]{robots/cylindrical-robot}}
-		{\caption[Diagram of a cylindrical robot]{Diagram of a cylindrical robot\protect\footnotemark}\label{fig:cylindrical-robot}}
+		{\includegraphics[height=.15\textheight]{robots/cylindrical-robot}
+		\includegraphics[height=.15\textheight]{robots/cylindrical-robot-model}}
+		{\caption[Diagrams of a cylindrical robot]{Diagrams of a cylindrical robot\protect\footnotemark}\label{fig:cylindrical-robot}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.155\textheight]{robots/cylindrical-robot-plate-crane}}
+		{\includegraphics[height=.15\textheight]{robots/cylindrical-robot-plate-crane}}
 		{\caption[Cylindrical robot with a dual finger gripper]{Cylindrical robot with a dual finger gripper\protect\footnotemark}\label{fig:cylindrical-robot-plate-crane}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
 \footnotetext[\value{footnote}]{\url{http://hudsonrobotics.com/products/microplate-handling/platecrane-ex/}}
 
 
 \subsubsection{Polar robotic arms}
 
-Polar / spherical robots have one linear axis and two perpendicular rotation axis (diagram shown in \cref{fig:polar-robot}) and can be used in welding / fettling operations (example in \cref{fig:polar-robot-fanuc}).
+Polar / spherical robots have one linear axis and two perpendicular rotation axis (diagrams shown in \cref{fig:polar-robot}) and can be used in welding / fettling operations (example in \cref{fig:polar-robot-fanuc}).
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.138\textheight]{robots/polar-robot}}
-		{\caption[Diagram of a polar robot]{Diagram of a polar robot\protect\footnotemark}\label{fig:polar-robot}}
+		{\includegraphics[height=.138\textheight]{robots/polar-robot}
+		\includegraphics[height=.138\textheight]{robots/polar-robot-model}}
+		{\caption[Diagrams of a polar robot]{Diagrams of a polar robot\protect\footnotemark}\label{fig:polar-robot}}
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.138\textheight]{robots/polar-robot-fanuc}}
 		{\caption[Polar robot]{Polar robot\protect\footnotemark}\label{fig:polar-robot-fanuc}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
 \footnotetext[\value{footnote}]{\url{http://saba.kntu.ac.ir/eecd/ecourses/robotics/overview.pdf}}
 
 
 \subsubsection{\glsentrytext{scara} robotic arms}
 
-\gls{scara} robots have one linear axis and two parallel rotation axis (diagram shown in \cref{fig:scara-robot}) and can perform quick pick and place tasks (example in \cref{fig:scara-robot-packaging}).
+\gls{scara} robots have one linear axis and two parallel rotation axis (diagrams shown in \cref{fig:scara-robot}) and can perform quick pick and place tasks (example in \cref{fig:scara-robot-packaging}).
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.125\textheight]{robots/scara-robot}}
-		{\caption[Diagram of a \glsentrytext{scara} robot]{Diagram of a \glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot}}
+		{\includegraphics[height=.173\textheight]{robots/scara-robot}
+		\includegraphics[height=.173\textheight]{robots/scara-robot-model}}
+		{\caption[Diagrams of a \glsentrytext{scara} robot]{Diagrams of a \glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.125\textheight]{robots/scara-robot-packaging}}
-		{\caption[\glsentrytext{scara} robot]{\glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot-packaging}}
+		{\includegraphics[height=.173\textheight]{robots/scara-robot-packaging}}
+		{\caption[\glsentrytext{scara} robot packaging products]{\glsentrytext{scara} robot packaging products\protect\footnotemark}\label{fig:scara-robot-packaging}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
 \footnotetext[\value{footnote}]{\url{http://www.assemblymag.com/articles/93338-whats-new-with-scara-robots}}
 
 
 \subsubsection{Parallel / delta robotic arms}
 
-Picker / delta / parallel robots have three parallelogram arms connected to the end effector in order to provide three translation axis and one rotation axis (diagram shown in \cref{fig:picker-parallel-robot}) and they can perform very fast pick and place tasks (example in \cref{fig:picker-parallel-robot-fanuc}).
+Picker / delta / parallel robots have three parallelogram arms connected to the end effector in order to provide three translation axis and one rotation axis (diagrams shown in \cref{fig:schema-delta-type-1-side-view,fig:paralell-robot-abb}) and they can perform very fast pick and place tasks (example in \cref{fig:picker-parallel-robot-fanuc}).
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.153\textheight]{robots/picker-parallel-robot}}
-		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:picker-parallel-robot}}
+		{\includegraphics[height=.205\textheight]{robots/schema-delta-type-1-side-view}}
+		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:schema-delta-type-1-side-view}}
+		\ffigbox[1.05\FBwidth]
+		{\includegraphics[height=.205\textheight]{robots/paralell-robot-abb}}
+		{\caption[Model of a delta robot]{Model of a delta robot\protect\footnotemark}\label{fig:paralell-robot-abb}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.153\textheight]{robots/picker-parallel-robot-fanuc}}
-		{\caption[Delta robot]{delta robot\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
+		{\includegraphics[height=.205\textheight]{robots/picker-parallel-robot-fanuc}}
+		{\caption[Delta robot packaging products]{Delta robot packaging products\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://infosys.beckhoff.com/content/1034/tckintransformation/html/tcnckintransformation_deltatype1.htm?id=21945}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.mecademic.com/What-is-a-parallel-robot.html}}
 \footnotetext[\value{footnote}]{\url{http://robot.fanucamerica.com/products/robots/picking-and-packing-robots.aspx}}
+
+
+\subsubsection{Snake robotic arms}
+
+Snake robots are flexible manipulators with a high number of interconnected joints (structure of a snake robot shown in \cref{fig:snake-arm-robot-diagram}) capable of bending like a snake in order to access small and difficult to reach areas (example in \cref{fig:laser-snake-pipe-cutting}).
+
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.173\textheight]{robots/snake-robot-diagram}
+		\includegraphics[height=.173\textheight]{robots/snake-robot}}
+		{\caption[Structure of a snake robot]{Structure of a snake robot\protect\footnotemark}\label{fig:snake-arm-robot-diagram}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.173\textheight]{robots/laser-snake-pipe-cutting}}
+		{\caption[Laser snake robot cutting a pipe]{Laser snake robot cutting a pipe\protect\footnotemark}\label{fig:laser-snake-pipe-cutting}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://techcrunch.com/2010/08/18/video-giant-snake-robot-acm-r5/}}
+\footnotetext[\value{footnote}]{\url{http://sparc-robotics.eu/nuclear-decommissioning/}}
 
 
 \subsubsection{Articulated robotic arms}
 
-Articulated robots are versatile arms with at least 3 rotation axis (diagram shown in \cref{fig:articulated-robot}) and are capable of performing a wide range of tasks, from welding to advanced assembly tasks (example in \cref{fig:articulated-robot-kuka}).
+Articulated robots are versatile arms with at least 3 rotation axis (diagrams shown in \cref{fig:articulated-robot}) and are capable of performing a wide range of tasks, from welding to advanced assembly tasks (example in \cref{fig:articulated-robot-kuka}).
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.2\textheight]{robots/articulated-robot}}
-		{\caption[Diagram of an articulated robot]{Diagram of an articulated robot\protect\footnotemark}\label{fig:articulated-robot}}
+		{\includegraphics[height=.187\textheight]{robots/articulated-robot}
+		\includegraphics[height=.187\textheight]{robots/articulated-robot-model}}
+		{\caption[Diagrams of an articulated robot]{Diagrams of an articulated robot\protect\footnotemark}\label{fig:articulated-robot}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.2\textheight]{robots/articulated-robot-kuka}}
+		{\includegraphics[height=.187\textheight]{robots/articulated-robot-kuka}}
 		{\caption[Articulated robot]{Articulated  robot\protect\footnotemark}\label{fig:articulated-robot-kuka}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
 \footnotetext[\value{footnote}]{\url{http://gracemarketdata.com/index.php/component/virtuemart/2001-detail}}
 
 
@@ -209,10 +238,10 @@ With the increase of resolution and lens build quality, 2D sensors remain a viab
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.21\textheight]{sensors/ccd}}
-		{\caption{\glsentrytext{ccd} sensor\protect\footnotemark}\label{fig:ccd}}
+		{\caption[\glsentrytext{ccd} sensor]{\glsentrytext{ccd} sensor\protect\footnotemark}\label{fig:ccd}}
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.21\textheight]{sensors/cmos}}
-		{\caption{\glsentrytext{cmos} sensor\protect\footnotemark}\label{fig:cmos}}
+		{\caption[\glsentrytext{cmos} sensor]{\glsentrytext{cmos} sensor\protect\footnotemark}\label{fig:cmos}}
 	\end{floatrow}
 \end{figure}
 \footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://cctvsystemblog.blogspot.pt/2013/07/architecture-of-ccd.html}}
