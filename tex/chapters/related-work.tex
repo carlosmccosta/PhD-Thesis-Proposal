@@ -181,12 +181,99 @@ Collaborative robots are usually articulated robotic arms that were designed to 
 
 \subsection{Robotic end effectors}
 
-End effectors are devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors used for inspection or can be active in which the robot physically interacts with the environment. The next sections present a brief overview of the main end effectors currently available.
+End effectors are hardware devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors (used for inspection, quality assurance, surveillance) or can be active in which the robot physically interacts with the environment.
+
+Grippers are one the most complex end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
+
+The following list presents a brief overview of the main end effectors currently available.
+
+\begin{itemize}
+	\item Grippers
+	\begin{itemize}
+		\item Impactive grippers
+		\begin{itemize}
+			\item Parallel fingers
+			\item Angular fingers
+			\item Anthropomorphic gripers with 5 fingers
+			\item Universal grippers (for example the Versaball)
+		\end{itemize}
+		\item Astrictive grippers
+		\begin{itemize}
+			\item Vacuum grippers
+			\item Bernoulli grippers
+			\item Magnetic grippers
+			\item Electrostatic grippers
+		\end{itemize}
+		\item Contigutive grippers
+		\begin{itemize}
+			\item Chemical adhesion grippers
+			\item Thermal adhesion grippers
+		\end{itemize}
+		\item Ingressive grippers
+		\begin{itemize}
+			\item Hooks
+			\item Loops
+		\end{itemize}
+	\end{itemize}
+	\item Perception sensors
+	\begin{itemize}
+		\item 2D / \gls{tof} cameras
+		\item Point / line lasers
+		\item \glspl{lidar}
+		\item RGB-D sensors
+		\item Structured light sensors
+	\end{itemize}
+	\item Collision sensors
+	\item Force-torque sensors
+	\item Projectors (\gls{dlp} / galvanometers)
+	\item Welding torches
+	\item Cutting tools
+	\item Drilling tools
+	\item Milling tools
+	\item Grinders
+	\item Sanders
+	\item Polishers
+	\item Finishers
+	\item Sprayers
+	\item Screw drivers
+	\item Spanners
+	\item Ladles
+\end{itemize}
 
 
-\subsubsection{Grippers}
+For assembly operations the most useful end effectors are the grippers along with the perception and force-torque sensors. In \cref{fig:adaptive-2-finger-gripper-robotiq,fig:adaptive-3-finger-gripper-robotiq,fig:schunk-svh,fig:schunk-svh-precision-grip,fig:schunk-svh-power-grip} are shown some of the most used grippers in assembly operations.
 
-Grippers are one the most complex end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. The next sections give an overview of the main grippers that have been developed over the years.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{grippers/adaptive-2-finger-gripper-robotiq}
+	\caption{Adaptive 2 finger gripper with different grasping approaches\protect\footnotemark}
+	\label{fig:adaptive-2-finger-gripper-robotiq}
+\end{figure}
+\footnotetext{\url{http://blog.robotiq.com/bid/52886/Industrial-robots-5-most-popular-applications}}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{grippers/adaptive-3-finger-gripper-robotiq}
+	\caption{Adaptive 3 finger gripper holding objects with different sizes and stiffness\protect\footnotemark}
+	\label{fig:adaptive-3-finger-gripper-robotiq}
+\end{figure}
+\footnotetext{\url{http://robotiq.com/products/industrial-robot-hand/}}
+
+\begin{figure}[H]
+	\begin{floatrow}[3]
+		\ffigbox[1.0\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/schunk-svh}}
+		{\caption[Schunk SVH hand]{Schunk SVH hand\protect\footnotemark}\label{fig:schunk-svh}}
+		\ffigbox[1.03\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-precision-grip}}
+		{\caption[Schunk SVH precision grip]{Schunk SVH precision grip\protect\footnotemark[\value{footnote}]}\label{fig:schunk-svh-precision-grip}}
+		\ffigbox[1.03\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-power-grip}}
+		{\caption[Schunk SVH power grip]{Schunk SVH power grip\protect\footnotemark[\value{footnote}]}\label{fig:schunk-svh-power-grip}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\value{footnote}]{\url{http://mobile.schunk-microsite.com/en/produkte/products/servo-electric-5-finger-gripping-hand-svh.html1}}
+
 
 
 %Articles:\\
@@ -194,79 +281,20 @@ Grippers are one the most complex end effectors given their need to grasp and ho
 %- A review on importance of universal gripper in industrial robot applications
 %- A survey of bio-inspired robotics hands implementation - New directions in dexterous manipulation
 
-
-\paragraph{Impactive grippers}
-
-FF\\
-- parallel\\
-- angular\\
-- anthropomorphic\\
-- universal
-- toggle\\
-
-
-\paragraph{Ingressive grippers}
-
-FF\\
-- hooks\\
-
-
-\paragraph{Astrictive grippers}
-
-FF\\
-- vacuum
-- bernoulli
-- magnetic
-- electrostatic
-
-
-\paragraph{Contigutive grippers}
-
-FF\\
--
-
-
-\subsubsection{Welding torches}
-
-FF
-
-
-\subsubsection{Screw drivers / spanners / ladles}
-
-FF
-
-
-\subsubsection{Cutting / drilling / milling tools}
-
-FF
-
-
-\subsubsection{Grinders / sanders / polishers / finishers}
-
-FF
-
-
-\subsubsection{Sprayers}
-
-FF
-
-
-\subsubsection{Collision sensors}
-
-FF
-
-
-\subsubsection{Force-torque sensors}
-
-FF
-
 %Articles:\\
 %- An Adaptive Feedback Scheduling Algorithm for Robot Assembly and Real-Time Control Systems
 
 
 \subsection{Automatic tool change}
 
-FF
+Given the wide variety of objects that assembly operations may require, automatic tool change devices (such as the one shown in \cref{fig:tool-changer}) are very useful to allow the robot to autonomously change the end effector in order to perform the current task with the most appropriate hardware configuration.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{tool-changer}
+	\caption{Automatic Tool changer with 20 tools}
+	\label{fig:tool-changer}
+\end{figure}
 
 
 \subsection{Alignment devices / environment fixtures}
