@@ -2,57 +2,170 @@
 
 \section*{}
 
-This chapter presents an overview of both the hardware and software relevant for performing flexible learning and assembly of complex objects.
+This chapter presents an overview of the knowledge developed over the years in the areas of robotic manipulators, perception sensors, machine learning and human-robot interaction that is relevant for the development of cooperative human-robot systems capable of learning and assembling complex objects.
 
 
 \section{Robotic manipulators}
 
-FF
-
-Articles:\\
-- A unified notation for serial, parallel, and hybrid kinematic structures
+Robotic manipulators have evolved over the years to fit the automation demand of the industry in a wide range of tasks that required the ability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
 
 
 \subsection{Robotic arms}
 
-FF
-
-Articles:\\
-- Collaborative robot - Robotiq ebook
-- Dual arm manipulation - A survey
+Robotic arms give the mechanical support for the end effectors (for example grippers, sprayers, grinders, welders, vacuums, among many others) and can have a wide range of hardware configurations depending on the type of motion that is required for performing a given task. The main categories of robotic arms will be presented in the next sections.
 
 
-\subsection{Motion planners}
+\subsubsection{Cartesian robotic arms}
 
-FF
+Cartesian robots have three linear axis of motion (diagram shown in \cref{fig:cartesian-robot}) and are used in operations that require mainly translations of the end effector (example in \cref{fig:cartesian-robot-festo-3d-gantry}), such as moving objects within large workplaces or spraying / milling / drilling / cutting material using \glspl{cnc} machines.
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.145\textheight]{robots/cartesian-robot}}
+		{\caption[Diagram of a Cartesian robot]{Diagram of a Cartesian robot\protect\footnotemark}\label{fig:cartesian-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.145\textheight]{robots/cartesian-robot-festo-3d-gantry}}
+		{\caption[Cartesian robot with a dual finger gripper]{Cartesian robot with a dual finger gripper\protect\footnotemark}\label{fig:cartesian-robot-festo-3d-gantry}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://www.linearmotiontips.com/switching-robot-systems-cartesian-handling-systems/}}
 
 
-Articles:\\
-- A new probabilistic path planning algorithm for (dis) assembly tasks\\
-- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
-- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\
-- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
-- Integrated Grasp and Motion Planning using Independent Contact Regions\\
-- Knowledge-based Specification of Robot Motions\\
-- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
+\subsubsection{Cylindrical robotic arms}
 
+Cylindrical robots have two linear axis and one rotation axis around the origin (diagram shown in \cref{fig:cylindrical-robot}) and are useful for tasks such as sorting / packaging that require the movement of high payload packages (example in \cref{fig:cylindrical-robot-plate-crane}.
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.155\textheight]{robots/cylindrical-robot}}
+		{\caption[Diagram of a cylindrical robot]{Diagram of a cylindrical robot\protect\footnotemark}\label{fig:cylindrical-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.155\textheight]{robots/cylindrical-robot-plate-crane}}
+		{\caption[Cylindrical robot with a dual finger gripper]{Cylindrical robot with a dual finger gripper\protect\footnotemark}\label{fig:cylindrical-robot-plate-crane}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://hudsonrobotics.com/products/microplate-handling/platecrane-ex/}}
+
+
+\subsubsection{Polar robotic arms}
+
+Polar / spherical robots have one linear axis and two perpendicular rotation axis (diagram shown in \cref{fig:polar-robot}) and can be used in welding / fettling operations (example in \cref{fig:polar-robot-fanuc}).
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.138\textheight]{robots/polar-robot}}
+		{\caption[Diagram of a polar robot]{Diagram of a polar robot\protect\footnotemark}\label{fig:polar-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.138\textheight]{robots/polar-robot-fanuc}}
+		{\caption[Polar robot]{Polar robot\protect\footnotemark}\label{fig:polar-robot-fanuc}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://saba.kntu.ac.ir/eecd/ecourses/robotics/overview.pdf}}
+
+
+\subsubsection{\glsentrytext{scara} robotic arms}
+
+\gls{scara} robots have one linear axis and two parallel rotation axis (diagram shown in \cref{fig:scara-robot}) and can perform quick pick and place tasks (example in \cref{fig:scara-robot-packaging}).
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.125\textheight]{robots/scara-robot}}
+		{\caption[Diagram of a \glsentrytext{scara} robot]{Diagram of a \glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.125\textheight]{robots/scara-robot-packaging}}
+		{\caption[\glsentrytext{scara} robot]{\glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot-packaging}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://www.assemblymag.com/articles/93338-whats-new-with-scara-robots}}
+
+
+\subsubsection{Parallel / delta robotic arms}
+
+Picker / delta / parallel robots have three parallelogram arms connected to the end effector in order to provide three translation axis and one rotation axis (diagram shown in \cref{fig:picker-parallel-robot}) and they can perform very fast pick and place tasks (example in \cref{fig:picker-parallel-robot-fanuc}).
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.153\textheight]{robots/picker-parallel-robot}}
+		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:picker-parallel-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.153\textheight]{robots/picker-parallel-robot-fanuc}}
+		{\caption[Delta robot]{delta robot\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://robot.fanucamerica.com/products/robots/picking-and-packing-robots.aspx}}
+
+
+\subsubsection{Articulated robotic arms}
+
+Articulated robots are versatile arms with at least 3 rotation axis (diagram shown in \cref{fig:articulated-robot}) and are capable of performing a wide range of tasks, from welding to advanced assembly tasks (example in \cref{fig:articulated-robot-kuka}).
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.2\textheight]{robots/articulated-robot}}
+		{\caption[Diagram of an articulated robot]{Diagram of an articulated robot\protect\footnotemark}\label{fig:articulated-robot}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.2\textheight]{robots/articulated-robot-kuka}}
+		{\caption[Articulated robot]{Articulated  robot\protect\footnotemark}\label{fig:articulated-robot-kuka}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.looptechnology.com/robotic-robot-types.asp}}
+\footnotetext[\value{footnote}]{\url{http://gracemarketdata.com/index.php/component/virtuemart/2001-detail}}
+
+
+
+\subsubsection{Collaborative robotic arms}
+
+Collaborative robots are usually articulated robotic arms that were designed to be safe to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in a polyvinylidene fluoride piezoelectric material sheet in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
+
+%Articles:\\
+%- Collaborative robot - Robotiq ebook | Mathieu2015
+%- Dual arm manipulation - A survey | Smith2012
+%- A brief survey of commercial robotic arms for research on manipulation | Lu2012
+%- Survey of robotic arm and parameters | Patidar2016
+
+
+\begin{table}[H]
+	\centering
+	\includegraphics[width=\linewidth]{robots/collaborative-robots-t1}
+	\caption[Collaborative robots (a)]{Collaborative robots (a) \cite{Mathieu2015}}
+	\label{fig:collaborative-robots-t1}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\includegraphics[width=\linewidth]{robots/collaborative-robots-t2}
+	\caption[Collaborative robots (b)]{Collaborative robots (b) \cite{Mathieu2015}}
+	\label{fig:collaborative-robots-t2}
+\end{table}
 
 
 \subsection{Robotic grippers}
 
 FF
 
-Articles:\\
-- An overview of 3D object grasp synthesis algorithms
-
+%Articles:\\
+%- An overview of 3D object grasp synthesis algorithms
+%- A review on importance of universal gripper in industrial robot applications
+%- A survey of bio-inspired robotics hands implementation - New directions in dexterous manipulation
 
 
 \subsection{Force control}
 
 FF
 
-Articles:\\
-- An Adaptive Feedback Scheduling Algorithm for Robot Assembly and Real-Time Control Systems
+%Articles:\\
+%- An Adaptive Feedback Scheduling Algorithm for Robot Assembly and Real-Time Control Systems
 
 
 \subsection{Automatic tool change}
@@ -65,6 +178,23 @@ FF
 FF
 
 
+\subsection{Motion planners}
+
+FF
+
+
+%Articles:\\
+%- A new probabilistic path planning algorithm for (dis) assembly tasks\\
+%- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
+%- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\
+%- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
+%- Integrated Grasp and Motion Planning using Independent Contact Regions\\
+%- Knowledge-based Specification of Robot Motions\\
+%- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
+
+
+
+
 \section{Perception sensors}
 
 Perception sensors for object recognition have evolved dramatically in the last few years, with the emergence of RGB-D and \gls{tof} sensors (such as the Kinect 1 and 2) as an affordable and reasonably accurate technological solution. Other perception sensors commonly used include 2D and stereo cameras and also camera-laser systems.
@@ -72,7 +202,21 @@ Perception sensors for object recognition have evolved dramatically in the last 
 
 \subsection{Image acquisition}\label{sec:image-acquisition}
 
-With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting planar objects. Moreover, when used to observe the environment from several perspective, they can achieve good geometry reconstruction and allow accurate 3D perception of objects.
+With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting objects and perform quality inspection. Moreover, when used to observe the environment from several perspective, they can achieve good geometry reconstruction and allow accurate 3D perception of objects. The two main image acquisition technologies (\gls{cmos} and \gls{ccd}) are shown in \cref{fig:ccd} and \cref{fig:cmos}.
+
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.21\textheight]{sensors/ccd}}
+		{\caption{\glsentrytext{ccd} sensor\protect\footnotemark}\label{fig:ccd}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.21\textheight]{sensors/cmos}}
+		{\caption{\glsentrytext{cmos} sensor\protect\footnotemark}\label{fig:cmos}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://cctvsystemblog.blogspot.pt/2013/07/architecture-of-ccd.html}}
+\footnotetext[\value{footnote}]{\url{https://micro.magnet.fsu.edu/primer/digitalimaging/cmosimagesensors.html}}
 
 
 \subsection{Point cloud acquisition}\label{sec:point-cloud-acquisition}
@@ -82,7 +226,15 @@ Point clouds can be retrieved with a wide range of sensors with varying levels o
 
 \subsubsection{Camera-Laser}
 
-Camera lasers systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of laser that is projected into the scene at incremental positions. They can achieve very accurate results, but given the need to physically move the laser, they require longer acquisitive periods than the methods presented below.
+Camera lasers systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of laser that is projected into the scene at incremental positions (example in \cref{fig:laser-triangulation}). They can achieve very accurate results, but given the need to physically move the laser or the object to scan, they require longer acquisition periods than the methods presented below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth]{sensors/laser-triangulation}
+	\caption[Camera laser 3D triangulation system]{Camera laser 3D triangulation system\protect\footnotemark}
+	\label{fig:laser-triangulation}
+\end{figure}
+\footnotetext{\url{http://www.vision-systems.com/articles/print/volume-20/issue-6/features/understanding-laser-based-3d-triangulation-methods.html}}
 
 
 \subsubsection{Stereo vision}
@@ -239,7 +391,7 @@ Ontologies allow to model world information in a structured and object oriented 
 
 \subsection{Skills}
 
-Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language using \gls{uml} \cite{ThomasICRA2013}.
+Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language using \gls{uml} \cite{ThomasICRA2013}.
 
 \begin{figure}[H]
 	\centering
@@ -251,6 +403,7 @@ Automation of assembly operations in industrial applications \cite{Patel2012} is
 %Articles:\\
 %+ A new skill based robot programming language using uml-p statecharts\\
 %+ A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
+%- A unified notation for serial, parallel, and hybrid kinematic structures
 %+ Enabling robots in small-part assembly lines\\
 %+ Flexible assembly through integrated assembly sequence planning and grasp planning\\
 %+ Modeling Reusable, Platform-Independent Robot Assembly Processes
