@@ -97,12 +97,12 @@ Picker / delta / parallel robots have three parallelogram arms connected to the 
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.205\textheight]{robots/schema-delta-type-1-side-view}}
-		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:schema-delta-type-1-side-view}}
 		\ffigbox[1.05\FBwidth]
 		{\includegraphics[height=.205\textheight]{robots/paralell-robot-abb}}
 		{\caption[Model of a delta robot]{Model of a delta robot\protect\footnotemark}\label{fig:paralell-robot-abb}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.205\textheight]{robots/schema-delta-type-1-side-view}}
+		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:schema-delta-type-1-side-view}}
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.205\textheight]{robots/picker-parallel-robot-fanuc}}
 		{\caption[Delta robot packaging products]{Delta robot packaging products\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
@@ -155,7 +155,7 @@ Articulated robots are versatile arms with at least 3 rotation axis (diagrams sh
 
 \subsubsection{Collaborative robotic arms}
 
-Collaborative robots are usually articulated robotic arms that were designed to be safe to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in a polyvinylidene fluoride piezoelectric material sheet in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
+Collaborative robots are usually articulated robotic arms that were designed to be safe to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in pressure / capacitive sensitive materials in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
 
 %Articles:\\
 %- Collaborative robot - Robotiq ebook | Mathieu2015
@@ -179,9 +179,15 @@ Collaborative robots are usually articulated robotic arms that were designed to 
 \end{table}
 
 
-\subsection{Robotic grippers}
+\subsection{Robotic end effectors}
 
-FF
+End effectors are devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors used for inspection or can be active in which the robot physically interacts with the environment. The next sections present a brief overview of the main end effectors currently available.
+
+
+\subsubsection{Grippers}
+
+Grippers are one the most complex end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. The next sections give an overview of the main grippers that have been developed over the years.
+
 
 %Articles:\\
 %- An overview of 3D object grasp synthesis algorithms
@@ -189,7 +195,68 @@ FF
 %- A survey of bio-inspired robotics hands implementation - New directions in dexterous manipulation
 
 
-\subsection{Force control}
+\paragraph{Impactive grippers}
+
+FF\\
+- parallel\\
+- angular\\
+- anthropomorphic\\
+- universal
+- toggle\\
+
+
+\paragraph{Ingressive grippers}
+
+FF\\
+- hooks\\
+
+
+\paragraph{Astrictive grippers}
+
+FF\\
+- vacuum
+- bernoulli
+- magnetic
+- electrostatic
+
+
+\paragraph{Contigutive grippers}
+
+FF\\
+-
+
+
+\subsubsection{Welding torches}
+
+FF
+
+
+\subsubsection{Screw drivers / spanners / ladles}
+
+FF
+
+
+\subsubsection{Cutting / drilling / milling tools}
+
+FF
+
+
+\subsubsection{Grinders / sanders / polishers / finishers}
+
+FF
+
+
+\subsubsection{Sprayers}
+
+FF
+
+
+\subsubsection{Collision sensors}
+
+FF
+
+
+\subsubsection{Force-torque sensors}
 
 FF
 
@@ -202,7 +269,7 @@ FF
 FF
 
 
-\subsection{Environment fixtures}
+\subsection{Alignment devices / environment fixtures}
 
 FF
 
@@ -342,7 +409,7 @@ Since these systems rely on active interaction with the environment, they can be
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{sensors/time-of-flight}
+	\includegraphics[width=0.6\linewidth]{sensors/time-of-flight}
 	\caption[\glsentrydesc{tof} system diagram]{\glsentrydesc{tof} system diagram\protect\footnotemark}
 	\label{fig:time-of-flight}
 \end{figure}
@@ -378,6 +445,13 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 \end{figure}
 \footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.popsci.com/cars/article/2013-09/google-self-driving-car}}
 \footnotetext[\value{footnote}]{\url{http://www.velodynelidar.com/lidar/hdlproducts/hdl64e.aspx}}
+
+
+
+\subsection{Motion tracking}
+
+FF
+
 
 
 \section{Perception systems}
@@ -662,7 +736,7 @@ The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.5\textwidth]{software/pcl-dependency-graph}
+	\includegraphics[width=.9\textwidth]{software/pcl-dependency-graph}
 	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
 	\label{fig:pcl-dependency-graph}
 \end{figure}
@@ -685,7 +759,7 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{software/gazebo-ros-integration}
+	\includegraphics[width=.95\textwidth]{software/gazebo-ros-integration}
 	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
 	\label{fig:gazebo-ros-integration}
 \end{figure}
