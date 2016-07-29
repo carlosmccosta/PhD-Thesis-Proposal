@@ -194,8 +194,8 @@ The following list presents a brief overview of the main end effectors currently
 		\begin{itemize}
 			\item Parallel fingers
 			\item Angular fingers
-			\item Anthropomorphic gripers with 5 fingers
 			\item Universal grippers (for example the Versaball)
+			\item Anthropomorphic gripers with 5 fingers
 		\end{itemize}
 		\item Astrictive grippers
 		\begin{itemize}
@@ -241,40 +241,81 @@ The following list presents a brief overview of the main end effectors currently
 \end{itemize}
 
 
-For assembly operations the most useful end effectors are the grippers along with the perception and force-torque sensors. In \cref{fig:adaptive-2-finger-gripper-robotiq,fig:adaptive-3-finger-gripper-robotiq,fig:schunk-svh,fig:schunk-svh-precision-grip,fig:schunk-svh-power-grip} are shown some of the most used grippers in assembly operations.
+For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{grippers/adaptive-2-finger-gripper-robotiq}
-	\caption{Adaptive 2 finger gripper with different grasping approaches\protect\footnotemark}
-	\label{fig:adaptive-2-finger-gripper-robotiq}
-\end{figure}
-\footnotetext{\url{http://blog.robotiq.com/bid/52886/Industrial-robots-5-most-popular-applications}}
+	\begin{floatrow}[4]
+		\ffigbox[1.1\FBwidth]
+		{\includegraphics[height=.19\textheight]{grippers/yumi-gripper-vamera-vacuum}}
+		{\caption[Yumi dual finger / vacuum / camera gripper]{Yumi dual finger / vacuum / camera gripper \protect\footnotemark}\label{fig:yumi-gripper-vamera-vacuum}}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{grippers/adaptive-3-finger-gripper-robotiq}
-	\caption{Adaptive 3 finger gripper holding objects with different sizes and stiffness\protect\footnotemark}
-	\label{fig:adaptive-3-finger-gripper-robotiq}
-\end{figure}
-\footnotetext{\url{http://robotiq.com/products/industrial-robot-hand/}}
+		\ffigbox[1.1\FBwidth]
+		{\includegraphics[height=.19\textheight]{grippers/schunk-parallel}}
+		{\caption[Schunk parallel gripper]{Schunk parallel gripper\protect\footnotemark}\label{fig:schunk-parallel-grippers}}
 
-\begin{figure}[H]
-	\begin{floatrow}[3]
-		\ffigbox[1.0\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/schunk-svh}}
-		{\caption[Schunk SVH hand]{Schunk SVH hand\protect\footnotemark}\label{fig:schunk-svh}}
-		\ffigbox[1.03\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-precision-grip}}
-		{\caption[Schunk SVH precision grip]{Schunk SVH precision grip\protect\footnotemark[\value{footnote}]}\label{fig:schunk-svh-precision-grip}}
-		\ffigbox[1.03\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-power-grip}}
-		{\caption[Schunk SVH power grip]{Schunk SVH power grip\protect\footnotemark[\value{footnote}]}\label{fig:schunk-svh-power-grip}}
+		\ffigbox[1.1\FBwidth]
+		{\includegraphics[height=.19\textheight]{grippers/schunk-angular-gripper}}
+		{\caption[Schunk angular gripper]{Schunk angular gripper\protect\footnotemark}\label{fig:schunk-angular-gripper}}
+
+		\ffigbox[1.1\FBwidth]
+		{\includegraphics[height=.19\textheight]{grippers/schunk-self-centering-gripper}}
+		{\caption[Schunk self-centering gripper]{Schunk self-centering gripper\protect\footnotemark}\label{fig:schunk-self-centering-gripper}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\value{footnote}]{\url{http://mobile.schunk-microsite.com/en/produkte/products/servo-electric-5-finger-gripping-hand-svh.html1}}
+\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://new.abb.com/products/robotics/yumi}}
+\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{https://us.schunk.com/us_en/home/pgn-plus-p/}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://us.schunk.com/us_en/gripping-systems/\#/series/pwg-plus}}
+\footnotetext[\value{footnote}]{\url{https://us.schunk.com/us_en/gripping-systems/\#/series/pzb-plus}}
 
 
+\begin{figure}[H]
+	\begin{floatrow}[4]
+		\ffigbox[1.05\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/robotiq-adaptive-2-finger-gripper}}
+		{\caption[Robotiq adaptive 2 finger gripper]{Robotiq adaptive 2 finger gripper\protect\footnotemark}\label{fig:robotiq-adaptive-2-finger-gripper}}
+
+		\ffigbox[1.05\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/robotiq-adaptive-3-finger-gripper}}
+		{\caption[Robotiq adaptive 3 finger gripper]{Robotiq adaptive 3 finger gripper\protect\footnotemark}\label{fig:robotiq-adaptive-3-finger-gripper}}
+
+		\ffigbox[1.05\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/festo-multichoice-gripper}}
+		{\caption[Festo flexible 3 finger gripper]{Festo flexible 3 finger gripper\protect\footnotemark}\label{fig:festo-multichoice-gripper}}
+
+		\ffigbox[1\FBwidth]
+		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-precision-grip}}
+		{\caption[Schunk anthropomorphic gripper]{Schunk anthropomorphic gripper\protect\footnotemark}\label{fig:schunk-svh-hand}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://blog.robotiq.com/topic/2-finger-robot-gripper}}
+\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://support.robotiq.com/display/IMB/Home}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://www.festo.com/group/en/cms/10221.htm}}
+\footnotetext[\value{footnote}]{\url{http://mobile.schunk-microsite.com/en/produkte/products/servo-electric-5-finger-gripping-hand-svh.html}}
+
+
+\begin{figure}[H]
+	\begin{floatrow}[4]
+		\ffigbox[2.4\FBwidth]
+		{\includegraphics[height=.08\textheight]{grippers/zimmer-magnetic-gripper}}
+		{\caption[Zimmer magnetic gripper]{Zimmer magnetic gripper\protect\footnotemark}\label{fig:zimmer-magnetic-gripper}}
+
+		\ffigbox[1.98\FBwidth]
+		{\includegraphics[height=.11\textheight]{grippers/schunk-vacuum-gripper}}
+		{\caption[Schunk vacuum gripper]{Schunk vacuum gripper\protect\footnotemark}\label{fig:schunk-vacuum-gripper}}
+
+		\ffigbox[2\FBwidth]
+		{\includegraphics[height=.1\textheight]{grippers/schmalz-vacuum-area-gripper}}
+		{\caption[Schmalz vacuum area gripper]{Schmalz vacuum area gripper\protect\footnotemark}\label{fig:schmalz-vacuum-area-gripper}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.11\textheight]{grippers/versa-ball}}
+		{\caption[Versa ball]{Versa ball\protect\footnotemark}\label{fig:versa-ball}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://www.zimmer-group.de/en/ajax/productdetail?struktkey=\%24MN-SOM-\%24PLC-V-\%24PG-GRE-\%24SR-HM1000&productkey=HM1097NC&layout=1}}
+\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://de.schunk.com/de_en/gripping-systems/\#/series/gsw-v}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://www.schmalz.com/en/vacuum-technology-for-automation/vacuum-components/area-gripping-systems-and-end-effectors}}
+\footnotetext[\value{footnote}]{\url{http://www.extremetech.com/extreme/174723-soft-robotic-gripper-uses-vacuum-pressure-and-a-beanbag-to-move-objects}}
 
 %Articles:\\
 %- An overview of 3D object grasp synthesis algorithms
@@ -292,9 +333,10 @@ Given the wide variety of objects that assembly operations may require, automati
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{tool-changer}
-	\caption{Automatic Tool changer with 20 tools}
+	\caption[Automatic Tool changer with 20 tools]{Automatic Tool changer with 20 tools\protect\footnotemark}
 	\label{fig:tool-changer}
 \end{figure}
+\footnotetext{\url{http://www.h-h.com.au/ae_mc_tool-changer.htm}}
 
 
 \subsection{Alignment devices / environment fixtures}
