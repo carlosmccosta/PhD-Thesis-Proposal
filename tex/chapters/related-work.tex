@@ -332,32 +332,81 @@ Given the wide variety of objects that assembly operations may require, automati
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{tool-changer}
-	\caption[Automatic Tool changer with 20 tools]{Automatic Tool changer with 20 tools\protect\footnotemark}
+	\includegraphics[width=0.66\linewidth]{grippers/tool-changer}
+	\caption[Automatic tool changer with 20 different end robotic arm end effectors]{Automatic tool changer with 20 different end robotic arm end effectors\protect\footnotemark}
 	\label{fig:tool-changer}
 \end{figure}
 \footnotetext{\url{http://www.h-h.com.au/ae_mc_tool-changer.htm}}
 
 
-\subsection{Alignment devices / environment fixtures}
+\subsection{Environment fixtures}
 
-FF
+Environment fixtures are a very useful approach to ensure that the assembly objects are provided by the human operator at known positions with high accuracy (avoiding complex perception systems). These fixtures can be in the form of packaging trays (example in \cref{fig:vacuum-formed-packaging-trays}) allowing quick restock of assembly objects or can be inclined loading docks (example in \cref{fig:parts-loading-fixture}), in which the human operators insert the assembly objects at the top and robot removes them always at the same place at the bottom (when the robot removes one object the gravity pulls the next one into place).
+
+Another useful application of environment fixtures is for temporarily holding the assembly objects, either using static fixtures (examples in \cref{fig:profile-vertical-fixture,fig:profile-horizontal-fixture}) or actuated grippers (example in \cref{fig:part-fixture-actuated}). This can be very useful to allow assembly operations with only one robotic arm and also for changing gripping positions of grasped objects (examples in \cref{fig:part-fixture-actuated} and \cite{Chavan2015}).
+
+%Articles:\\
+%- Prehensile Pushing - In-hand Manipulation with Push-Primitives | Chavan2015
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.175\textheight]{grasping/vacuum-formed-packaging-trays}}
+		{\caption[Vacuum formed packaging trays]{Vacuum formed packaging trays\protect\footnotemark}\label{fig:vacuum-formed-packaging-trays}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.175\textheight]{grasping/parts-loading-fixture}}
+		{\caption[Parts loading dock]{Parts loading dock\protect\footnotemark}\label{fig:parts-loading-fixture}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.vinayakapolyproducts.com/vacuum-formed-packaging-trays-2186055.html}}
+\footnotetext[\value{footnote}]{\url{https://www.youtube.com/watch?v=2jYhdmk-pMg}}
+
+\begin{figure}[H]
+	\begin{floatrow}[3]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.22\textheight]{grasping/profile-vertical-fixture}}
+		{\caption[Aluminum profile vertical fixture]{Aluminum profile vertical fixture\protect\footnotemark[\value{footnote}]}\label{fig:profile-vertical-fixture}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.22\textheight]{grasping/profile-horizontal-fixture}}
+		{\caption[Aluminum profile horizontal fixture]{Aluminum profile horizontal fixture\protect\footnotemark[\value{footnote}]}\label{fig:profile-horizontal-fixture}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.22\textheight]{grasping/part-fixture-actuated}}
+		{\caption[Actuated object holder]{Actuated object holder\protect\footnotemark}\label{fig:part-fixture-actuated}}
+	\end{floatrow}
+\end{figure}
+\footnotetext[\value{footnote}]{\url{https://www.youtube.com/watch?v=MuKOPnrYS-Q}}
+
+
+
+\subsection{Alignment devices}
+
+Assembling objects is a very complex task that requires accurate perception and pose estimation of the assembly parts and also proper gripping positioning. For interconnected objects, force-torque sensors and alignment devices such as \glspl{rcc} (example in \cref{fig:remote-center-compensator}) can be very useful tools for tolerating small misalignments and ensuring proper part installation.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.88\linewidth]{grasping/remote-center-compensator}
+	\caption[Usage of a \glsentrytext{rcc} to tolerate slight part misalignments]{Usage of a \glsentrytext{rcc} to tolerate slight part misalignments\protect\footnotemark}
+	\label{fig:remote-center-compensator}
+\end{figure}
+\footnotetext{\url{http://www.ati-ia.com/products/compliance/Compensator_product_desc.aspx}}
 
 
 \subsection{Motion planners}
 
-FF
+Planning the coordinated motion of robotic arms and grippers in assembly operations requires advanced path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which order they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011}.
 
 
 %Articles:\\
 %- A new probabilistic path planning algorithm for (dis) assembly tasks\\
-%- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\
-%- Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\
-%- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\
-%- Integrated Grasp and Motion Planning using Independent Contact Regions\\
-%- Knowledge-based Specification of Robot Motions\\
+%+ Development of Manipulation Planning Algorithm for a Dual-arm Robot Assembly Task\\ | You2012
+%+ Integrated Grasp and Motion Planning using Independent Contact Regions\\ | Fontanals2014
+%+ Knowledge-based Specification of Robot Motions\\ | Tenorth14
 %- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
-
+%- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\ | Thomas2011
+%- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\ | Thomas2003ATP
 
 
 
@@ -390,7 +439,7 @@ With the increase of resolution and lens build quality, 2D sensors remain a viab
 Point clouds can be retrieved with a wide range of sensors with varying levels of precision and acquisition time \cite{Sansoni2009}. The next sections provide a brief overview of the main technologies capable of generating point clouds useful for 3D perception.
 
 
-\subsubsection{Camera-Laser}
+\subsubsection{Camera-laser systems}
 
 Camera lasers systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of laser that is projected into the scene at incremental positions (example in \cref{fig:laser-triangulation}). They can achieve very accurate results, but given the need to physically move the laser or the object to scan, they require longer acquisition periods than the methods presented below.
 
@@ -403,7 +452,7 @@ Camera lasers systems can obtain 3D geometry information from the environment by
 \footnotetext{\url{http://www.vision-systems.com/articles/print/volume-20/issue-6/features/understanding-laser-based-3d-triangulation-methods.html}}
 
 
-\subsubsection{Stereo vision}
+\subsubsection{Stereo vision methods}
 
 Stereo vision systems (example in \cref{fig:stereo-cameras}) can generate 3D representations of the environment by comparing the displacement of corresponding points in the two ambient images (\cref{fig:stereo-vision} gives an overview of such a system). This can be achieved because the relative position of the cameras is known. As such, points farther away will have smaller displacement between images than points closer to the cameras. In the end, a disparity image is obtained, that can then be converted to a point cloud representation of the environment.
 
@@ -412,10 +461,10 @@ Given that the accuracy of the disparity image relies heavily in the correct mat
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/stereo-cameras}}
+		{\includegraphics[height=.15\textheight]{sensors/stereo-cameras}}
 		{\caption[Stereo vision system]{Stereo vision system \cite{Kaczurba2013}}\label{fig:stereo-cameras}}
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/pr2-active-stereo}}
+		{\includegraphics[height=.15\textheight]{sensors/pr2-active-stereo}}
 		{\caption[PR2 head capable of active stereo vision]{PR2 head capable of active stereo vision\protect\footnotemark}\label{fig:pr2-active-stereo}}
 	\end{floatrow}
 \end{figure}
@@ -424,7 +473,7 @@ Given that the accuracy of the disparity image relies heavily in the correct mat
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[height=.31\textheight]{sensors/stereo-vision}
+	\includegraphics[height=.33\textheight]{sensors/stereo-vision}
 	\caption[Stereo vision overview]{Stereo vision overview \cite{Yang2014}}
 	\label{fig:stereo-vision}
 \end{figure}
@@ -573,6 +622,7 @@ Automation of assembly operations in industrial applications \cite{Patel2012} is
 	\label{fig:skiros}
 \end{figure}
 
+
 %Articles:\\
 %+ A new skill based robot programming language using uml-p statecharts\\
 %+ A system for automatic planning, evaluation and execution of assembly sequences for industrial robots\\
@@ -580,8 +630,6 @@ Automation of assembly operations in industrial applications \cite{Patel2012} is
 %+ Enabling robots in small-part assembly lines\\
 %+ Flexible assembly through integrated assembly sequence planning and grasp planning\\
 %+ Modeling Reusable, Platform-Independent Robot Assembly Processes
-%
-%Articles:\\
 %- A new framework for task oriented sensor based robot programming and verification\\
 %+ A Skill-Based System for Object Perception and Manipulation for Automating Kitting Tasks\\
 %+ Definition of Hardware-Independent Robot Skills for Industrial Robotic Co-workers\\
@@ -806,7 +854,7 @@ The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.9\textwidth]{software/pcl-dependency-graph}
+	\includegraphics[width=.72\textwidth]{software/pcl-dependency-graph}
 	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
 	\label{fig:pcl-dependency-graph}
 \end{figure}
@@ -829,7 +877,7 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\textwidth]{software/gazebo-ros-integration}
+	\includegraphics[width=.89\textwidth]{software/gazebo-ros-integration}
 	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
 	\label{fig:gazebo-ros-integration}
 \end{figure}
