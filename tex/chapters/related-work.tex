@@ -2,7 +2,7 @@
 
 \section*{}
 
-This chapter presents an overview of the knowledge developed over the years in the areas of robotic manipulators, perception sensors, machine learning and human-robot interaction that is relevant for the development of cooperative human-robot systems capable of learning and assembling complex objects.
+This chapter presents an overview of the knowledge developed over the years in the areas of industrial robotics, environment perception, machine learning and human-robot interaction that is relevant for the development of cooperative human-robot systems capable of learning and assembling complex objects.
 
 
 \section{Robotic manipulators}
@@ -12,7 +12,7 @@ Robotic manipulators have evolved over the years to fit the automation demand of
 
 \subsection{Robotic arms}
 
-Robotic arms give the mechanical support for the end effectors (for example grippers, sprayers, grinders, welders, vacuums, among many others) and can have a wide range of hardware configurations depending on the type of motion that is required for performing a given task. The main categories of robotic arms will be presented in the next sections.
+Robotic arms give the mechanical support for the end effectors (for example grippers, sprayers, grinders, welders, perception sensors, among many others) and can have a wide range of hardware configurations depending on the type of motion that is required for performing a given task. The main categories of robotic arms will be presented in the next sections.
 
 
 \subsubsection{Cartesian robotic arms}
@@ -108,8 +108,8 @@ Picker / delta / parallel robots have three parallelogram arms connected to the 
 		{\caption[Delta robot packaging products]{Delta robot packaging products\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://infosys.beckhoff.com/content/1034/tckintransformation/html/tcnckintransformation_deltatype1.htm?id=21945}}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.mecademic.com/What-is-a-parallel-robot.html}}
+\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://www.mecademic.com/What-is-a-parallel-robot.html}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://infosys.beckhoff.com/content/1034/tckintransformation/html/tcnckintransformation_deltatype1.htm?id=21945}}
 \footnotetext[\value{footnote}]{\url{http://robot.fanucamerica.com/products/robots/picking-and-packing-robots.aspx}}
 
 
@@ -145,7 +145,7 @@ Articulated robots are versatile arms with at least 3 rotation axis (diagrams sh
 		{\caption[Diagrams of an articulated robot]{Diagrams of an articulated robot\protect\footnotemark}\label{fig:articulated-robot}}
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.187\textheight]{robots/articulated-robot-kuka}}
-		{\caption[Articulated robot]{Articulated  robot\protect\footnotemark}\label{fig:articulated-robot-kuka}}
+		{\caption[Articulated  robot installing a windshield in a car]{Articulated  robot installing a windshield in a car\protect\footnotemark}\label{fig:articulated-robot-kuka}}
 	\end{floatrow}
 \end{figure}
 \footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200/}}
@@ -183,7 +183,7 @@ Collaborative robots are usually articulated robotic arms that were designed to 
 
 End effectors are hardware devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors (used for inspection, quality assurance, surveillance) or can be active in which the robot physically interacts with the environment.
 
-Grippers are one the most complex end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
+Grippers are one the most complex active end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
 
 The following list presents a brief overview of the main end effectors currently available.
 
@@ -195,7 +195,7 @@ The following list presents a brief overview of the main end effectors currently
 			\item Parallel fingers
 			\item Angular fingers
 			\item Universal grippers (for example the Versaball)
-			\item Anthropomorphic gripers with 5 fingers
+			\item Anthropomorphic grippers with 5 fingers
 		\end{itemize}
 		\item Astrictive grippers
 		\begin{itemize}
@@ -333,7 +333,7 @@ Given the wide variety of objects that assembly operations may require, automati
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.66\linewidth]{grippers/tool-changer}
-	\caption[Automatic tool changer with 20 different end robotic arm end effectors]{Automatic tool changer with 20 different end robotic arm end effectors\protect\footnotemark}
+	\caption[Automatic tool changer with 20 different robotic arm end effectors]{Automatic tool changer with 20 different robotic arm end effectors\protect\footnotemark}
 	\label{fig:tool-changer}
 \end{figure}
 \footnotetext{\url{http://www.h-h.com.au/ae_mc_tool-changer.htm}}
@@ -352,7 +352,7 @@ Another useful application of environment fixtures is for temporarily holding th
 	\begin{floatrow}[2]
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.175\textheight]{grasping/vacuum-formed-packaging-trays}}
-		{\caption[Vacuum formed packaging trays]{Vacuum formed packaging trays\protect\footnotemark}\label{fig:vacuum-formed-packaging-trays}}
+		{\caption[Vacuum formed packaging tray]{Vacuum formed packaging tray\protect\footnotemark}\label{fig:vacuum-formed-packaging-trays}}
 
 		\ffigbox[\FBwidth]
 		{\includegraphics[height=.175\textheight]{grasping/parts-loading-fixture}}
@@ -417,7 +417,7 @@ Perception sensors for object recognition have evolved dramatically in the last 
 
 \subsection{Image acquisition}\label{sec:image-acquisition}
 
-With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting objects and perform quality inspection. Moreover, when used to observe the environment from several perspective, they can achieve good geometry reconstruction and allow accurate 3D perception of objects. The two main image acquisition technologies (\gls{cmos} and \gls{ccd}) are shown in \cref{fig:ccd} and \cref{fig:cmos}.
+With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting objects and perform quality inspection. Moreover, when used to observe the environment from several perspectives, they can achieve good geometry reconstruction and allow accurate 3D perception of objects. The two main image acquisition technologies (\gls{cmos} and \gls{ccd}) are shown in \cref{fig:ccd} and \cref{fig:cmos}.
 
 
 \begin{figure}[H]
@@ -436,12 +436,12 @@ With the increase of resolution and lens build quality, 2D sensors remain a viab
 
 \subsection{Point cloud acquisition}\label{sec:point-cloud-acquisition}
 
-Point clouds can be retrieved with a wide range of sensors with varying levels of precision and acquisition time \cite{Sansoni2009}. The next sections provide a brief overview of the main technologies capable of generating point clouds useful for 3D perception.
+Point clouds can be retrieved with a wide range of sensors with varying levels of precision and acquisition time \cite{Sansoni2009}. The next sections provide a brief overview of the main technologies capable of generating accurate point clouds useful for 3D perception.
 
 
 \subsubsection{Camera-laser systems}
 
-Camera lasers systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of laser that is projected into the scene at incremental positions (example in \cref{fig:laser-triangulation}). They can achieve very accurate results, but given the need to physically move the laser or the object to scan, they require longer acquisition periods than the methods presented below.
+Camera-laser systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of the laser light that is projected into the scene at incremental positions (example in \cref{fig:laser-triangulation}). They can achieve very accurate results, but given the need to physically move the laser or the object to scan, they require longer acquisition periods than the methods presented below.
 
 \begin{figure}[H]
 	\centering
@@ -517,7 +517,7 @@ The Kinect sensor seen in \cref{fig:kinect1} is an example of a structured light
 
 \subsubsection{\glsentrydesc{tof} methods}\label{sec:tof-methods}
 
-\gls{tof} or \gls{toa} methods can be used to calculate distances based on the amount of time that a given wave takes from the moment it is created to the moment it is received (system operation overview in \cref{fig:time-of-flight}). By acquiring a large amount of sensor readings a 3D representation of the environment can be achieved.
+\gls{tof} or \gls{toa} methods can be used to calculate distances based on the amount of time that a given wave takes from the moment it is created to the moment it is received (system operation overview in \cref{fig:time-of-flight}). By acquiring a large amount of sensor readings, a 3D representation of the environment can be achieved.
 
 Since these systems rely on active interaction with the environment, they can be used without being significantly affected by lighting interferences. Nevertheless, it should be taken in consideration the conditions in which the waves propagate and also the geometry of the environment, because it can affect the path that the waves take, and as a result, lead to the decrease of precision in the measurements.
 
@@ -554,28 +554,23 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 \begin{figure}[H]
 	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/lidar-scan-car}}
-		{\caption[\glsentrytext{lidar} scan]{\glsentrytext{lidar} scan\protect\footnotemark}\label{fig:lidar-scan}}
 		\ffigbox[]
 		{\includegraphics[height=.21\textheight]{sensors/velodyne-hdl-64e}}
 		{\caption[3D Velodyne HDL-64E]{3D Velodyne HDL-64E\protect\footnotemark}\label{fig:velodyne-hdl-64e}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.21\textheight]{sensors/lidar-scan-car}}
+		{\caption[\glsentrytext{lidar} scan]{\glsentrytext{lidar} scan\protect\footnotemark}\label{fig:lidar-scan}}
 	\end{floatrow}
 \end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.popsci.com/cars/article/2013-09/google-self-driving-car}}
-\footnotetext[\value{footnote}]{\url{http://www.velodynelidar.com/lidar/hdlproducts/hdl64e.aspx}}
-
-
-
-\subsection{Motion tracking}
-
-FF
-
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.velodynelidar.com/lidar/hdlproducts/hdl64e.aspx}}
+\footnotetext[\value{footnote}]{\url{http://www.popsci.com/cars/article/2013-09/google-self-driving-car}}
 
 
 \section{Perception systems}
 
-There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Gauglitz2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. They usually rely on feature detection / description and matching algorithms in order to be able to detect the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers in order to detect class of objects that have similar geometry \cite{Costa2014,Rocha2015}.
+There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Gauglitz2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. They usually rely on feature detection to select reliable keypoints, feature description to describe the geometry around each keypoint and robust matching algorithms in order to be able to detect the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers in order to detect class of objects that have similar geometry \cite{Costa2014,Rocha2015}.
+
 
 %Articles:\\
 %+ Combined 2D-3D Categorization and Classification for Multimodal Perception Systems | Marton2011
@@ -599,7 +594,7 @@ There is a wide range of perception algorithms and sensors that can perform obje
 
 \section{Knowledge management}
 
-Creation and management of reusable knowledge across robots with different hardware configurations is a challenging task. that can be solved by using cloud robotics coupled with ontologies databases and skills frameworks, that will be presented in the next sections.
+Creation and management of reusable knowledge across robots with different hardware configurations is a challenging task that can be solved by using cloud robotics coupled with ontology databases and skill frameworks. That next sections present a brief overview of the application of these approaches to robotic assembly systems.
 
 
 \subsection{Ontologies}
@@ -613,7 +608,7 @@ Ontologies allow to model world information in a structured and object oriented 
 
 \subsection{Skills}
 
-Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language using \gls{uml} \cite{ThomasICRA2013}.
+Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{fig:skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language, such as \gls{uml} \cite{ThomasICRA2013}.
 
 \begin{figure}[H]
 	\centering
@@ -655,7 +650,7 @@ Given the reusable nature of assembly operations, cloud robotics can provide a c
 
 \section{Teaching systems}
 
-There are several approaches to teaching new skills to robots ranging from advanced teach pendent / lead through programming, to the easy and intuitive usage of task level and \gls{cad} based specifications using tactile interfaces \cite{Perzylo2015a}. However, the teaching can be faster and more intuitive if the robot manages to learn new assembly knowledge \cite{tensorflow} by human demonstration \cite{Argall2009,Hamabe2015,Wang2015} using machine learning algorithms such as those shown in \cref{fig:machinelearningalgorithms}.
+There are several approaches to teaching new skills to robots ranging from advanced teach pendent / lead through programming, to the easy and intuitive usage of task level and \gls{cad} based specifications using tactile interfaces \cite{Perzylo2015a}. However, the teaching can be faster and more intuitive if the robot manages to learn new assembly knowledge \cite{tensorflow} by human demonstration \cite{Argall2009,Hamabe2015,Wang2015} using machine learning algorithms, such as those shown in \cref{fig:machinelearningalgorithms}.
 
 \begin{figure}[H]
 	\centering
@@ -675,9 +670,9 @@ There are several approaches to teaching new skills to robots ranging from advan
 
 
 
-\section{Human Machine Interface systems}
+\section{Human Machine Interaction systems}
 
-There is a wide range of technologies that allow the exchange of information between humans and machines\cite{Goodrich2008}, from the typical display devices (screens, projectors) to natural interaction using visual and audio \cite{Yan2014} communication protocols. The next sections will provide a brief overview of the human machine interface systems that are useful for cooperative assembly operations.
+There is a wide range of technologies that allow the exchange of information between humans and machines \cite{Goodrich2008}, from the typical display devices (screens, projectors) to natural interaction using visual and audio \cite{Yan2014} communication protocols. The next sections provide a brief overview of the human machine interaction systems that are useful for cooperative assembly operations.
 
 %Articles:\\
 %- A Survey on Perception Methods for Human-Robot Interaction in Social Robots\\ | Yan2014
@@ -686,7 +681,7 @@ There is a wide range of technologies that allow the exchange of information bet
 
 \subsection{Augmented reality}
 
-Augmented reality interfaces provide an immersive way of exchanging of information between the a human operator and a machine \cite{Bimber2005}, and when using projection mapping systems \cite{Tan2013,Fujimoto2014}, they allow to perform environment marking of information, which are useful to indicate which object the operator should pick up next and where it should install it or for welding / cutting operations (example in \cref{fig:laser-projection}) it could allow accurate part positioning by projecting the place of weld (avoiding manual measurements by the human operator).
+\gls{ar} interfaces offer an immersive way of exchanging information between a human operator and a machine \cite{Bimber2005}. One example of \gls{ar} systems is projection mapping \cite{Tan2013,Fujimoto2014} for environment marking of information, which is useful to indicate which object the operator should pick up next and where it should place it for assembly / welding / cutting operations (example in \cref{fig:laser-projection}). These systems allow accurate part positioning and avoid manual measurements by the human operator.
 
 \begin{figure}[H]
 	\centering
@@ -937,7 +932,7 @@ Automation of assembly operations is a multidisciplinary research field with a v
 
 \section{Main conferences}
 
-List of the most prestigious conferences in robotics is presented below.
+A list with the most prestigious conferences in robotics is presented below.
 
 \begin{itemize}
 	\item ICRA - IEEE International Conference on Robotics and Automation
@@ -949,7 +944,7 @@ List of the most prestigious conferences in robotics is presented below.
 
 \section{Main journals}
 
-List of the most prestigious journals in robotics is presented below.
+A list with the most prestigious journals in robotics is presented below.
 
 \begin{itemize}
 	\item International Journal of Robotics Research (SJR - 4.184)
