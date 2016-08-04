@@ -568,11 +568,11 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[]
-		{\includegraphics[height=.16\textheight]{sensors/velodyne-hdl-64e}}
+		{\includegraphics[height=.14\textheight]{sensors/velodyne-hdl-64e}}
 		{\caption[3D Velodyne HDL-64E]{3D Velodyne HDL-64E\protect\footnotemark}\label{fig:velodyne-hdl-64e}}
 
 		\ffigbox[\FBwidth]
-		{\includegraphics[height=.16\textheight]{sensors/lidar-scan-car}}
+		{\includegraphics[height=.14\textheight]{sensors/lidar-scan-car}}
 		{\caption[\glsentrytext{lidar} scan]{\glsentrytext{lidar} scan\protect\footnotemark}\label{fig:lidar-scan}}
 	\end{floatrow}
 \end{figure}
@@ -582,9 +582,9 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 \section{Perception systems}
 
-There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example CamShift / MeanShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
+There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association and \gls{svd} pose estimation) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{dt}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example MeanShift / CamShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
 
-In \cref{fig:banknote-recognition} it is shown a 2D perception system for detecting planar objects in which it is highlighted the typical processing steps required along with the most common algorithms used to estimate the 3D pose of objects from 2D images. In \cref{fig:localization-system} it is shown a similar 3D perception system that is able to perform 3D pose estimation of an object / robot from 3D sensor data.
+Some preliminary work has already been done in the area of 2D / 3D perception. In \cref{fig:banknote-recognition} it is shown a 2D perception system for detecting planar objects in which it is highlighted the typical processing steps required along with the most common algorithms used to estimate the 3D pose of objects from 2D images. In \cref{fig:localization-system} it is shown a similar 3D perception system that is able to perform 3D pose estimation of an object / robot from 3D sensor data.
 
 
 %Articles:\\
@@ -656,7 +656,7 @@ In \cref{fig:banknote-recognition} it is shown a 2D perception system for detect
 
 \section{Knowledge management}
 
-Creation and management of reusable knowledge across robots with different hardware configurations is a challenging task that can be solved by using cloud robotics coupled with ontology databases and skill frameworks. That next sections present a brief overview of the application of these approaches to robotic assembly systems.
+Creation and management of reusable knowledge across robots with different hardware configurations is a challenging task that can be solved by using cloud robotics coupled with ontology databases and skill frameworks. The next sections present a brief overview of the application of these approaches to robotic assembly systems.
 
 
 \subsection{Ontologies}
@@ -805,6 +805,7 @@ Cooperative assembly of objects by robots is a multidisciplinary problem that re
 
 \begin{wrapfigure}{r}{0.25\textwidth}
 	\centering
+	\vspace*{-2em}
 	\includegraphics*[width=0.88\textwidth]{software/ros-logo}
 	\caption{\glsentrytext{ros} logo}
 	\label{fig:ros-logo}
@@ -895,33 +896,11 @@ The \gls{ros} command line tools\footnote{\url{http://wiki.ros.org/ROS/CommandLi
 Finally, it is available a diagnostics tool (roswtf), that can detect packages / dependencies issues and configuration problems.
 
 
-
-\subsection{\glsentrytext{pcl}}
-
-\begin{wrapfigure}{r}{0.25\textwidth}
-	\centering
-	\includegraphics*[width=0.88\textwidth]{software/pcl-logo}
-	\caption{\glsentrytext{pcl} logo}
-	\label{pcl-logo}
-\end{wrapfigure}
-
-The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open source project that provides algorithms for processing point clouds. These algorithms can be used to filter and register point clouds as well as perform object segmentation, recognition and tracking.
-
-\Cref{fig:pcl-dependency-graph} gives an overview of the main modules currently available in \gls{pcl}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.72\textwidth]{software/pcl-dependency-graph}
-	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
-	\label{fig:pcl-dependency-graph}
-\end{figure}
-\footnotetext{\url{http://pointclouds.org/about/}}
-
-
 \subsection{Gazebo}
 
 \begin{wrapfigure}{r}{0.25\textwidth}
 	\centering
+	\vspace*{-2em}
 	\includegraphics*[width=0.88\textwidth]{software/gazebo-logo}
 	\caption{Gazebo logo}
 	\label{fig:gazebo-logo}
@@ -934,11 +913,76 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.89\textwidth]{software/gazebo-ros-integration}
+	\includegraphics[width=.92\textwidth]{software/gazebo-ros-integration}
 	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
 	\label{fig:gazebo-ros-integration}
 \end{figure}
 \footnotetext{\url{http://gazebosim.org/tutorials?tut=ros_control}}
+
+
+
+\subsection{\glsentrytext{pcl}}
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.88\textwidth]{software/pcl-logo}
+	\caption{\glsentrytext{pcl} logo}
+	\label{pcl-logo}
+\end{wrapfigure}
+
+The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open source project that provides algorithms for processing point clouds. These algorithms can be used to filter and register point clouds as well as perform object segmentation, recognition and tracking.
+
+\Cref{fig:pcl-dependency-graph} gives an overview of the main modules currently available in \gls{pcl}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.75\textwidth]{software/pcl-dependency-graph}
+	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
+	\label{fig:pcl-dependency-graph}
+\end{figure}
+\footnotetext{\url{http://pointclouds.org/about/}}
+
+
+
+\subsection{\glsentrytext{opencv}}
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.6\textwidth]{software/opencv-logo}
+	\caption{\glsentrytext{opencv} logo}
+	\label{fig:opencv-logo}
+\end{wrapfigure}
+
+The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of state of the art algorithms for processing image sensor data, from image segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods, along with image stitching, video stabilization, face / marker detection, among many others.
+
+
+\subsection{\glsentrytext{openease}}
+
+%\vspace*{-1cm}
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.75\textwidth]{software/open-ease-logo}
+	\caption{\glsentrytext{openease} logo}
+	\label{fig:open-ease}
+\end{wrapfigure}
+
+\gls{openease}\footnote{\url{http://www.open-ease.org/}} \cite{Beetz2015} is a remote knowledge representation and processing service built on top of KnowRob\footnote{\url{http://www.knowrob.org/}} and \gls{ros} that allows to interpret, analyze, visualize and learn from experience and demonstration.
+
+
+\subsection{OpenCyc}
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.8\textwidth]{software/open-cyc-logo}
+	\caption{OpenCyc logo}
+	\label{fig:open-cyc}
+\end{wrapfigure}
+
+OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc/}} is a reasoning engine with a large ontology and knowledge base that is capable of semantic data integration and text understanding.
 
 
 \section{Related research groups}
