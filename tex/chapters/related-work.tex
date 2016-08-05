@@ -803,7 +803,7 @@ Cooperative assembly of objects by robots is a multidisciplinary problem that re
 
 \subsection{\glsentrytext{ros}}
 
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.88\textwidth]{software/ros-logo}
@@ -898,7 +898,7 @@ Finally, it is available a diagnostics tool (roswtf), that can detect packages /
 
 \subsection{Gazebo}
 
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.88\textwidth]{software/gazebo-logo}
@@ -923,7 +923,7 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 
 \subsection{\glsentrytext{pcl}}
 
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.88\textwidth]{software/pcl-logo}
@@ -947,7 +947,7 @@ The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open
 
 \subsection{\glsentrytext{opencv}}
 
-\begin{wrapfigure}{r}{0.2\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.6\textwidth]{software/opencv-logo}
@@ -958,10 +958,72 @@ The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open
 The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of state of the art algorithms for processing image sensor data, from image segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods, along with image stitching, video stabilization, face / marker detection, among many others.
 
 
+\subsection{RoboEarth}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.9\textwidth]{software/robo-earth-logo}
+	\caption{RoboEarth logo}
+	\label{fig:robo-earth-logo}
+\end{wrapfigure}
+
+During the RoboEarth\footnote{\url{http://roboearth.org/}} project it was developed a set o modular software components that enabled robots to share reusable knowledge and offload heavy computation tasks to the cloud. In \cref{fig:robo-earth-software-overview} it is given a brief overview of the main software modules of the RoboEarth project that will be presented in the next sections.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.63\linewidth]{software/robo-earth-software-overview}
+	\caption[Overview of the RoboEarth main software modules]{Overview of the RoboEarth main software modules\protect\footnotemark}
+	\label{fig:robo-earth-software-overview}
+\end{figure}
+\footnotetext{\url{http://roboearth.org/software-components/}}
+
+\subsubsection{Rapyuta}
+
+Rapyuta\footnote{\url{http://rapyuta.org/}} \cite{Hunziker2013} is a \gls{paas} computing environment built on top of \gls{ros} that allows to offload heavy computation tasks (such as environment mapping, object recognition, machine learning, among others) from the robot's embedded systems to the cloud.
+
+
+\subsubsection{WIRE}
+
+The \gls{wire}\footnote{\url{http://wiki.ros.org/wire}} \cite{Elfring2013} is a probabilistic multi-object tracking system capable of maintaining a consistent world state of detected objects even when they are outside of the robot observable area or are partially occluded.
+
+
+\subsubsection{C2TAM}
+
+The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam/}} \cite{Riazuelo2014} is a remote and cooperative visual \gls{slam} system capable of estimating the robots cameras pose in the world while creating a consistent map of the environment using image feature matching and loop closing techniques. Other related work also developed within the RoboEarth project includes the semantic mapping of the environment \cite{Riazuelo2015} and also the low cost mapping systems \cite{Mohanarajah2015}.
+
+
+\subsubsection{KnowRob}
+
+The KnowRob\footnote{\url{http://www.knowrob.org/}} \cite{Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a reasoning engine in order to semantic learn new reusable skills from different data sources.
+
+
+\subsection{RoboHow}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.9\textwidth]{software/robo-how-logo}
+	\caption{RoboHow logo}
+	\label{fig:robo-how-logo}
+\end{wrapfigure}
+
+FF
+
+\subsubsection{\glsentrytext{cram}}
+
+FF\footnote{\url{http://www.cram-system.org/cram}}
+
+
+\subsubsection{\glsentrytext{itasc}}
+
+FF\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}}
+
+
 \subsection{\glsentrytext{openease}}
 
 %\vspace*{-1cm}
-\begin{wrapfigure}{r}{0.2\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.75\textwidth]{software/open-ease-logo}
@@ -974,7 +1036,7 @@ The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of sta
 
 \subsection{OpenCyc}
 
-\begin{wrapfigure}{r}{0.2\textwidth}
+\begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
 	\includegraphics*[width=0.8\textwidth]{software/open-cyc-logo}
@@ -983,6 +1045,69 @@ The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of sta
 \end{wrapfigure}
 
 OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc/}} is a reasoning engine with a large ontology and knowledge base that is capable of semantic data integration and text understanding.
+
+
+\subsection{Orocos project}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.8\textwidth]{software/orocos-logo}
+	\caption{Orocos project logo}
+	\label{fig:orocos-logo}
+\end{wrapfigure}
+
+FF \footnote{\url{http://www.orocos.org/}}
+
+FF
+
+FF
+
+FF
+
+FF
+
+
+\subsection{Robotics Library}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.99\textwidth]{software/robotics-library-logo}
+	\caption{Robotics Library logo}
+	\label{fig:robotics-library-logo}
+\end{wrapfigure}
+
+FF \footnote{\url{http://www.roboticslibrary.org/}}
+
+FF
+
+FF
+
+FF
+
+FF
+
+
+\subsection{RoboDK}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.99\textwidth]{software/robodk-logo}
+	\caption{RoboDK logo}
+	\label{fig:robodk-logo}
+\end{wrapfigure}
+
+FF \footnote{\url{https://www.robodk.com/}}
+
+FF
+
+FF
+
+FF
+
+FF
 
 
 \section{Related research groups}
@@ -1010,7 +1135,6 @@ Automation of assembly operations is a multidisciplinary research field with a v
 \begin{multicols}{4}
 	\begin{enumerate}
 		\item RoboEarth
-		\item KnowRob
 		\item RoboHow
 		\item ROSETTA
 		\item Saphari
@@ -1020,17 +1144,14 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\item James
 		\item LIAA
 		\item SHRINE
-		\item SARAFun
 		\item CogIMon
 		\item CHRIS
-		\item Rapyuta
-		\item DAvinci
-		\item C2TAM
-		\item ROS-Industrial
 		\item SME-Robot
 		\item SME-Robotics
 		\item TAPAS
 		\item ACat
+		\item SARAFun
+		\item ROS-Industrial
 	\end{enumerate}
 \end{multicols}
 
