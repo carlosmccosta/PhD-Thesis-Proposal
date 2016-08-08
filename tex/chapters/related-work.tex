@@ -777,7 +777,7 @@ Natural language processing of unstructured textual representations can be very 
 
 \subsection{Human-robot cooperation}
 
-Gesture recognition of operators hand movements \cite{Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation and exchange of information between humans and robots requires perception of the human body movements \cite{Roitberg2014} in order to recognize the operator intentions and detect when the robot should initiate or stop the interaction.
+Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation and exchange of information between humans and robots requires perception of the human body movements \cite{Roitberg2014} in order to recognize the operator intentions and detect when the robot should initiate or stop the interaction.
 
 
 %Articles:\\
@@ -968,15 +968,25 @@ The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of sta
 	\label{fig:robo-earth-logo}
 \end{wrapfigure}
 
-During the RoboEarth\footnote{\url{http://roboearth.org/}} project it was developed a set o modular software components that enabled robots to share reusable knowledge and offload heavy computation tasks to the cloud. In \cref{fig:robo-earth-software-overview} it is given a brief overview of the main software modules of the RoboEarth project that will be presented in the next sections.
+During the RoboEarth\footnote{\url{http://roboearth.org/}} project it was developed a set of modular software components that enabled robots to share reusable knowledge and offload heavy computation tasks to the cloud. In \cref{fig:robo-earth-software-interaction,fig:robo-earth-software-overview} it is given a brief overview of the main software modules of the RoboEarth project that will be presented in the next sections.
+
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.63\linewidth]{software/robo-earth-software-overview}
-	\caption[Overview of the RoboEarth main software modules]{Overview of the RoboEarth main software modules\protect\footnotemark}
-	\label{fig:robo-earth-software-overview}
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.35\textheight]{software/robo-earth-software-interaction}}
+		{\caption[Interaction between RoboEarth software modules]{Interaction between RoboEarth software modules \cite{DiMarco2013}}\label{fig:robo-earth-software-interaction}}
+
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.19\textheight]{software/robo-earth-software-overview}}
+		{\caption[Overview of the RoboEarth main software modules]{Overview of the RoboEarth main software modules\protect\footnotemark}\label{fig:robo-earth-software-overview}}
+	\end{floatrow}
 \end{figure}
 \footnotetext{\url{http://roboearth.org/software-components/}}
+
+
+
+
 
 \subsubsection{Rapyuta}
 
@@ -995,7 +1005,7 @@ The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam/}} \
 
 \subsubsection{KnowRob}
 
-The KnowRob\footnote{\url{http://www.knowrob.org/}} \cite{Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a reasoning engine in order to semantic learn new reusable skills from different data sources.
+KnowRob\footnote{\url{http://www.knowrob.org/}} \cite{Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
 
 
 \subsection{RoboHow}
@@ -1008,16 +1018,23 @@ The KnowRob\footnote{\url{http://www.knowrob.org/}} \cite{Tenorth2013k} is a kno
 	\label{fig:robo-how-logo}
 \end{wrapfigure}
 
-FF
+The RoboHow project\footnote{\url{https://robohow.eu/}} continued the development of the RoboEarth research and added several new software packages targeted at service robotics and knowledge extraction. The next sections present the main software modules developed during this project.
 
 \subsubsection{\glsentrytext{cram}}
 
-FF\footnote{\url{http://www.cram-system.org/cram}}
+\gls{cram}\footnote{\url{http://www.cram-system.org/cram}} \cite{Beetz2010}
 
 
 \subsubsection{\glsentrytext{itasc}}
 
 FF\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}}
+
+
+\subsubsection{FORTH 3D Hand Tracking library}
+
+FF\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking/}}
+
+
 
 
 \subsection{\glsentrytext{openease}}
