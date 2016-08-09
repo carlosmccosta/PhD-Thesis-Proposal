@@ -907,9 +907,7 @@ Finally, it is available a diagnostics tool (roswtf), that can detect packages /
 \end{wrapfigure}
 
 
-Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capable of generating hardware sensor data for different kinds of robots while providing a realistic environment with physics simulation and 3D visualization. It is very useful to speedup testing of algorithms with different types of robots and environments.
-
-\Cref{fig:gazebo-ros-integration} shows how Gazebo can be used instead of a real robot, without requiring any implementation code modification (because it implements the same \gls{ros} interfaces that the hardware drivers use).
+Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capable of generating hardware sensor data for different kinds of robots while providing a realistic environment with physics simulation and 3D visualization. It is very useful to speedup testing of algorithms with different types of robots and environments. In \Cref{fig:gazebo-ros-integration} it is shown how Gazebo can be used instead of a real robot, without requiring any implementation code modification (because it implements the same \gls{ros} interfaces that the hardware drivers use).
 
 \begin{figure}[H]
 	\centering
@@ -919,6 +917,31 @@ Gazebo\footnote{\url{http://gazebosim.org/}} is a 3D multi-robot simulator capab
 \end{figure}
 \footnotetext{\url{http://gazebosim.org/tutorials?tut=ros_control}}
 
+
+\subsection{RoboDK}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.9\textwidth]{software/robodk-logo}
+	\caption{RoboDK logo}
+	\label{fig:robodk-logo}
+\end{wrapfigure}
+
+The \gls{robodk} \footnote{\url{https://www.robodk.com/}} is a 3D simulator and an offline programming environment for industrial robots with and extended library of robotic arms and is capable of \gls{gui} / script specification of robot motions with support for 2D / 3D visualization / inspection.
+
+
+\subsection{\glsentrytext{opencv}}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.6\textwidth]{software/opencv-logo}
+	\caption{\glsentrytext{opencv} logo}
+	\label{fig:opencv-logo}
+\end{wrapfigure}
+
+The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of state of the art algorithms for processing image sensor data, from image segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods, along with image stitching, video stabilization, face / marker detection, among many others.
 
 
 \subsection{\glsentrytext{pcl}}
@@ -944,18 +967,32 @@ The \gls{pcl}\footnote{\url{http://pointclouds.org/}} \cite{Rusu2011} is an open
 \footnotetext{\url{http://pointclouds.org/about/}}
 
 
-
-\subsection{\glsentrytext{opencv}}
+\subsection{Robotics Library}
 
 \begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
-	\includegraphics*[width=0.6\textwidth]{software/opencv-logo}
-	\caption{\glsentrytext{opencv} logo}
-	\label{fig:opencv-logo}
+	\includegraphics*[width=0.99\textwidth]{software/robotics-library-logo}
+	\caption{Robotics Library logo}
+	\label{fig:robotics-library-logo}
 \end{wrapfigure}
 
-The \gls{opencv}\footnote{\url{http://opencv.org/}} provides a wide range of state of the art algorithms for processing image sensor data, from image segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods, along with image stitching, video stabilization, face / marker detection, among many others.
+The Robotics Library\footnote{\url{http://www.roboticslibrary.org/}} provides a set of C++ software libraries for managing robot arm kinematics, motion control, collision detection, path planing and visual inspection.
+
+
+\subsection{Orocos}
+
+\begin{wrapfigure}{r}{0.23\textwidth}
+	\centering
+	\vspace*{-2em}
+	\includegraphics*[width=0.52\textwidth]{software/orocos-logo}
+	\caption{Orocos project logo}
+	\label{fig:orocos-logo}
+\end{wrapfigure}
+
+\gls{orocos}\footnote{\url{http://www.orocos.org/}} is a real-time robot control framework with a set of software libraries for managing forward / inverse robot arm kinematics, data filtering (Dynamic Bayesian Networks, Kalman filters, particle filters) and robot arm motion control using \gls{itasc}.
+
+
 
 
 \subsection{RoboEarth}
@@ -1000,7 +1037,7 @@ The \gls{wire}\footnote{\url{http://wiki.ros.org/wire}} \cite{Elfring2013} is a 
 
 \subsubsection{C2TAM}
 
-The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam/}} \cite{Riazuelo2014} is a remote and cooperative visual \gls{slam} system capable of estimating the robots cameras pose in the world while creating a consistent map of the environment using image feature matching and loop closing techniques. Other related work also developed within the RoboEarth project includes the semantic mapping of the environment \cite{Riazuelo2015} and also the low cost mapping systems \cite{Mohanarajah2015}.
+The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam/}} \cite{Riazuelo2014} is a remote and cooperative visual \gls{slam} system capable of estimating the robots cameras pose in the world while creating a consistent map of the environment using image feature matching and loop closing techniques. Other related work developed within the RoboEarth project includes the semantic mapping of the environment \cite{Riazuelo2015} and also the low cost mapping systems \cite{Mohanarajah2015}.
 
 
 \subsubsection{KnowRob}
@@ -1022,17 +1059,32 @@ The RoboHow project\footnote{\url{https://robohow.eu/}} continued the developmen
 
 \subsubsection{\glsentrytext{cram}}
 
-\gls{cram}\footnote{\url{http://www.cram-system.org/cram}} \cite{Beetz2010}
+The \gls{cram}\footnote{\url{http://www.cram-system.org/cram}} \cite{Beetz2010} is a software toolbox that allows to perform complex object manipulation tasks using flexible specification of reactive robot motion control plans using Common Lisp. In \cref{fig:cram-overview} it is show the integration with the KnowRob for logic reasoning and semantic cognition.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.88\linewidth]{software/cram-overview}
+	\caption{Overview of the \glsentrytext{cram} main software modules}
+	\label{fig:cram-overview}
+\end{figure}
 
 
 \subsubsection{\glsentrytext{itasc}}
 
-FF\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}}
+The \gls{itasc}\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}} \cite{DeSchutter-ijrr2007} is a software framework for generation of robot motions by specifying constraints between the objects, the robots and the environment. In \cref{fig:itasc-overview} it is presented an overview of the \gls{itasc} main software modules.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.73\linewidth]{software/itasc-overview}
+	\caption[Overview of the \glsentrytext{itasc} framework]{Overview of the \glsentrytext{itasc} framework\protect\footnotemark}
+	\label{fig:itasc-overview}
+\end{figure}
+\footnotetext{\url{http://www.orocos.org/wiki/orocos/itasc-wiki/2-itasc-software}}
 
 
 \subsubsection{FORTH 3D Hand Tracking library}
 
-FF\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking/}}
+The FORTH 3D Hand Tracking Library\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking/}} \cite{Oikonomidis2011,Kyriazis2012} provides an accurate and real-time approach (relying on \gls{gpu} acceleration) for tracking the 3D pose and orientation of the hand fingers of a person (26 degrees of freedom) using an RGB-D sensor.
 
 
 
@@ -1056,75 +1108,13 @@ FF\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking/}}
 \begin{wrapfigure}{r}{0.23\textwidth}
 	\centering
 	\vspace*{-2em}
-	\includegraphics*[width=0.8\textwidth]{software/open-cyc-logo}
+	\includegraphics*[width=0.7\textwidth]{software/open-cyc-logo}
 	\caption{OpenCyc logo}
 	\label{fig:open-cyc}
 \end{wrapfigure}
 
-OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc/}} is a reasoning engine with a large ontology and knowledge base that is capable of semantic data integration and text understanding.
+OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc/}} is a reasoning engine with a large ontology and knowledge base that is capable of extracting semantic information from natural language. It also has \gls{ai} capabilities which make it suitable for implementing domain-specific expert systems and game \glspl{ai}.
 
-
-\subsection{Orocos project}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.8\textwidth]{software/orocos-logo}
-	\caption{Orocos project logo}
-	\label{fig:orocos-logo}
-\end{wrapfigure}
-
-FF \footnote{\url{http://www.orocos.org/}}
-
-FF
-
-FF
-
-FF
-
-FF
-
-
-\subsection{Robotics Library}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.99\textwidth]{software/robotics-library-logo}
-	\caption{Robotics Library logo}
-	\label{fig:robotics-library-logo}
-\end{wrapfigure}
-
-FF \footnote{\url{http://www.roboticslibrary.org/}}
-
-FF
-
-FF
-
-FF
-
-FF
-
-
-\subsection{RoboDK}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.99\textwidth]{software/robodk-logo}
-	\caption{RoboDK logo}
-	\label{fig:robodk-logo}
-\end{wrapfigure}
-
-FF \footnote{\url{https://www.robodk.com/}}
-
-FF
-
-FF
-
-FF
-
-FF
 
 
 \section{Related research groups}
