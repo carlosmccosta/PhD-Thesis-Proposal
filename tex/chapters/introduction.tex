@@ -10,11 +10,11 @@ This chapter provides and overview about the research context, motivation, objec
 
 \section{Context and motivation}
 
-Automation of repetitive tasks using robots has revolutionized industrial manufacturing for a very long time, allowing mass production of a wide range of products at reduced cost and improved quality. However, these robotic systems are usually programmed off-line for very specific assignments and require long and expensive re-programming to perform different assembly operations.
+Automation of repetitive tasks using robots has revolutionized industrial manufacturing for a very long time, allowing mass production of a wide range of products at reduced cost and improved quality. However, these robotic systems are usually programmed off-line for very specific assignments and require long and expensive re-programming periods in order to perform different assembly operations.
 
 The development of more cooperative robotic arm designs along with better perception sensors opened new possibilities for improving the flexibility of manufacturing lines, allowing jobs that are currently being performed by humans (due to its assembly complexity or cognitive requirements) to be transitioned to hybrid human-robot systems \cite{Surdilovic2010}. This cooperative approach allows to improve overall assembly productivity by allowing the human operator to teach the robot the skills necessary to perform the assembly operations and rely on the human partner for the more challenging tasks that require higher levels of cognition and dexterity.
 
-Human-robot interaction systems capable of learning from demonstration provide great flexibility to industrial applications in which the assembly lines have limited / customized production \cite{Patel2012}. They offer fast reprogramming of robots and allow cooperative assembly of complex and delicate tasks \cite{Sumi2009,Edsinger2007}. These systems can perform active perception of the environment \cite{Yan2014,Goodrich2007} with a wide range of sensors (\gls{tof}, RGB-D, visual, audio, tactile, laser) and a multitude of recognition algorithms such as visual / geometric feature association, template / shape matching, color / intensity / texture segmentation (among many others). Moreover, by semantic analyzing the operator movements \cite{Roitberg2014} through hand / skeletal tracking they are able to extract the skills / knowledge \cite{Nikolaidis14,Goto2013} that is required to assemble a new composite object. Besides learning new assembly skills through techniques such as \glspl{svm}, clustering, \glspl{nn}, \glspl{dt}, boosting, \glspl{hmm}, \glspl{gmm} (to name a few), these perception systems can also be used to implement communication protocols, allowing a more natural interaction (gesture, posture, voice) between the robot and the operator \cite{Gleeson2013,Calisgan2012,Haddadi2013}.
+Human-robot interaction systems capable of learning from demonstration provide great flexibility to industrial applications in which the assembly lines have limited / customized production \cite{Patel2012}. They offer fast reprogramming of robots and allow cooperative assembly of complex and delicate tasks \cite{Sumi2009,Edsinger2007}. These systems can perform active perception of the environment \cite{Yan2014,Goodrich2007} with a wide range of sensors (\gls{tof}, RGB-D, visual, tactile, laser) and a multitude of recognition algorithms such as visual / geometric feature association, template / shape matching, color / intensity / texture segmentation (among many others). Moreover, by semantic analyzing the operator movements \cite{Roitberg2014} through hand / skeletal tracking they are able to extract the skills / knowledge \cite{Nikolaidis14,Goto2013} that is required to assemble a new composite object. Besides learning new assembly skills through techniques such as \glspl{svm}, clustering, \glspl{nn}, \glspl{dt}, boosting, \glspl{hmm}, \glspl{gmm} (to name a few), these perception systems can also be used to implement communication protocols, allowing a more natural interaction (gesture, posture, voice) between the robot and the operator \cite{Gleeson2013,Calisgan2012,Haddadi2013}.
 
 The promising industrial applications of cognitive robotics in manufacturing lines lead to the creation of several research projects, such as Saphari\footnote{\url{http://www.saphari.eu}}, Rosetta\footnote{\url{http://www.fp7rosetta.org}}, JAHIR\footnote{\url{http://www6.in.tum.de/Main/ResearchJahir}}, Charm\footnote{\url{http://charm.stanford.edu}}, RoboEarth\footnote{\url{http://roboearth.org}}, KnowRob\footnote{\url{http://www.knowrob.org}}, ROS-Industrial\footnote{\url{http://rosindustrial.org}} (among many others).
 
@@ -22,13 +22,41 @@ The promising industrial applications of cognitive robotics in manufacturing lin
 
 \section{Objectives}
 
-The main objective of this thesis is to devise a flexible framework for human-robot cooperative assembly capable of semantic learning by demonstration in order to improve the flexibility and efficiency of complex industrial assembly tasks by relying on the robot's precision / speed skills and on the human knowledge / dexterity. To achieve the mentioned cooperation in assembly tasks, the system will need to recognize and track the assembly components using 3D perception and must also be able to semantically analyze human movements in order to learn new skills or receive new commands from the operator. These learning skills will rely on \gls{cad} / \gls{sop} analysis, cumulative assembly knowledge and will be shared across robotic arms with different hardware configurations through the usage of a common skill / knowledge database.
+The main objective of this thesis is to devise a flexible framework for human-robot cooperative assembly capable of semantic learning by demonstration in order to improve the flexibility and efficiency of complex industrial assembly tasks by relying on the robot's precision / speed capabilities and on the human knowledge / dexterity skills. To achieve the mentioned cooperation in assembly tasks the system will need to recognize and track the assembly components using 3D perception and must also be able to semantically analyze human movements in order to learn new skills or receive new commands from the operator. These learning skills will rely on \gls{cad} / \gls{sop} analysis, cumulative assembly knowledge and will be shared across robotic arms with different hardware configurations through the usage of a common skill / knowledge database.
 
 To enhance the cooperation with the operator, the system will provide an augmented reality interface in order to display relevant learning / assembly information and also inform the operator of missing / wrong assembly components. Moreover, this interface will allow an immersive and intuitive way of inspecting and manipulating the assembly system knowledge and will ease the human-robot cooperation when the assembly tasks alternate between the operator and the robotic system.
 
-Expected contributions include not only the formalization of generic skills, reusable in different robots and in different parts but also proposing additional human-robot strategies for improved flexibility in industrial assembly tasks.
+Expected contributions include not only the formalization of generic skills, reusable in different robots and in similar parts but also proposing additional human-robot cooperation strategies for improved flexibility in industrial assembly tasks.
 
-The proposed approaches will be validated in simulation and in real hardware, with the assembly of several complex objects using different types of robotic arms in order to test the learning skills along with the perception and manipulation sub-systems. These objects will be selected based on their assembly complexity and their type of demand seen in industrial scenarios.
+The proposed approaches will be validated in simulation and in real hardware, with the assembly of several complex objects using different types of robotic arms in order to test the learning skills along with the perception and manipulation sub-systems. These objects will be selected based on their assembly complexity and their level of demand seen in the industrial market.
+
+
+
+\section{Research questions}
+
+The main research questions for this thesis proposal are the following:
+
+\begin{itemize}
+	\item \textbf{How to reliably learn new assembly skills by demonstration given that the tracking of the assembly objects will always have pose estimation errors and temporary occlusions by the operator?}
+	\begin{itemize}
+		\item Accurate 3D multi-object tracking is a complex task that requires previous knowledge about the objects geometry (usually \gls{cad} or scanned models, which might be slightly different from the real objects) and probabilistic motion systems to account for temporary occlusions. When tracking human manipulation tasks, the problem of temporary occlusions can be attenuated by modeling the physical interaction between the objects and the human hands. For tolerating slight tracking errors it can be performed a semantic interpretation of the human hand movements coupled with \gls{cad} analysis in order to extract the matting surfaces and build the assembly tree which encodes the order and relative position of each of the assembly objects. This assembly tree can them be associated with a \gls{fsm} containing the necessary human-robot actions and expected results which will be used to coordinate and evaluate the entire assembly process.
+	\end{itemize}
+
+	\item \textbf{How to automatically extract assembly information from \gls{cad} / \gls{sop} data?}
+	\begin{itemize}
+		\item Depending on the level of detail and information structure present in \gls{cad} / \gls{sop} data, it might be possible to identify which objects will be required for the assembly process (which allows to speedup the perception system since the object search database is smaller) and also other relevant information, such as object assembly order, spatial relations between objects and the force / torque required for matting / screwing the parts. This automatic extraction of assembly information allows to speedup the learning of new assembly operations, which can later be corrected / improved by analyzing human assembly demonstrations.
+	\end{itemize}
+
+	\item \textbf{How to generalize a specific assembly skill and reuse it to perform similar tasks?}
+	\begin{itemize}
+		\item There are a significant amount of assembly skills that can be repurposed for related tasks, such as recognizing and grasping objects with similar geometry, welding and screwing / bolting parts with force-torque control, among many others. These types of related assembly operations can be implemented as generic parameterizable skills in order to avoid the unnecessary growth of the knowledge base and also speedup the learning process (existing skills can be reused instead of being taught).
+	\end{itemize}
+
+	\item \textbf{How to efficiently coordinate complex assembly procedures between humans and robots in a shared work space?}
+	\begin{itemize}
+		\item Robotics perception and object manipulation has been evolving over the years and currently with the proper selection of the robotic arms and end-effectors it is possible to automate very complex assembly procedures. However, it may not be cost-effective to automate all the assembly operations given the cost of the grippers and the time it takes to exchange them (in order to be able to grasp and assemble all the required parts). As such, for a wide range of assembly operations, a cooperative system that takes advantage of the speed and precision capabilities of robots along with the knowledge and dexterity of humans might achieve higher productivity than a fully automated system. This increased level of efficiency requires active cooperation and exchange of information between the robot system and the operator and can be achieved with immersive human-robot interfaces that can project accurate and real-time annotations into the working environment in order to coordinate the tasks and help the operator be more productive (for example by identifying which object the operator needs to pick up next and where it should place it with high level of accuracy without requiring manual measurements using tapes and protractors).
+	\end{itemize}
+\end{itemize}
 
 
 
@@ -56,25 +84,11 @@ Automation of assembly tasks requires multidisciplinary knowledge in the followi
 	\item Natural Language Processing
 	\begin{itemize}
 		\item Extraction of assembly information from instruction manuals or \glspl{sop}
-		\item Recognition of voice commands from the human operator
 	\end{itemize}
 	\item Industrial robotics
 	\begin{itemize}
 		\item Development of abstract and reusable knowledge that can be employed in robots with different hardware configurations
 	\end{itemize}
-\end{itemize}
-
-
-
-\section{Research questions}
-
-The main research questions for this thesis proposal are the following:
-
-\begin{itemize}
-	\item How to reliably learn new assembly skills by demonstration given that the tracking of the assembly objects will always have pose estimation errors and temporary occlusions by the operator?
-	\item How to automatically extract assembly information from \gls{cad} / \gls{sop} data?
-	\item How to generalize a specific assembly skill and reuse it to perform similar tasks?
-	\item How to efficiently coordinate complex assembly procedures between humans and robots in a shared work space?
 \end{itemize}
 
 
