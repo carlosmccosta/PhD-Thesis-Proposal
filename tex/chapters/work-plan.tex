@@ -9,10 +9,10 @@ The development of this thesis will have the following methodology:
 
 \begin{itemize}
 	\item Perform a detailed description of the intended functionality and final users of each software module
-	\item Select the hardware and software platform in which the research will be performed
+	\item Select the hardware and software platforms / frameworks in which the research will be performed
 	\item Select / create representative testing datasets for each of the main software modules
 	\begin{itemize}
-		\item 2D / 3D perception of geometry / objects and operator movements
+		\item 2D / 3D perception of geometry / objects and operator hand movements
 		\item Learning new assembly skills from demonstration
 		\item Human Machine Interface for cooperative assembly
 	\end{itemize}
@@ -42,18 +42,18 @@ Finally, results from similar research projects such as Saphari, Rosetta, JAHIR,
 
 \subsection{Evaluation and selection of hardware for testing platforms (2 month)}
 
-Before starting the design and implementation, it will be necessary to define the hardware and software setup in which the proposed system will be deployed. This will include the selection of the robotic arm(s), grippers and projector(s) to be used, along with the type, position and number of perception sensors that will be required to have an adequate view of the workspace. Moreover, it will be necessary to select the types of objects that will be assembled giving their complexity and relevance in relation to the industrial needs of typical assembly lines.
+Before starting the design and implementation it will be necessary to define the hardware and software setup in which the proposed system will be deployed. This will include the selection of the robotic arm(s), grippers and projector(s) to be used, along with the type, position and number of perception sensors that will be required to have an adequate view of the workspace. Moreover, it will be necessary to select the types of objects that will be assembled giving their complexity and relevance in relation to the industrial needs of typical assembly lines.
 Finally, the physical setup will be replicated in simulation in order to allow safe and fast testing of the algorithms in a wide range of configurations.
 
 
 \subsection{Creation of perception and learning datasets (2 month)}
 
-In order to have consistent test results, the perception and learning algorithms must be applied to the same sensor data. As such, it will be necessary to create several datasets containing the operator hand / body tracking along with the assembly objects distributed in different configurations / positions in the workspace and in different phases of the assembly operations.
+In order to have consistent and repeatable test results, the perception and learning algorithms must be applied to the same sensor data. As such, it will be necessary to select / create several datasets containing the operator hand / body tracking along with the assembly objects distributed in different configurations / positions in the workspace and in several phases of the assembly operations.
 
 
 \subsection{Definition of software architecture (3 months)}
 
-The high-level hardware and software architecture, including the data / control flow of the main algorithms will be defined in this task. It will start at the perception layer, identifying the types of sensor data that will be available and which algorithms will be used to perform object recognition and analysis of the operator hand / body. Then it will move on to the learning stages, including the methods and control flow that will be required to extract semantic knowledge from the operator hand movements in order to build assembly skills. Later on, it will be specified which strategies should be used to translate assembly skills into motion in robotic arms with different hardware / joints configurations. After this stage, the main features of the user interface using augmented reality will be specified.
+The high-level hardware and software architecture, including the data / control flow of the main algorithms will be defined in this task. It will start at the perception layer, identifying the types of sensor data that will be required and which algorithms will be used to perform object recognition and analysis of the operator hand / body. Then it will move on to the learning stages, including the methods and control flow that will be needed to extract semantic knowledge from the operator hand movements in order to build assembly skills. Later on, it will be specified which strategies should be used to translate assembly skills into motion in robotic arms with different hardware / joints configurations. After this stage, the main features of the user interface using augmented reality will be specified.
 
 
 \subsection{Knowledge / skill representation (3 months)}

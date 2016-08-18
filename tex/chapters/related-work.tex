@@ -7,7 +7,7 @@ This chapter presents an overview of the knowledge developed over the years in t
 
 \section{Robotic manipulators}
 
-Robotic manipulators have evolved over the years to fit the automation demand of the industry that required the ability to move the end-effector with accuracy and speed in order to perform a wide range of tasks, which in the case of assembly operations required the capability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
+Robotic manipulators have been evolving over the years to fit the automation demand of the industry that needs the ability to move end-effectors with accuracy and speed for performing a wide range of tasks. One of these tasks is robotic assembly operations which require the capability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
 
 
 \subsection{Robotic arms}
@@ -404,7 +404,7 @@ Assembling objects is a very complex task that requires accurate perception and 
 
 \subsection{Motion planners}
 
-Planning the coordinated motion of robotic arms and grippers in assembly operations requires advanced path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which order they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011}.
+Planning the coordinated motion of robotic arms and grippers in assembly operations requires advanced path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011}.
 
 
 %Articles:\\
@@ -661,7 +661,7 @@ Creation and management of reusable knowledge across robots with different hardw
 
 \subsection{Ontologies}
 
-Ontologies allow to model world information in a structured and object oriented approach \cite{Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper objects coupling).
+Ontologies allow to model world information in a structured and object oriented approach \cite{Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper coupling of objects).
 
 %Articles:\\
 %+ An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions | Perzylo2015
@@ -670,7 +670,7 @@ Ontologies allow to model world information in a structured and object oriented 
 
 \subsection{Skills}
 
-Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system in \cref{fig:skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language, such as \gls{uml} \cite{ThomasICRA2013}.
+Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system shown in \cref{fig:skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language, such as \gls{uml} \cite{ThomasICRA2013}.
 
 \begin{figure}[H]
 	\centering
@@ -696,7 +696,7 @@ Automation of assembly operations in industrial applications \cite{Patel2012} is
 
 \subsection{Cloud robotics}
 
-Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013} and could also allow to offload heavy computations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
+Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013} and could also allow to offload heavy processing operations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
 
 %Articles:\\
 %- On Distributed Knowledge Bases for Robotized Small-Batch Assembly\\
@@ -799,7 +799,7 @@ Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson201
 
 \section{Software frameworks}
 
-Cooperative assembly of objects by robots is a multidisciplinary problem that requires advanced computer software systems. In order to speed up the implementation and deployment of the assembly system, several frameworks and libraries will be used. Among the most important are \gls{ros} for the system architecture, \gls{pcl} for the point cloud processing and Gazebo for simulation and testing.
+Cooperative assembly of objects by robots is a multidisciplinary problem that requires advanced computer software systems. In order to speed up the implementation and deployment of the assembly system, several frameworks and libraries will be used. Among the most important are the \gls{ros} for the system architecture, Gazebo for simulation and testing, \gls{opencv} / \gls{pcl} for 2D / 3D perception and the RoboEarth / RoboHow projects software for robotics cognition.
 
 \subsection{\glsentrytext{ros}}
 
@@ -811,9 +811,7 @@ Cooperative assembly of objects by robots is a multidisciplinary problem that re
 	\label{fig:ros-logo}
 \end{wrapfigure}
 
-\gls{ros}\footnote{\url{http://www.ros.org}} \cite{Quigley2009} is a software framework designed to ease the development of robot systems. It provides seamless integration between hardware drivers and software modules, allowing a fast transition between simulation and deployment.
-
-It's an open source project that offers a distributed computing framework with several core libraries and development tools that aims to speedup software prototyping, testing and deployment.
+\gls{ros}\footnote{\url{http://www.ros.org}} \cite{Quigley2009} is a software framework designed to ease the development of robot systems. It provides seamless integration between hardware drivers and software modules, allowing a fast transition between simulation and deployment. It's an open source project that offers a distributed computing framework with several core libraries and development tools that aims to speedup software prototyping, testing and deployment.
 
 
 \subsubsection{Architecture}
@@ -838,7 +836,7 @@ The flexibility provided by \gls{ros} in both module integration and exchange ca
 
 \paragraph{Nodelets}
 
-A nodelet\footnote{\url{http://wiki.ros.org/nodelet}} is a special kind of node that aims to reduce the overhead of message exchange. This overhead can be significant when messages are very large, such as point clouds or video. To mitigate this problem, the nodelets exchange pointers to shared memory regions, instead of sending the entire messages between nodes.
+A nodelet\footnote{\url{http://wiki.ros.org/nodelet}} is a special kind of node that aims to reduce the overhead of message exchange. This overhead can be significant when messages are very large, such as point clouds or high resolution images. To mitigate this problem, the nodelets exchange pointers to shared memory regions, instead of sending the entire messages between nodes.
 
 To achieve this overhead reduction, some architecture changes are required. The most important being the use of threads instead of processes, and the creation of a superclass that all nodelets must inherit. This leads to the creation of plugin libraries for each nodelet instead of an executable for each node.
 
@@ -849,7 +847,7 @@ In terms of implementation, the transition from nodes to nodelets requires few c
 
 \paragraph{Topics}
 
-\gls{ros} topics are named communication buses that follow the publish / subscribe pattern. They provide a simple method for exchanging messages between nodes and allow the decoupling of information production and consumption. This is useful when there are multiple sources of the same information or there are multiple consumers that are interested in processing the same data for different purposes. Moreover, this communication architecture allows to log and replay the exchanged messages, which can be helpful to test different algorithms with the same data.
+\gls{ros} topics are named communication buses that follow the publish / subscribe pattern. They provide a simple method for exchanging messages between nodes and allow the decoupling of information production (coming from sensors, or other processing modules) and consumption (for example sensor data processing or high level cognition). This is useful when there are multiple sources of the same information or there are multiple consumers that are interested in processing the same data for different purposes. Moreover, this communication architecture allows to log and replay the exchanged messages (datasets), which can be helpful to test different algorithms with the same data and move between simulation and hardware deployment seamlessly.
 
 Currently, topics can use either the \gls{tcp} or \gls{udp} protocols to exchange messages. The \gls{tcp} implementation is used by default and creates a bidirectional channel between each producer and subscriber while guaranteeing the delivery of all messages. The \gls{udp} implementation uses an unreliable and stateless transport approach, in which a subscriber listens to a given broadcast address, and has no guarantee that will receive all messages. As such, \gls{tcp} should be used when all messages must be processed, and \gls{udp} should be considered when the latency and the \gls{tcp} overhead are important issues.
 
@@ -861,7 +859,7 @@ Currently, topics can use either the \gls{tcp} or \gls{udp} protocols to exchang
 
 \paragraph{Actions}
 
-\gls{ros} actions are a special kind of service in which the progress of the request can be queried. They are very useful when the request might take a long time, and gives the caller the necessary information to supervise the execution of the request and if necessary, terminate its execution.
+\gls{ros} actions are a special kind of service in which the progress of the request can be queried and monitored. They are very useful when the request might take a long time and they provide the caller the necessary information to supervise the execution of the request and if necessary terminate its execution.
 
 
 \subsubsection{Build system}
@@ -870,7 +868,7 @@ The latest \gls{ros} build system is named catkin\footnote{\url{http://wiki.ros.
 
 Catkin was designed to deal with complex build configurations, which in the case of \gls{ros} packages involves a considerable amount of build dependencies for each project. As such, catkin provides a build system that can easily find, build and link both \gls{ros} and system dependencies. Moreover, it provides install targets to allow faster code releases and simplifies builds from source for the final users.
 
-Other useful features of the catkin build system are the concepts of workspace and overlays. Catkin uses a workspace with out-of-source builds to keep the source code separate from the build files. This allows the code directory structure to be clean of compiler generated files that are platform dependent. Moreover, it simplifies the concurrent usage of packages (overlay), because catkin gives priority to workspace packages (in relation to system packages). This is particularly useful when it is necessary to modify and test some package that has been released and is installed in the system (without having to uninstall the stable release of that package).
+Other useful features of the catkin build system are the concepts of workspace and overlays. Catkin uses a workspace with out-of-source builds to keep the source code separate from the build files. This allows the code directory structure to be clean of compiler generated files that are platform dependent. Moreover, it simplifies the concurrent usage of system and user modified packages (present in the workspace overlay), because catkin gives priority to workspace packages (in relation to system packages). This is particularly useful when it is necessary to modify and test some package that has been released and is installed in the system (without having to uninstall the stable release of that package).
 
 Finally, catkin is a cross-platform build system that can be used to build other projects that use CMake and are not related to \gls{ros}.
 
@@ -884,16 +882,12 @@ The next sections give an overview of the most important \gls{ros} tools that ar
 
 \paragraph{Graphical User Interface tools}
 
-The \gls{ros} development tools that have graphical user interfaces are aggregated in the rqt framework\footnote{\url{http://wiki.ros.org/rqt}}, and are loaded as plugins at runtime (some can be started as standalone applications).
-
-Currently there is plugins to visualize sensor data (rviz\footnote{\url{http://wiki.ros.org/rviz}}); introspect the contents of topics; log and replay \gls{ros} messages (rosbag\footnote{\url{http://wiki.ros.org/rosbag}}); display node, package and coordinate systems graphs; list and filter debug messages; change configuration of running nodes (dynamic reconfigure); monitor nodes memory and processor usage and much more.
+The \gls{ros} development tools that have graphical user interfaces are aggregated in the rqt framework\footnote{\url{http://wiki.ros.org/rqt}}, and are loaded as plugins at runtime (some can be started as standalone applications). Currently there is plugins to visualize sensor data (rviz\footnote{\url{http://wiki.ros.org/rviz}}); introspect the contents of topics; log and replay \gls{ros} messages (rosbag\footnote{\url{http://wiki.ros.org/rosbag}}); display node, package and coordinate systems graphs; list and filter debug messages; change configuration of running nodes (dynamic reconfigure); monitor nodes memory and processor usage and much more.
 
 
 \paragraph{Command line tools}
 
-The \gls{ros} command line tools\footnote{\url{http://wiki.ros.org/ROS/CommandLineTools}} are split across several executables and can be used for advanced introspection (rosnode, rostopic and rosservice), system configuration (rosparam), package building and management (catkin, rosdep and rosinstall) and also to search \gls{ros} message types documentation (rosmsg and rossrv).
-
-Finally, it is available a diagnostics tool (roswtf), that can detect packages / dependencies issues and configuration problems.
+The \gls{ros} command line tools\footnote{\url{http://wiki.ros.org/ROS/CommandLineTools}} are split across several executables and can be used for advanced introspection (rosnode, rostopic and rosservice), system configuration (rosparam), package building and management (catkin, rosdep and rosinstall) and also to search \gls{ros} message types documentation (rosmsg and rossrv). Finally, it is available a diagnostics tool (roswtf), that can detect packages / dependencies issues and configuration problems.
 
 
 \subsection{Gazebo}
@@ -911,7 +905,7 @@ Gazebo\footnote{\url{http://gazebosim.org}} is a 3D multi-robot simulator capabl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.92\textwidth]{software/gazebo-ros-integration}
+	\includegraphics[width=.99\textwidth]{software/gazebo-ros-integration}
 	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
 	\label{fig:gazebo-ros-integration}
 \end{figure}
@@ -941,7 +935,7 @@ The \gls{robodk} \footnote{\url{https://www.robodk.com}} is a 3D simulator and a
 	\label{fig:opencv-logo}
 \end{wrapfigure}
 
-The \gls{opencv}\footnote{\url{http://opencv.org}} provides a wide range of state of the art algorithms for processing image sensor data, from image segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods, along with image stitching, video stabilization, face / marker detection, among many others.
+\gls{opencv}\footnote{\url{http://opencv.org}} provides a wide range of state of the art algorithms for processing image sensor data, from segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods along with image stitching, video stabilization, face / marker detection, among many others.
 
 
 \subsection{\glsentrytext{pcl}}
@@ -954,7 +948,7 @@ The \gls{opencv}\footnote{\url{http://opencv.org}} provides a wide range of stat
 	\label{pcl-logo}
 \end{wrapfigure}
 
-The \gls{pcl}\footnote{\url{http://pointclouds.org}} \cite{Rusu2011} is an open source project that provides algorithms for processing point clouds. These algorithms can be used to filter and register point clouds as well as perform object segmentation, recognition and tracking. In \Cref{fig:pcl-dependency-graph} it is presented an overview of the main modules currently available in \gls{pcl}.
+\gls{pcl}\footnote{\url{http://pointclouds.org}} \cite{Rusu2011} is an open source project that provides algorithms for 3D perception. These algorithms can be used to filter and register point clouds as well as perform object segmentation, recognition and tracking. In \Cref{fig:pcl-dependency-graph} it is presented an overview of the main modules currently available in \gls{pcl}.
 
 \begin{figure}[H]
 	\centering
@@ -988,7 +982,7 @@ The Robotics Library\footnote{\url{http://www.roboticslibrary.org}} provides a s
 	\label{fig:orocos-logo}
 \end{wrapfigure}
 
-\gls{orocos}\footnote{\url{http://www.orocos.org/}} is a real-time robot control framework with a set of software libraries for managing forward / inverse robot arm kinematics, data filtering (Dynamic Bayesian Networks, Kalman filters, particle filters) and robot arm motion control using the \gls{itasc}.
+The \gls{orocos}\footnote{\url{http://www.orocos.org/}} is a real-time robot control framework with a set of software libraries for managing forward / inverse robot arm kinematics, data filtering (Dynamic Bayesian Networks, Kalman filters, particle filters) and robot arm motion control using the \gls{itasc}.
 
 
 
@@ -1096,7 +1090,7 @@ The FORTH 3D Hand Tracking Library\footnote{\url{http://cvrlcode.ics.forth.gr/ha
 	\label{fig:open-ease}
 \end{wrapfigure}
 
-\gls{openease}\footnote{\url{http://www.open-ease.org}} \cite{Beetz2015} is a remote knowledge representation and processing service built on top of KnowRob\footnote{\url{http://www.knowrob.org}} and \gls{ros} that allows to interpret, analyze, visualize and learn from experience and demonstration.
+The \gls{openease}\footnote{\url{http://www.open-ease.org}} \cite{Beetz2015} is a remote knowledge representation and processing service built on top of KnowRob\footnote{\url{http://www.knowrob.org}} and \gls{ros} that allows to interpret, analyze, visualize and learn from experience and demonstration.
 
 
 \subsection{OpenCyc}
@@ -1163,7 +1157,7 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{http://www.fortiss.org/en/home/}{fortiss} &
 		\href{http://www.fortiss.org/en/research/research-topic/robotics/}{Robotics} &
-		\href{http://www.fortiss.org/en/research/projects/fortiss_future_factory_f/}{f++} | \href{http://www.james-project.eu/}{JAMES} | \href{https://www.humanbrainproject.eu/}{Human Brain Project} | \href{http://www.smerobotics.org/AUTOMATICA/exhibit-03-2016.html}{SMERobotics} &
+		\href{http://www.fortiss.org/en/research/projects/fortiss_future_factory_f/}{f++} | \href{https://www.humanbrainproject.eu/}{Human Brain Project} \href{http://www.james-project.eu/}{JAMES} | \href{http://www.smerobotics.org/AUTOMATICA/exhibit-03-2016.html}{SMERobotics} &
 		Human-Machine Interaction | Industrial and cognitive robotics \\
 
 		\tabucline[1pt on 1.5pt off 3pt]{-}
@@ -1229,7 +1223,7 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{http://www.sdu.dk/en}{University of Southern Denmark} &
 		\href{http://www.sdu.dk/en/om_sdu/institutter_centre/sdurobotics}{SDU Robotics} &
-		\href{http://caro.sdu.dk/index.php/projects/projectslist?view=project\&task=show\&id=6}{CARMEN} | \href{http://www.xperience.org/}{Xperience} \href{http://www.reconcell.eu/}{ReconCell} &
+		\href{http://caro.sdu.dk/index.php/projects/projectslist?view=project\&task=show\&id=6}{CARMEN} | \href{http://www.reconcell.eu/}{ReconCell} \href{http://www.xperience.org/}{Xperience} &
 		Cognitive systems | Industrial and service robotics | Robotic assembly \\
 	\end{tabu}
 	\label{tab:label}
