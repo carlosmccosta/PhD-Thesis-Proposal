@@ -163,7 +163,7 @@ Articulated robots are versatile arms with at least 3 rotation axis (diagrams sh
 
 \subsubsection{Collaborative robotic arms}
 
-Collaborative robots are usually articulated robotic arms that were designed to be safe to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in pressure / capacitive sensitive materials in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
+Collaborative robots are usually articulated robotic arms that were designed to be safe \cite{Haddadin2011,Ceriani2014} to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in pressure / capacitive sensitive materials in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
 
 %Articles:\\
 %- Collaborative robot - Robotiq ebook | Mathieu2015
@@ -404,7 +404,7 @@ Assembling objects is a very complex task that requires accurate perception and 
 
 \subsection{Motion planners}
 
-Planning the coordinated motion of robotic arms and grippers in assembly operations requires advanced path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011}.
+Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers in assembly operations requires advanced control \cite{Stolt2015} and path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011} while avoiding unintended collisions.
 
 
 %Articles:\\
@@ -582,7 +582,7 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 \section{Perception systems}
 
-There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association and \gls{svd} pose estimation) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{dt}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example MeanShift / CamShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
+There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011,Blodow2014phd}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association and \gls{svd} pose estimation) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{dt}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example MeanShift / CamShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
 
 Some preliminary work has already been done in the area of 2D / 3D perception. In \cref{fig:banknote-recognition} it is shown a 2D perception system for detecting planar objects in which it is highlighted the typical processing steps required along with the most common algorithms used to estimate the 3D pose of objects from 2D images. In \cref{fig:localization-system} it is shown a similar 3D perception system that is able to perform 3D pose estimation of an object / robot from 3D sensor data.
 
@@ -661,7 +661,7 @@ Creation and management of reusable knowledge across robots with different hardw
 
 \subsection{Ontologies}
 
-Ontologies allow to model world information in a structured and object oriented approach \cite{Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper coupling of objects).
+Ontologies allow to model world information in a structured and object oriented approach \cite{Lemaignan2012,Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper coupling of objects).
 
 %Articles:\\
 %+ An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions | Perzylo2015
@@ -670,7 +670,8 @@ Ontologies allow to model world information in a structured and object oriented 
 
 \subsection{Skills}
 
-Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system shown in \cref{fig:skiros}). These skills can either be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or using a high level language, such as \gls{uml} \cite{ThomasICRA2013}.
+Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph using \glspl{fsm} \cite{Smits2010,Stefan2014} and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015,aimm2012,Pedersen2014} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system shown in \cref{fig:skiros}). These skills can either be taught by a human operator by demonstration or be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or also retrieved from a high level description such as \gls{uml}/P statecharts \cite{ThomasICRA2013}.
+
 
 \begin{figure}[H]
 	\centering
@@ -694,6 +695,11 @@ Automation of assembly operations in industrial applications \cite{Patel2012} is
 %- Skills for Vision-based Applications in Robotics Application to aeronautics assembly pilot station
 
 
+\subsection{Motion representation}
+
+There are several methods for modeling the robotic motions and relative spatial disposition of objects during an automated assembly process. One of the early approaches is the \gls{tff} \cite{Mason1981,Finkemeyer2004} which provides a practical technique for defining coordinate frames along with pose, velocity and force information required to perform compliant motion using robotic manipulators. This method was later extended with the Operational Space Approach \cite{Khatib1987,DeSapio2006} in order to support dynamic and multi-body robot models. More recent methods include the Task Function Approach \cite{Samson1991} which allows to model sensors and interaction with the environment and the \gls{itasc} framework \cite{DeSchutter-ijrr2007,Smits2010} which gives the possibility to model geometric uncertainty.
+
+
 \subsection{Cloud robotics}
 
 Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013} and could also allow to offload heavy processing operations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
@@ -712,15 +718,15 @@ Given the reusable nature of assembly operations, cloud robotics can provide a c
 
 \section{Teaching systems}
 
-There are several approaches to teaching new skills to robots ranging from advanced teach pendent / lead through programming, to the easy and intuitive usage of task level and \gls{cad} based specifications using tactile interfaces \cite{Perzylo2015a}. However, the teaching can be faster and more intuitive if the robot manages to learn new assembly knowledge \cite{tensorflow} by human demonstration \cite{Argall2009,Hamabe2015,Wang2015} using machine learning algorithms, such as those shown in \cref{fig:machinelearningalgorithms}.
+There are several approaches for teaching new skills to robots, ranging from advanced teach pendent / lead through programming, to the easy and intuitive usage of task level and \gls{cad} based specifications using \gls{ar} or tactile interfaces \cite{Perzylo2015a}. However, the teaching can be faster and more intuitive if the robot manages to learn new assembly knowledge \cite{tensorflow} by human demonstration \cite{Argall2009,Hamabe2015,Wang2015} in which the systems tracks the human operator movements and objects in order to build the assembly graph and the underlying \gls{fsm} that contains the order and coupling operations required. Moreover, in the case of anthropomorphic robots it can use the human arm movements as a starting point for the robot path planning \cite{Zanchettin2012} that is required to perform the assembly operations without unintended collisions.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{related-work/machinelearningalgorithms}
-	\caption[Machine learning algorithms mind map]{Machine learning algorithms mind map\protect\footnotemark}
-	\label{fig:machinelearningalgorithms}
-\end{figure}
-\footnotetext{\url{https://jixta.wordpress.com/2015/07/17/machine-learning-algorithms-mindmap}}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{related-work/machinelearningalgorithms}
+%	\caption[Machine learning algorithms mind map]{Machine learning algorithms mind map\protect\footnotemark}
+%	\label{fig:machinelearningalgorithms}
+%\end{figure}
+%\footnotetext{\url{https://jixta.wordpress.com/2015/07/17/machine-learning-algorithms-mindmap}}
 
 %Articles:\\
 %- Efficient Model Learning from Joint-Action Demonstrations for Human-Robot Collaborative Tasks
@@ -743,11 +749,11 @@ There is a wide range of technologies that allow the exchange of information bet
 
 \subsection{Augmented reality}
 
-\gls{ar} interfaces offer an immersive way of exchanging information between a human operator and a machine \cite{Bimber2005}. One example of \gls{ar} systems is projection mapping \cite{Tan2013,Fujimoto2014} for environment marking of information, which is useful to indicate which object the operator should pick up next and where it should place it for assembly / welding / cutting operations (example in \cref{fig:laser-projection}). These systems allow accurate part positioning and avoid manual measurements by the human operator.
+\gls{ar} interfaces offer an immersive way of exchanging information between a human operator and a machine \cite{Bimber2005,Michalos2016}. One example of \gls{ar} systems is projection mapping \cite{Tan2013,Fujimoto2014} for environment marking of information, which is useful to indicate which object the operator should pick up next and where it should place it for assembly / welding / cutting operations (example in \cref{fig:laser-projection}). These systems allow accurate part positioning and avoid manual measurements by the human operator. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\linewidth]{related-work/laser-projection}
+	\includegraphics[width=0.6\linewidth]{related-work/laser-projection}
 	\caption[Projection mapping of cutting information]{Projection mapping of cutting information\protect\footnotemark}
 	\label{fig:laser-projection}
 \end{figure}
@@ -758,6 +764,7 @@ There is a wide range of technologies that allow the exchange of information bet
 %+ iSarProjection - A KinectFusion Based Handheld Dynamic Spatial Augmented Reality System\\ | Tan2013
 %+ Spatial Augmented Reality Merging Real and VirtualWorlds\\ | Bimber2005
 %+ The Office of the Future - A Unified Approach to Image-Based Modeling and Spatially Immersive Displays | Raskar1998
+%+ CAD model based virtual assembly simulation, planning and training
 %
 %Articles projection mapping:\\
 %- A Flexible Fringe Projection Vision System with Extended Mathematical Model for Accurate Three-Dimensional Measurement\\
@@ -777,7 +784,7 @@ Natural language processing of unstructured textual representations can be very 
 
 \subsection{Human-robot cooperation}
 
-Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation and exchange of information between humans and robots \cite{Putz2014} requires perception of the human body movements \cite{Roitberg2014} in order to recognize the operator intentions and detect when the robot should initiate or stop the interaction.
+Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation \cite{Adorno2011} and exchange of information between humans and robots \cite{Putz2014,Pandey2012} requires perception of the human body movements \cite{Roitberg2014} in order to learn kinematic configurations for assembly, keep tracking the objects even if they are temporarily occluded and also recognize the operator intentions to detect when the robot should initiate or stop the interaction.
 
 
 %Articles:\\
@@ -1032,7 +1039,7 @@ The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam}} \c
 
 \subsubsection{KnowRob}
 
-KnowRob\footnote{\url{http://www.knowrob.org}} \cite{Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
+KnowRob\footnote{\url{http://www.knowrob.org}} \cite{tenorth2011PhD,Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
 
 
 \subsection{RoboHow}
@@ -1124,11 +1131,11 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\href{http://www.acat-project.eu/}{ACat} | \href{http://carlosproject.eu/}{CARLoS} | \href{http://tapas-project.eu/}{TAPAS} &
 		Cognitive and manufacturing robotics Human-Machine Interaction \\
 
-		\tabucline[1pt on 1.5pt off 3pt]{-}
-		\href{https://www.b-tu.de/en}{Brandenburg University of Technology} &
-		\href{https://www.b-tu.de/en/research/research-projects/innovation-center-modern-industry-brandenburg}{Innovation Centre for Modern Industry} &
-		\href{http://www.smerobotics.org/AUTOMATICA/exhibit-06-2016.html}{SMERobotics} &
-		Industrial robotics | Robotic assembly \\
+%		\tabucline[1pt on 1.5pt off 3pt]{-}
+%		\href{https://www.b-tu.de/en}{Brandenburg University of Technology} &
+%		\href{https://www.b-tu.de/en/research/research-projects/innovation-center-modern-industry-brandenburg}{Innovation Centre for Modern Industry} &
+%		\href{http://www.smerobotics.org/AUTOMATICA/exhibit-06-2016.html}{SMERobotics} &
+%		Industrial robotics | Robotic assembly \\
 
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{http://www.cmu.edu}{Carnegie Mellon University} &
@@ -1142,11 +1149,11 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\href{http://www.euroc-project.eu/index.php?id=challenger_cutrob}{CUTRob+} | \href{http://www.drematrix.de/projects/hroc-human-robot-cooperation/}{H-RoC} \href{http://www.smerobotics.org/AUTOMATICA/exhibit-02-2016.html}{SMERobotics} &
 		2D / 3D perception | Human-Robot Interaction | Robotic assembly \\
 
-		\tabucline[1pt on 1.5pt off 3pt]{-}
-		\href{http://www.dti.dk}{Danish Technological Institute} &
-		\href{http://www.dti.dk/services/robot-technology/products/23617}{Industrial Production} &
-		\href{http://www.dti.dk/projects/project-intelligent-robots-for-handling-of-flexible-objects/35515}{IRFO} | \href{http://www.smerobotics.org/AUTOMATICA/exhibit-04-2016.html}{SMERobotics} &
-		Bioengineering | Computer vision Industrial and service robotics \\
+%		\tabucline[1pt on 1.5pt off 3pt]{-}
+%		\href{http://www.dti.dk}{Danish Technological Institute} &
+%		\href{http://www.dti.dk/services/robot-technology/products/23617}{Industrial Production} &
+%		\href{http://www.dti.dk/projects/project-intelligent-robots-for-handling-of-flexible-objects/35515}{IRFO} | \href{http://www.smerobotics.org/AUTOMATICA/exhibit-04-2016.html}{SMERobotics} &
+%		Bioengineering | Computer vision Industrial and service robotics \\
 
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{https://www.tue.nl/en}{Eindhoven University of Technology} &
@@ -1181,7 +1188,7 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{http://www.lunduniversity.lu.se/}{Lund University} &
 		\href{http://www.control.lth.se/Research/Robotics.html}{Robotics Lab} &
-		\href{http://www.control.lth.se/Research/Robotics/prace-project.html}{PRACE} | \href{http://www.fp7rosetta.org}{ROSETTA} \href{http://h2020sarafun.eu}{SARAFun} | \href{http://www.smerobot.org}{SMERobot} \href{http://www.smerobotics.org/AUTOMATICA/exhibit-09-2016.html}{SMERobotics} &
+		\href{http://www.control.lth.se/Research/Robotics/prace-project.html}{PRACE} | \href{http://www.fp7rosetta.org}{ROSETTA} \href{http://h2020sarafun.eu}{SARAFun} | \href{http://rss.cs.lth.se/projects/completed/siaras/}{SIARAS} \href{http://www.smerobot.org}{SMERobot} | \href{http://www.smerobotics.org/AUTOMATICA/exhibit-09-2016.html}{SMERobotics} &
 		Computer vision | Industrial robotics | Task and skills learning by demonstration \\
 
 		\tabucline[1pt on 1.5pt off 3pt]{-}
@@ -1195,6 +1202,12 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\href{http://www.osrfoundation.org/osrf-projects/}{Robotics} &
 		\href{http://gazebosim.org/}{Gazebo} | \href{http://www.ros.org/}{ROS} | \href{http://rosindustrial.org/}{ROS Industrial} &
 		Industrial and service robotics \\
+
+		\tabucline[1pt on 1.5pt off 3pt]{-}
+		\href{http://www.tu-darmstadt.de}{Technical University of Darmstadt} &
+		\href{http://www.ausy.tu-darmstadt.de}{Autonomous Systems} &
+		\href{http://3rdhandrobot.eu}{3rdHand} | \href{http://bimrob.ausy.tu-darmstadt.de/Main/HomePage}{BIMROB} | \href{http://www.gert-project.eu/project/project-summary}{GeRT} \href{http://tacman.eu}{TACMAN} &
+		Cognitive systems | Human-Robot Interaction | Machine Learning \\
 
 		\tabucline[1pt on 1.5pt off 3pt]{-}
 		\href{http://www.tum.de/en}{Technical University of Munich} &
@@ -1225,6 +1238,12 @@ Automation of assembly operations is a multidisciplinary research field with a v
 		\href{http://www.sdu.dk/en/om_sdu/institutter_centre/sdurobotics}{SDU Robotics} &
 		\href{http://caro.sdu.dk/index.php/projects/projectslist?view=project\&task=show\&id=6}{CARMEN} | \href{http://www.reconcell.eu/}{ReconCell} \href{http://www.xperience.org/}{Xperience} &
 		Cognitive systems | Industrial and service robotics | Robotic assembly \\
+
+		\tabucline[1pt on 1.5pt off 3pt]{-}
+		\href{http://en.univ-toulouse.fr}{University of Toulouse} &
+		\href{https://www.laas.fr/public/en/laboratory-presentation}{LAAS} &
+		\href{http://www.chrisfp7.eu/}{CHRIS} | \href{http://www.dexmart.eu}{Dexmart} | \href{http://www.agence-nationale-recherche.fr/?Project=ANR-10-CORD-0025}{ICARO} \href{http://www.saphari.eu/}{SAPHARI} &
+		Cognitive systems | Human-Machine Interaction | Object manipulation \\
 	\end{tabu}
 	\label{tab:label}
 \end{table}
