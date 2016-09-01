@@ -249,7 +249,7 @@ The following list presents a brief overview of the main end effectors currently
 \end{itemize}
 
 
-For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
+For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers \cite{Amor2012} (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
 
 \begin{figure}[H]
 	\begin{floatrow}[4]
@@ -661,7 +661,7 @@ Creation and management of reusable knowledge across robots with different hardw
 
 \subsection{Ontologies}
 
-Ontologies allow to model world information in a structured and object oriented approach \cite{Lemaignan2012,Stenmark2015}, which can be useful to store information about the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition and other meta-information relevant for the assembly process (for example the torque or direction required to insure proper coupling of objects).
+Ontologies allow to model world information in a structured and object oriented approach \cite{Lemaignan2012,Stenmark2015}, which can be useful to store information about the environment, robot capabilities, configurations, sensors, tools as well as detailed descriptions of the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition during the assembly process and other meta-information (for example the force / torque or direction required to insure proper coupling of objects).
 
 %Articles:\\
 %+ An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions | Perzylo2015
@@ -702,7 +702,7 @@ There are several methods for modeling the robotic motions and relative spatial 
 
 \subsection{Cloud robotics}
 
-Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013} and could also allow to offload heavy processing operations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
+Given the reusable nature of assembly operations, cloud robotics can provide a communication and storage architecture for the distribution of new learned skills across a fleet of robots \cite{Tenorth2013,Stenmark2015T} and could also allow to offload heavy processing operations, such as data mining \cite{Witten2005} and cognition related tasks \cite{Beetz2010,Tenorth2013k,Saxena2014,Beetz2015} from the robots embedded systems into more powerful processing servers \cite{Hunziker2013}.
 
 %Articles:\\
 %- On Distributed Knowledge Bases for Robotized Small-Batch Assembly\\
@@ -749,15 +749,33 @@ There is a wide range of technologies that allow the exchange of information bet
 
 \subsection{Augmented reality}
 
-\gls{ar} interfaces offer an immersive way of exchanging information between a human operator and a machine \cite{Bimber2005,Michalos2016}. One example of \gls{ar} systems is projection mapping \cite{Tan2013,Fujimoto2014} for environment marking of information, which is useful to indicate which object the operator should pick up next and where it should place it for assembly / welding / cutting operations (example in \cref{fig:laser-projection}). These systems allow accurate part positioning and avoid manual measurements by the human operator. 
+\gls{ar} interfaces \cite{Bimber2005} offer an immersive way of exchanging information between a human operator and a robot / machine \cite{Kollatsch2014,Gaschler2014,Dini2015,Michalos2016}. This can be achieved with a wide range of devices, such as projectors, smart glasses, tablets, smart-phones, \gls{vr} headsets, among others. Projectors allow to perform accurate environment marking of information \cite{Tan2013,Fujimoto2014}, which is useful for assisting the operator in new complex tasks (such as assembly or maintenance) and also allow the operator to perform cutting / welding operations faster by avoiding manual measurements (example in \cref{fig:laser-projection}). Smart glasses (such as the Microsoft HoloLens\footnote{\url{https://www.microsoft.com/microsoft-hololens/en-us}} shown in \cref{fig:hololens}) offer a more flexible alternative which is more suitable for providing guiding information while the operator is performing complex and long jobs. Screens with rear mounted sensors (such as 2D / stereo cameras, RGB-D, \gls{tof}) provide a quick and low cost approach for adding environment annotations which are useful for quick assembly / maintenance operations (example in \cref{fig:ar-assembly}). Finally, \gls{vr} headsets (such as the HTC Vive shown in \cref{fig:htc-vive}) provide an immersive environment for teaching the robot / operator without requiring access to all the physical objects / robots / environment layout.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{related-work/laser-projection}
-	\caption[Projection mapping of cutting information]{Projection mapping of cutting information\protect\footnotemark}
-	\label{fig:laser-projection}
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.21\textheight]{related-work/laser-projection}}
+		{\caption[Projection mapping of cutting information]{Projection mapping of cutting information\protect\footnotemark}\label{fig:laser-projection}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.21\textheight]{related-work/hololens}}
+		{\caption[Microsoft HoloLens]{Microsoft HoloLens\protect\footnotemark}\label{fig:hololens}}
+	\end{floatrow}
 \end{figure}
-\footnotetext{\url{http://www.3dgage.com/laserprojection.html}}
+\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.3dgage.com/laserprojection.html}}
+\footnotetext[\value{footnote}]{\url{http://www.nasdaq.com/article/himax-technologiess-a-top-augmented-realityvirtual-reality-play-cm453889}}
+
+\begin{figure}[H]
+	\begin{floatrow}[2]
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.162\textheight]{related-work/ar-assembly}}
+		{\caption[Training of a assembly task]{Training of a assembly task \cite{Webel2013}}\label{fig:ar-assembly}}
+		\ffigbox[\FBwidth]
+		{\includegraphics[height=.162\textheight]{related-work/htc-vive}}
+		{\caption[HTC Vive virtual reality headset]{HTC Vive virtual reality headset\protect\footnotemark}\label{fig:htc-vive}}
+	\end{floatrow}
+\end{figure}
+\footnotetext{\url{https://techcrunch.com/2016/04/26/teardown-of-htc-vive-highlights-the-headsets-differences-from-oculus-rift}}
+
 
 %Articles:\\
 %- Intuitive Robot Tasks with Augmented Reality and Virtual Obstacles\\
@@ -801,7 +819,6 @@ Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson201
 %- Human-Robot Interaction for Cooperative Manipulation - Handing Objects to One Another\\
 %- Identifying Nonverbal Cues for Automated Human-Robot Turn-taking\\
 %- Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
-
 
 
 \section{Software frameworks}
@@ -959,7 +976,7 @@ The \gls{robodk} \footnote{\url{https://www.robodk.com}} is a 3D simulator and a
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.88\textwidth]{software/pcl-dependency-graph}
+	\includegraphics[width=.79\textwidth]{software/pcl-dependency-graph}
 	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
 	\label{fig:pcl-dependency-graph}
 \end{figure}
@@ -1054,13 +1071,19 @@ KnowRob\footnote{\url{http://www.knowrob.org}} \cite{tenorth2011PhD,Tenorth2013k
 
 The RoboHow project\footnote{\url{https://robohow.eu}} continued the development of the RoboEarth research and added several new software packages targeted at service robotics and knowledge extraction. The next sections present the main software modules developed during this project.
 
+
+\subsubsection{FORTH 3D Hand Tracking library}
+
+The FORTH 3D Hand Tracking Library\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking}} \cite{Oikonomidis2011,Kyriazis2012} provides an accurate and real-time approach (relying on \gls{gpu} acceleration) for tracking the 3D pose and orientation of the hand fingers of a person (26 degrees of freedom) using an RGB-D sensor.
+
+
 \subsubsection{\glsentrytext{cram}}
 
 The \gls{cram}\footnote{\url{http://www.cram-system.org/cram}} \cite{Beetz2010} is a software toolbox that allows to perform complex object manipulation tasks using flexible specification of reactive robot motion control plans using Common Lisp. In \cref{fig:cram-overview} it is shown the integration with the KnowRob for logic reasoning and semantic cognition.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.88\linewidth]{software/cram-overview}
+	\includegraphics[width=0.62\linewidth]{software/cram-overview}
 	\caption{Overview of the \glsentrytext{cram} main software modules}
 	\label{fig:cram-overview}
 \end{figure}
@@ -1072,16 +1095,11 @@ The \gls{itasc}\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}} \ci
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.73\linewidth]{software/itasc-overview}
+	\includegraphics[width=0.56\linewidth]{software/itasc-overview}
 	\caption[Overview of the \glsentrytext{itasc} framework]{Overview of the \glsentrytext{itasc} framework\protect\footnotemark}
 	\label{fig:itasc-overview}
 \end{figure}
 \footnotetext{\url{http://www.orocos.org/wiki/orocos/itasc-wiki/2-itasc-software}}
-
-
-\subsubsection{FORTH 3D Hand Tracking library}
-
-The FORTH 3D Hand Tracking Library\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking}} \cite{Oikonomidis2011,Kyriazis2012} provides an accurate and real-time approach (relying on \gls{gpu} acceleration) for tracking the 3D pose and orientation of the hand fingers of a person (26 degrees of freedom) using an RGB-D sensor.
 
 
 
@@ -1111,6 +1129,49 @@ The \gls{openease}\footnote{\url{http://www.open-ease.org}} \cite{Beetz2015} is 
 \end{wrapfigure}
 
 OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc}} is a reasoning engine with a large ontology and knowledge base that is capable of extracting semantic information from natural language. It also has \gls{ai} capabilities which make it suitable for implementing domain-specific expert systems and game \glspl{ai}.
+
+
+
+\section{Related conferences}
+
+A list with the most prestigious conferences in robotics is presented below.
+
+\begin{itemize}[leftmargin=2em]
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra}{ICRA} - IEEE International Conference on Robotics and Automation
+	\item \href{http://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros}{IROS} - IEEE / RSJ International Conference on Intelligent Robots and Systems
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/case}{CASE} - IEEE International Conference on Automation Science and Engineering
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/isam}{ISAM} - IEEE International Symposium on Assembly and Manufacturing
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/robotica}{ICARSC} - IEEE International Conference on Autonomous Robot Systems and Competitions
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icar}{ICAR} - International Conference on Advanced Robotics
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icarcv}{ICARCV} - International Conference on Control, Automation, Robotics and Vision 
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/iccas}{ICCAS} - International Conference on Control, Automation and Systems
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icinco}{ICINCO} - International Conference on Informatics in Control, Automation, and Robotics
+\end{itemize}
+
+
+
+\section{Related journals}
+
+A list with the most prestigious journals in robotics is presented below.
+
+\begin{itemize}[leftmargin=2em]
+	\item \href{http://ijr.sagepub.com/}{IJR} - SAGE International Journal of Robotics Research (\href{http://www.scimagojr.com/journalsearch.php?q=18050\&tip=sid\&clean=0}{SJR} - 4.184)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424}{TII} - IEEE Transactions on Industrial Informatics (\href{http://www.scimagojr.com/journalsearch.php?q=144912\&tip=sid\&clean=0}{SJR} - 2.973)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8860}{TR} - IEEE Transactions on Robotics (\href{http://www.scimagojr.com/journalsearch.php?q=95101\&tip=sid\&clean=0}{SJR} - 2.884)
+	\item \href{http://www.springer.com/engineering/robotics/journal/10514}{AR} - Springer Autonomous Robots (\href{http://www.scimagojr.com/journalsearch.php?q=18016\&tip=sid\&clean=0}{SJR} - 2.500)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856}{TASE} - IEEE Transactions on Automation Science and Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=17340\&tip=sid\&clean=0}{SJR} - 1.832)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=100}{RAM} - IEEE Robotics and Automation Magazine (\href{http://www.scimagojr.com/journalsearch.php?q=18027\&tip=sid\&clean=0}{SJR} - 1.792)
+	\item \href{http://www.journals.elsevier.com/computers-and-industrial-engineering/}{CIE} - Elsevier Computers and Industrial Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18164\&tip=sid\&clean=0}{SJR} - 1.630)
+	\item \href{http://www.journals.elsevier.com/robotics-and-computer-integrated-manufacturing/}{RCIM} - Elsevier Robotics and Computer-Integrated Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=18080\&tip=sid\&clean=0}{SJR} - 1.621)
+	%	\item \href{http://www.tandfonline.com/toc/tprs20/current}{JPR} - International Journal of Production Research (\href{http://www.scimagojr.com/journalsearch.php?q=27656\&tip=sid\&clean=0}{SJR} - 1.445)
+	\item \href{http://www.springer.com/business+\%26+management/production/journal/10845}{JIM} - Springer Journal of Intelligent Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=24363\&tip=sid\&clean=0}{SJR} - 1.397)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=28}{TIA} - IEEE Transactions on Industry Applications (\href{http://www.scimagojr.com/journalsearch.php?q=17361\&tip=sid\&clean=0}{SJR} - 1.388)
+	\item \href{http://www.journals.elsevier.com/robotics-and-autonomous-systems/}{RAS} - Elsevier Robotics and Autonomous Systems (\href{http://www.scimagojr.com/journalsearch.php?q=18079\&tip=sid\&clean=0}{SJR} - 1.377)
+	\item \href{http://www.journals.elsevier.com/journal-of-manufacturing-systems/}{JMS} - Elsevier Journal of Manufacturing Systems (\href{http://www.scimagojr.com/journalsearch.php?q=14966\&tip=sid\&clean=0}{SJR} - 1.190)
+	\item \href{http://www.springer.com/computer/ai/journal/10515}{ASE} - Spinger Automated Software Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=24145\&tip=sid\&clean=0}{SJR} - 1.089)
+	%	\item \href{http://www.iospress.nl/journal/integrated-computer-aided-engineering/}{ICAE} - Integrated Computer-Aided Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18197\&tip=sid\&clean=0}{SJR} - 0.989)
+	\item \href{http://www.springer.com/engineering/production+engineering/journal/170}{JAMT} - Springer International Journal of Advanced Manufacturing Technology (\href{http://www.scimagojr.com/journalsearch.php?q=20428\&tip=sid\&clean=0}{SJR} - 0.915)
+\end{itemize}
 
 
 
@@ -1284,45 +1345,3 @@ Automation of assembly operations is a multidisciplinary research field with a v
 %	\end{enumerate}
 %\end{multicols}
 
-
-
-\section{Related conferences}
-
-A list with the most prestigious conferences in robotics is presented below.
-
-\begin{itemize}[leftmargin=2em]
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra}{ICRA} - IEEE International Conference on Robotics and Automation
-	\item \href{http://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros}{IROS} - IEEE / RSJ International Conference on Intelligent Robots and Systems
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/case}{CASE} - IEEE International Conference on Automation Science and Engineering
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/isam}{ISAM} - IEEE International Symposium on Assembly and Manufacturing
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/robotica}{ICARSC} - IEEE International Conference on Autonomous Robot Systems and Competitions
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icar}{ICAR} - International Conference on Advanced Robotics
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icarcv}{ICARCV} - International Conference on Control, Automation, Robotics and Vision 
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/iccas}{ICCAS} - International Conference on Control, Automation and Systems
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icinco}{ICINCO} - International Conference on Informatics in Control, Automation, and Robotics
-\end{itemize}
-
-
-
-\section{Related journals}
-
-A list with the most prestigious journals in robotics is presented below.
-
-\begin{itemize}[leftmargin=2em]
-	\item \href{http://ijr.sagepub.com/}{IJR} - SAGE International Journal of Robotics Research (\href{http://www.scimagojr.com/journalsearch.php?q=18050\&tip=sid\&clean=0}{SJR} - 4.184)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424}{TII} - IEEE Transactions on Industrial Informatics (\href{http://www.scimagojr.com/journalsearch.php?q=144912\&tip=sid\&clean=0}{SJR} - 2.973)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8860}{TR} - IEEE Transactions on Robotics (\href{http://www.scimagojr.com/journalsearch.php?q=95101\&tip=sid\&clean=0}{SJR} - 2.884)
-	\item \href{http://www.springer.com/engineering/robotics/journal/10514}{AR} - Springer Autonomous Robots (\href{http://www.scimagojr.com/journalsearch.php?q=18016\&tip=sid\&clean=0}{SJR} - 2.500)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856}{TASE} - IEEE Transactions on Automation Science and Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=17340\&tip=sid\&clean=0}{SJR} - 1.832)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=100}{RAM} - IEEE Robotics and Automation Magazine (\href{http://www.scimagojr.com/journalsearch.php?q=18027\&tip=sid\&clean=0}{SJR} - 1.792)
-	\item \href{http://www.journals.elsevier.com/computers-and-industrial-engineering/}{CIE} - Elsevier Computers and Industrial Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18164\&tip=sid\&clean=0}{SJR} - 1.630)
-	\item \href{http://www.journals.elsevier.com/robotics-and-computer-integrated-manufacturing/}{RCIM} - Elsevier Robotics and Computer-Integrated Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=18080\&tip=sid\&clean=0}{SJR} - 1.621)
-%	\item \href{http://www.tandfonline.com/toc/tprs20/current}{JPR} - International Journal of Production Research (\href{http://www.scimagojr.com/journalsearch.php?q=27656\&tip=sid\&clean=0}{SJR} - 1.445)
-	\item \href{http://www.springer.com/business+\%26+management/production/journal/10845}{JIM} - Springer Journal of Intelligent Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=24363\&tip=sid\&clean=0}{SJR} - 1.397)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=28}{TIA} - IEEE Transactions on Industry Applications (\href{http://www.scimagojr.com/journalsearch.php?q=17361\&tip=sid\&clean=0}{SJR} - 1.388)
-	\item \href{http://www.journals.elsevier.com/robotics-and-autonomous-systems/}{RAS} - Elsevier Robotics and Autonomous Systems (\href{http://www.scimagojr.com/journalsearch.php?q=18079\&tip=sid\&clean=0}{SJR} - 1.377)
-	\item \href{http://www.journals.elsevier.com/journal-of-manufacturing-systems/}{JMS} - Elsevier Journal of Manufacturing Systems (\href{http://www.scimagojr.com/journalsearch.php?q=14966\&tip=sid\&clean=0}{SJR} - 1.190)
-	\item \href{http://www.springer.com/computer/ai/journal/10515}{ASE} - Spinger Automated Software Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=24145\&tip=sid\&clean=0}{SJR} - 1.089)
-%	\item \href{http://www.iospress.nl/journal/integrated-computer-aided-engineering/}{ICAE} - Integrated Computer-Aided Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18197\&tip=sid\&clean=0}{SJR} - 0.989)
-	\item \href{http://www.springer.com/engineering/production+engineering/journal/170}{JAMT} - Springer International Journal of Advanced Manufacturing Technology (\href{http://www.scimagojr.com/journalsearch.php?q=20428\&tip=sid\&clean=0}{SJR} - 0.915)
-\end{itemize}
