@@ -191,7 +191,7 @@ Collaborative robots are usually articulated robotic arms that were designed to 
 
 End effectors are hardware devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors (used for inspection, quality assurance, surveillance) or can be active in which the robot physically interacts with the environment.
 
-Grippers are one the most complex active end effectors given their need to grasp and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
+Grippers are one the most complex active end effectors given their need to grasp \cite{Sahbani2012} and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
 
 The following list presents a brief overview of the main end effectors currently available.
 
@@ -249,7 +249,7 @@ The following list presents a brief overview of the main end effectors currently
 \end{itemize}
 
 
-For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers \cite{Amor2012} (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
+For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers \cite{Amor2012,Mattar2013} (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
 
 \begin{figure}[H]
 	\begin{floatrow}[4]
@@ -404,7 +404,7 @@ Assembling objects is a very complex task that requires accurate perception and 
 
 \subsection{Motion planners}
 
-Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers in assembly operations requires advanced control \cite{Stolt2015} and path planning algorithms \cite{Fontanals2014,You2012,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011} while avoiding unintended collisions.
+Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers in assembly operations requires advanced control \cite{Stolt2015} and path planning algorithms \cite{Kuffner2000,You2012,Fontanals2014,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011} while avoiding unintended collisions.
 
 
 %Articles:\\
@@ -568,11 +568,11 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 \begin{figure}[H]
 	\begin{floatrow}[2]
 		\ffigbox[]
-		{\includegraphics[height=.14\textheight]{sensors/velodyne-hdl-64e}}
+		{\includegraphics[height=.115\textheight]{sensors/velodyne-hdl-64e}}
 		{\caption[3D Velodyne HDL-64E]{3D Velodyne HDL-64E\protect\footnotemark}\label{fig:velodyne-hdl-64e}}
 
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.14\textheight]{sensors/lidar-scan-car}}
+		\ffigbox[]
+		{\includegraphics[height=.115\textheight]{sensors/lidar-scan-car}}
 		{\caption[\glsentrytext{lidar} scan]{\glsentrytext{lidar} scan\protect\footnotemark}\label{fig:lidar-scan}}
 	\end{floatrow}
 \end{figure}
@@ -582,7 +582,7 @@ Light waves generated with lasers can estimate distances with millimeter accurac
 
 \section{Perception systems}
 
-There is a wide range of perception algorithms and sensors that can perform object recognition and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Wohlkinger2012,Aldoma2011,Blodow2014phd}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association and \gls{svd} pose estimation) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{dt}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example MeanShift / CamShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
+There is a wide range of perception algorithms and sensors that can perform object recognition \cite{Andreopoulos2013} and pose estimation, either using 2D images \cite{Marton2011,Costa2016ICARSC} or 3D data \cite{Aldoma2011,Wohlkinger2012,Lee2012,Blodow2014phd,Garcia2016}. For very specific recognition tasks, template matching techniques \cite{Lee2016} or color / shape segmentation methods (such as simple \gls{hsv} thresholding, advanced segmentation using the watershed algorithm or fitting specific shapes to the sensor data using \gls{ransac} or the Hough transform \cite{Ballard1981}) provide a simple and effective approach. For more generic perception tasks, it is usually necessary to rely on feature detection \cite{Tuytelaars2008,Filipe2014} to select reliable keypoints, feature description \cite{Gauglitz2011,Hansch2014} to characterize the geometry around each interest point and robust matching algorithms (for example \gls{ransac} coupled with \gls{knn} descriptor association and \gls{svd} pose estimation) in order to be able to recognize the objects even in cluttered environments \cite{Aldoma2016}. Other approaches rely on machine learning classifiers \cite{Rocha2015} (such as \glspl{svm}, \glspl{nn}, \glspl{dt}, \glspl{hmm}) and bag of words methods \cite{Csurka04,Costa2014,Nowak2006} in order to detect class of objects that have similar geometry and may appear in different perspectives. After the recognition stage, tracking algorithms such as Kalman \cite{Kalman1960} / particle filters \cite{Cho2006} coupled with accurate matching algorithms (for example MeanShift / CamShift \cite{Bradski1998} / \gls{icp} \cite{Besl1992}) can be used to follow the objects pose with high precision over time.
 
 Some preliminary work has already been done in the area of 2D / 3D perception. In \cref{fig:banknote-recognition} it is shown a 2D perception system for detecting planar objects in which it is highlighted the typical processing steps required along with the most common algorithms used to estimate the 3D pose of objects from 2D images. In \cref{fig:localization-system} it is shown a similar 3D perception system that is able to perform 3D pose estimation of an object / robot from 3D sensor data.
 
@@ -670,7 +670,7 @@ Ontologies allow to model world information in a structured and object oriented 
 
 \subsection{Skills}
 
-Automation of assembly operations in industrial applications \cite{Patel2012} is a multi-disciplinary challenging task that orchestrates and manages the assembly operation graph using \glspl{fsm} \cite{Smits2010,Stefan2014} and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015,aimm2012,Pedersen2014} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system shown in \cref{fig:skiros}). These skills can either be taught by a human operator by demonstration or be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Thomas2001} or also retrieved from a high level description such as \gls{uml}/P statecharts \cite{ThomasICRA2013}.
+Automation of assembly operations in industrial applications \cite{Thomas2001,Patel2012} is a multidisciplinary challenging task that orchestrates and manages the assembly operation graph using \glspl{fsm} \cite{Smits2010,Stefan2014} and requires the integration of the robot motion planners with the gripping tools \cite{Thomas2015} along with the perception systems. Moreover, these assembly operations need to be reusable \cite{Butting2016,Andersen2014} between robots with different hardware configurations \cite{Thomas2002} but with equivalent assembly capabilities. This can be achieved by modeling assembly operations as abstract skills \cite{Holz2015,aimm2012,Pedersen2014} that can be executed with fault tolerance \cite{ThomasICRA2003} on top of a primitive software layer that models reusable operations, which in turn are executed on top of a device layer that transforms the abstract knowledge into robot perception and motion commands (diagram of skill based assembly system shown in \cref{fig:skiros}). These skills can either be taught by a human operator by demonstration or be automatically extracted from \gls{cad} / \gls{sop} analysis \cite{Lavoue2005,Tenorth2013cad} or also retrieved from a high level description such as \gls{uml}/P statecharts \cite{ThomasICRA2013}.
 
 
 \begin{figure}[H]
@@ -791,7 +791,7 @@ There is a wide range of technologies that allow the exchange of information bet
 
 \subsection{Natural language processing}
 
-Natural language processing of unstructured textual representations can be very useful to extract assembly information from \glspl{sop} / operator manuals \cite{Stenmark2014,Stenmark2013} and speedup the robot leaning process \cite{Tenorth2010} (for example identifying which objects will be assembled, in which order and their approximate spatial distribution).
+Natural language processing \cite{Manning1999,Jurafsky2000,Manning2008} of voice commands or unstructured textual representations (using frameworks such as GATE\footnote{\url{https://gate.ac.uk}}, CoreNLP\footnote{\url{http://stanfordnlp.github.io/CoreNLP/}}, NLTK\footnote{\url{http://www.nltk.org}}) can be very useful for extracting assembly information from \glspl{sop} / operator manuals and speedup the robot leaning process \cite{Tenorth2010,Stenmark2013,Stenmark2014,Stenmark2016} (for example identifying which objects will be assembled using \gls{ner} \cite{Ekbal2012,Rami2014} and also in which order and their approximate spatial distribution).
 
 %Articles:\\
 %- Connecting natural language to task demonstrations and low-level control of industrial robots\\
@@ -802,7 +802,7 @@ Natural language processing of unstructured textual representations can be very 
 
 \subsection{Human-robot cooperation}
 
-Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson2013} is an important task when learning new assembly skills or when capturing new operator commands. Moreover, effective cooperation \cite{Adorno2011} and exchange of information between humans and robots \cite{Putz2014,Pandey2012} requires perception of the human body movements \cite{Roitberg2014} in order to learn kinematic configurations for assembly, keep tracking the objects even if they are temporarily occluded and also recognize the operator intentions to detect when the robot should initiate or stop the interaction.
+Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson2013} is an important task when learning new assembly skills from demonstration \cite{Nikolaidis2013} or when capturing new operator commands. Moreover, effective cooperation \cite{Adorno2011} and exchange of information between humans and robots \cite{Putz2014,Pandey2012} requires perception of the human body movements \cite{Roitberg2014} in order to learn kinematic configurations for assembly, keep tracking the objects even if they are temporarily occluded and also recognize the operator intentions to detect when the robot should initiate or stop the interaction.
 
 
 %Articles:\\
@@ -929,7 +929,7 @@ Gazebo\footnote{\url{http://gazebosim.org}} is a 3D multi-robot simulator capabl
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.99\textwidth]{software/gazebo-ros-integration}
+	\includegraphics[width=.9\textwidth]{software/gazebo-ros-integration}
 	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
 	\label{fig:gazebo-ros-integration}
 \end{figure}
@@ -976,7 +976,7 @@ The \gls{robodk} \footnote{\url{https://www.robodk.com}} is a 3D simulator and a
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.79\textwidth]{software/pcl-dependency-graph}
+	\includegraphics[width=.7\textwidth]{software/pcl-dependency-graph}
 	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
 	\label{fig:pcl-dependency-graph}
 \end{figure}
@@ -1056,7 +1056,7 @@ The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam}} \c
 
 \subsubsection{KnowRob}
 
-KnowRob\footnote{\url{http://www.knowrob.org}} \cite{tenorth2011PhD,Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
+KnowRob\footnote{\url{http://www.knowrob.org}} \cite{tenorth2011PhD,Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Lavoue2005,Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
 
 
 \subsection{RoboHow}
