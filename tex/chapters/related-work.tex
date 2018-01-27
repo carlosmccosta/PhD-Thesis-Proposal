@@ -5,406 +5,26 @@
 This chapter presents an overview of the knowledge developed over the years in the areas of industrial robotics, environment perception, machine learning and human-robot interaction that is relevant for the development of cooperative human-robot systems capable of learning and assembling complex objects.
 
 
-\section{Robotic manipulators}
 
-Robotic manipulators have been evolving over the years to fit the automation demand of the industry that needs the ability to move end-effectors with accuracy and speed for performing a wide range of tasks. One of these tasks is robotic assembly operations which require the capability to sense, grasp and move objects of different size, weight and shape within a given work space. The next sections give a brief overview of the main components of robotic manipulators.
+\section{Assembly / disassembly planning}
 
+FF
 
-\subsection{Robotic arms}
 
-Robotic arms give the mechanical support for the end effectors (for example grippers, sprayers, grinders, welders, perception sensors, among many others) and can have a wide range of hardware configurations depending on the type of motion that is required for performing a given task. The main categories of robotic arms will be presented in the next sections.
 
-
-\subsubsection{Cartesian robotic arms}
-
-Cartesian robots have three linear axis of motion (diagrams shown in \cref{fig:cartesian-robot}) and are used in operations that require mainly translations of the end effector (example in \cref{fig:cartesian-robot-festo-3d-gantry}), such as moving objects within large workplaces or spraying / milling / drilling / cutting material using \glspl{cnc} machines.
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{robots/cartesian-robot}
-		\includegraphics[height=.15\textheight]{robots/cartesian-robot-model}}
-		{\caption[Diagrams of a Cartesian robot]{Diagrams of a Cartesian robot\protect\footnotemark}\label{fig:cartesian-robot}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{robots/cartesian-robot-festo-3d-gantry}}
-		{\caption[Cartesian robot with a dual finger gripper]{Cartesian robot with a dual finger gripper\protect\footnotemark}\label{fig:cartesian-robot-festo-3d-gantry}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200}}
-\footnotetext[\value{footnote}]{\url{http://www.linearmotiontips.com/switching-robot-systems-cartesian-handling-systems}}
-
-
-\subsubsection{Cylindrical robotic arms}
-
-Cylindrical robots have two linear axis and one rotation axis around the origin (diagrams shown in \cref{fig:cylindrical-robot}) and are useful for tasks such as sorting / packaging (example in \cref{fig:cylindrical-robot-plate-crane}) that require the movement of high payload packages.
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{robots/cylindrical-robot}
-		\includegraphics[height=.15\textheight]{robots/cylindrical-robot-model}}
-		{\caption[Diagrams of a cylindrical robot]{Diagrams of a cylindrical robot\protect\footnotemark}\label{fig:cylindrical-robot}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{robots/cylindrical-robot-plate-crane}}
-		{\caption[Cylindrical robot with a dual finger gripper]{Cylindrical robot with a dual finger gripper\protect\footnotemark}\label{fig:cylindrical-robot-plate-crane}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200}}
-\footnotetext[\value{footnote}]{\url{http://hudsonrobotics.com/products/microplate-handling/platecrane-ex}}
-
-
-\subsubsection{Polar robotic arms}
-
-Polar / spherical robots have one linear axis and two perpendicular rotation axis (diagrams shown in \cref{fig:polar-robot}) and can be used in welding / fettling operations (example in \cref{fig:polar-robot-fanuc}).
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.138\textheight]{robots/polar-robot}
-		\includegraphics[height=.138\textheight]{robots/polar-robot-model}}
-		{\caption[Diagrams of a polar robot]{Diagrams of a polar robot\protect\footnotemark}\label{fig:polar-robot}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.138\textheight]{robots/polar-robot-fanuc}}
-		{\caption[Polar robot]{Polar robot\protect\footnotemark}\label{fig:polar-robot-fanuc}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200}}
-\footnotetext[\value{footnote}]{\url{http://saba.kntu.ac.ir/eecd/ecourses/robotics/overview.pdf}}
-
-
-\subsubsection{\glsentrytext{scara} robotic arms}
-
-\gls{scara} robots have one linear axis and two parallel rotation axis (diagrams shown in \cref{fig:scara-robot}) and can perform quick pick and place tasks (example in \cref{fig:scara-robot-packaging}).
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.173\textheight]{robots/scara-robot}
-		\includegraphics[height=.173\textheight]{robots/scara-robot-model}}
-		{\caption[Diagrams of a \glsentrytext{scara} robot]{Diagrams of a \glsentrytext{scara} robot\protect\footnotemark}\label{fig:scara-robot}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.173\textheight]{robots/scara-robot-packaging}}
-		{\caption[\glsentrytext{scara} robot packaging products]{\glsentrytext{scara} robot packaging products\protect\footnotemark}\label{fig:scara-robot-packaging}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200}}
-\footnotetext[\value{footnote}]{\url{http://www.assemblymag.com/articles/93338-whats-new-with-scara-robots}}
-
-
-\subsubsection{Parallel / delta robotic arms}
-
-Picker / delta / parallel robots have three parallelogram arms connected to the end effector in order to provide three translation axis and one rotation axis (diagrams shown in \cref{fig:schema-delta-type-1-side-view,fig:paralell-robot-abb}) and they can perform very fast pick and place tasks (example in \cref{fig:picker-parallel-robot-fanuc}).
-
-\begin{figure}[H]
-	\begin{floatrow}[3]
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.2\textheight]{robots/paralell-robot-abb}}
-		{\caption[Model of a delta robot]{Model of a delta robot\protect\footnotemark}\label{fig:paralell-robot-abb}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.2\textheight]{robots/schema-delta-type-1-side-view}}
-		{\caption[Diagram of a delta robot]{Diagram of a delta robot\protect\footnotemark}\label{fig:schema-delta-type-1-side-view}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.2\textheight]{robots/picker-parallel-robot-fanuc}}
-		{\caption[Delta robot packaging products]{Delta robot packaging products\protect\footnotemark}\label{fig:picker-parallel-robot-fanuc}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://www.mecademic.com/What-is-a-parallel-robot.html}}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://infosys.beckhoff.com/content/1034/tckintransformation/html/tcnckintransformation_deltatype1.htm?id=21945}}
-\footnotetext[\value{footnote}]{\url{http://robot.fanucamerica.com/products/robots/picking-and-packing-robots.aspx}}
-
-
-\subsubsection{Snake robotic arms}
-
-Snake robots are flexible manipulators with a high number of interconnected joints (structure of a snake robot shown in \cref{fig:snake-arm-robot-diagram}) capable of bending like a snake in order to access small and difficult to reach areas (example in \cref{fig:laser-snake-pipe-cutting}).
-
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.173\textheight]{robots/snake-robot-diagram}
-		\includegraphics[height=.173\textheight]{robots/snake-robot}}
-		{\caption[Structure of a snake robot]{Structure of a snake robot\protect\footnotemark}\label{fig:snake-arm-robot-diagram}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.173\textheight]{robots/laser-snake-pipe-cutting}}
-		{\caption[Laser snake robot cutting a pipe]{Laser snake robot cutting a pipe\protect\footnotemark}\label{fig:laser-snake-pipe-cutting}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://techcrunch.com/2010/08/18/video-giant-snake-robot-acm-r5}}
-\footnotetext[\value{footnote}]{\url{http://sparc-robotics.eu/nuclear-decommissioning}}
-
-
-\subsubsection{Articulated robotic arms}
-
-Articulated robots are versatile arms with at least 3 rotation axis (diagrams shown in \cref{fig:articulated-robot}) and are capable of performing a wide range of tasks, from welding to advanced assembly tasks (example in \cref{fig:articulated-robot-kuka}).
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.187\textheight]{robots/articulated-robot}
-		\includegraphics[height=.187\textheight]{robots/articulated-robot-model}}
-		{\caption[Diagrams of an articulated robot]{Diagrams of an articulated robot\protect\footnotemark}\label{fig:articulated-robot}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.187\textheight]{robots/articulated-robot-kuka}}
-		{\caption[Articulated  robot installing a windshield in a car]{Articulated  robot installing a windshield in a car\protect\footnotemark}\label{fig:articulated-robot-kuka}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://slideplayer.com/slide/7362200}}
-\footnotetext[\value{footnote}]{\url{http://gracemarketdata.com/index.php/component/virtuemart/2001-detail}}
-
-
-
-\subsubsection{Collaborative robotic arms}
-
-Collaborative robots are usually articulated robotic arms that were designed to be safe \cite{Haddadin2011,Ceriani2014} to operate around humans. They typically move at low velocities and have force-torque / motor current sensors along with enclosure in pressure / capacitive sensitive materials in order to detect collisions and stop the robot movement before injuring humans. Other safety measures rely on the usage of elastic actuators and soft padding to attenuate the impact damage while complementary measures include the detection of approaching humans / objects using \glspl{lidar} / RGB-D sensors in order to reduce the robot operation velocity and adjust the trajectory to avoid collisions. In \cref{fig:collaborative-robots-t1,fig:collaborative-robots-t2} it is presented an overview of the main collaborative robots currently available along with the specification of their main hardware characteristics and targeted applications.
-
-%Articles:\\
-%- Collaborative robot - Robotiq ebook | Mathieu2015
-%- Dual arm manipulation - A survey | Smith2012
-%- A brief survey of commercial robotic arms for research on manipulation | Lu2012
-%- Survey of robotic arm and parameters | Patidar2016
-
-
-\begin{table}[H]
-	\centering
-	\includegraphics[width=\linewidth]{robots/collaborative-robots-t1}
-	\caption[Collaborative robots (a)]{Collaborative robots (a) \cite{Mathieu2015}}
-	\label{fig:collaborative-robots-t1}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\includegraphics[width=\linewidth]{robots/collaborative-robots-t2}
-	\caption[Collaborative robots (b)]{Collaborative robots (b) \cite{Mathieu2015}}
-	\label{fig:collaborative-robots-t2}
-\end{table}
-
-
-\subsection{Robotic end effectors}
-
-End effectors are hardware devices attached at the end of robotic arms in order to allow them to interact with the environment. This interaction can be passive if the end effectors are only comprised of sensors (used for inspection, quality assurance, surveillance) or can be active in which the robot physically interacts with the environment.
-
-Grippers are one the most complex active end effectors given their need to grasp \cite{Sahbani2012} and hold a wide range of objects with different size, shape, weight and stiffness. They are also one of the most flexible and versatile end effector given that they can be used to handle a wide range of objects when performing very different tasks. The remaining end effectors are usually tailored for very specific tasks (for example welding, cutting, drilling, screwing, grinding, painting, among many others).
-
-The following list presents a brief overview of the main end effectors currently available.
-
-\begin{itemize}
-	\item Grippers
-	\begin{itemize}
-		\item Impactive grippers
-		\begin{itemize}
-			\item Parallel fingers
-			\item Angular fingers
-			\item Universal grippers (for example the Versaball)
-			\item Anthropomorphic grippers with 5 fingers
-		\end{itemize}
-		\item Astrictive grippers
-		\begin{itemize}
-			\item Vacuum grippers
-			\item Bernoulli grippers
-			\item Magnetic grippers
-			\item Electrostatic grippers
-		\end{itemize}
-		\item Contigutive grippers
-		\begin{itemize}
-			\item Chemical adhesion grippers
-			\item Thermal adhesion grippers
-		\end{itemize}
-		\item Ingressive grippers
-		\begin{itemize}
-			\item Hooks
-			\item Loops
-		\end{itemize}
-	\end{itemize}
-	\item Perception sensors
-	\begin{itemize}
-		\item 2D / \gls{tof} cameras
-		\item Point / line lasers
-		\item \glspl{lidar}
-		\item RGB-D sensors
-		\item Structured light sensors
-	\end{itemize}
-	\item Collision sensors
-	\item Force-torque sensors
-	\item Projectors (\gls{dlp} / galvanometers)
-	\item Welding torches
-	\item Cutting tools
-	\item Drilling tools
-	\item Milling tools
-	\item Grinders
-	\item Sanders
-	\item Polishers
-	\item Finishers
-	\item Sprayers
-	\item Screw drivers
-	\item Spanners
-	\item Ladles
-\end{itemize}
-
-
-For assembly operations the most useful end effectors are the grippers, perception / force-torque sensors and specialized tools (screw drivers, spanners, welders, among others). Most object manipulation tasks can be done with grippers with two or three fingers (examples in \cref{fig:yumi-gripper-vamera-vacuum,fig:schunk-parallel-grippers,fig:schunk-angular-gripper,fig:schunk-self-centering-gripper}) or with adaptive two / three finger grippers (examples in \cref{fig:robotiq-adaptive-2-finger-gripper,fig:robotiq-adaptive-3-finger-gripper}). For tasks that require coarse accuracy, magnetic / vacuum grippers (examples in \cref{fig:zimmer-magnetic-gripper,fig:schunk-vacuum-gripper,fig:schmalz-vacuum-area-gripper}) might be a suitable alternative. For difficult to grasp objects, flexible grippers (such as the ones shown in \cref{fig:versa-ball,fig:festo-multichoice-gripper}) provide a robust approach. For very complex tasks that may require advanced dexterity, anthropomorphic grippers \cite{Amor2012,Mattar2013} (example in \cref{fig:schunk-svh-hand}) offer a very advanced solution.
-
-\begin{figure}[H]
-	\begin{floatrow}[4]
-		\ffigbox[1.1\FBwidth]
-		{\includegraphics[height=.19\textheight]{grippers/yumi-gripper-vamera-vacuum}}
-		{\caption[ABB Yumi dual finger / vacuum / camera gripper]{ABB Yumi dual finger / vacuum / camera gripper \protect\footnotemark}\label{fig:yumi-gripper-vamera-vacuum}}
-
-		\ffigbox[1.1\FBwidth]
-		{\includegraphics[height=.19\textheight]{grippers/schunk-parallel}}
-		{\caption[Schunk parallel gripper]{Schunk parallel gripper\protect\footnotemark}\label{fig:schunk-parallel-grippers}}
-
-		\ffigbox[1.1\FBwidth]
-		{\includegraphics[height=.19\textheight]{grippers/schunk-angular-gripper}}
-		{\caption[Schunk angular gripper]{Schunk angular gripper\protect\footnotemark}\label{fig:schunk-angular-gripper}}
-
-		\ffigbox[1.1\FBwidth]
-		{\includegraphics[height=.19\textheight]{grippers/schunk-self-centering-gripper}}
-		{\caption[Schunk self-centering gripper]{Schunk self-centering gripper\protect\footnotemark}\label{fig:schunk-self-centering-gripper}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://new.abb.com/products/robotics/yumi}}
-\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{https://us.schunk.com/us_en/home/pgn-plus-p}}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://us.schunk.com/us_en/gripping-systems/\#/series/pwg-plus}}
-\footnotetext[\value{footnote}]{\url{https://us.schunk.com/us_en/gripping-systems/\#/series/pzb-plus}}
-
-
-\begin{figure}[H]
-	\begin{floatrow}[4]
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/robotiq-adaptive-2-finger-gripper}}
-		{\caption[Robotiq adaptive 2 finger gripper]{Robotiq adaptive 2 finger gripper\protect\footnotemark}\label{fig:robotiq-adaptive-2-finger-gripper}}
-
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/robotiq-adaptive-3-finger-gripper}}
-		{\caption[Robotiq adaptive 3 finger gripper]{Robotiq adaptive 3 finger gripper\protect\footnotemark}\label{fig:robotiq-adaptive-3-finger-gripper}}
-
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/festo-multichoice-gripper}}
-		{\caption[Festo flexible 3 finger gripper]{Festo flexible 3 finger gripper\protect\footnotemark}\label{fig:festo-multichoice-gripper}}
-
-		\ffigbox[1\FBwidth]
-		{\includegraphics[height=.17\textheight]{grippers/schunk-svh-precision-grip}}
-		{\caption[Schunk anthropomorphic gripper]{Schunk anthropomorphic gripper\protect\footnotemark}\label{fig:schunk-svh-hand}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://blog.robotiq.com/topic/2-finger-robot-gripper}}
-\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://support.robotiq.com/display/IMB/Home}}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://www.festo.com/group/en/cms/10221.htm}}
-\footnotetext[\value{footnote}]{\url{http://mobile.schunk-microsite.com/en/produkte/products/servo-electric-5-finger-gripping-hand-svh.html}}
-
-
-\begin{figure}[H]
-	\begin{floatrow}[4]
-		\ffigbox[2.4\FBwidth]
-		{\includegraphics[height=.08\textheight]{grippers/zimmer-magnetic-gripper}}
-		{\caption[Zimmer magnetic gripper]{Zimmer magnetic gripper\protect\footnotemark}\label{fig:zimmer-magnetic-gripper}}
-
-		\ffigbox[1.98\FBwidth]
-		{\includegraphics[height=.11\textheight]{grippers/schunk-vacuum-gripper}}
-		{\caption[Schunk vacuum gripper]{Schunk vacuum gripper\protect\footnotemark}\label{fig:schunk-vacuum-gripper}}
-
-		\ffigbox[2\FBwidth]
-		{\includegraphics[height=.1\textheight]{grippers/schmalz-vacuum-area-gripper}}
-		{\caption[Schmalz vacuum area gripper]{Schmalz vacuum area gripper\protect\footnotemark}\label{fig:schmalz-vacuum-area-gripper}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.11\textheight]{grippers/versa-ball}}
-		{\caption[Versa ball]{Versa ball\protect\footnotemark}\label{fig:versa-ball}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-3\relax]{\url{http://www.zimmer-group.de/en/ajax/productdetail?struktkey=\%24MN-SOM-\%24PLC-V-\%24PG-GRE-\%24SR-HM1000&productkey=HM1097NC&layout=1}}
-\footnotetext[\the\numexpr\value{footnote}-2\relax]{\url{http://de.schunk.com/de_en/gripping-systems/\#/series/gsw-v}}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://www.schmalz.com/en/vacuum-technology-for-automation/vacuum-components/area-gripping-systems-and-end-effectors}}
-\footnotetext[\value{footnote}]{\url{http://www.extremetech.com/extreme/174723-soft-robotic-gripper-uses-vacuum-pressure-and-a-beanbag-to-move-objects}}
-
-%Articles:\\
-%- An overview of 3D object grasp synthesis algorithms
-%- A review on importance of universal gripper in industrial robot applications
-%- A survey of bio-inspired robotics hands implementation - New directions in dexterous manipulation
-
-%Articles:\\
-%- An Adaptive Feedback Scheduling Algorithm for Robot Assembly and Real-Time Control Systems
-
-
-\subsection{Automatic tool change}
-
-Given the wide variety of objects that assembly operations may require, automatic tool change devices (such as the one shown in \cref{fig:tool-changer}) are very useful to allow the robot to autonomously change the end effector in order to perform the current task with the most appropriate hardware configuration.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.66\linewidth]{grippers/tool-changer}
-	\caption[Automatic tool changer with 20 different robotic arm end effectors]{Automatic tool changer with 20 different robotic arm end effectors\protect\footnotemark}
-	\label{fig:tool-changer}
-\end{figure}
-\footnotetext{\url{http://www.h-h.com.au/ae_mc_tool-changer.htm}}
-
-
-\subsection{Environment fixtures}
-
-Environment fixtures are a very useful approach to ensure that the assembly objects are provided by the human operator at known positions with high accuracy (avoiding complex perception systems). These fixtures can be in the form of packaging trays (example in \cref{fig:vacuum-formed-packaging-trays}) allowing quick restock of assembly objects or can be inclined loading docks (example in \cref{fig:parts-loading-fixture}), in which the human operators insert the assembly objects at the top and robot removes them always at the same place at the bottom (when the robot removes one object the gravity pulls the next one into place).
-
-Another useful application of environment fixtures is for temporarily holding the assembly objects, either using static fixtures (examples in \cref{fig:profile-vertical-fixture,fig:profile-horizontal-fixture}) or actuated grippers (example in \cref{fig:part-fixture-actuated}). This can be very useful to allow assembly operations with only one robotic arm and also for changing gripping positions of grasped objects (examples in \cref{fig:part-fixture-actuated} and \cite{Chavan2015}).
-
-%Articles:\\
-%- Prehensile Pushing - In-hand Manipulation with Push-Primitives | Chavan2015
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.183\textheight]{grasping/vacuum-formed-packaging-trays}}
-		{\caption[Vacuum formed packaging tray]{Vacuum formed packaging tray\protect\footnotemark}\label{fig:vacuum-formed-packaging-trays}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.183\textheight]{grasping/parts-loading-fixture}}
-		{\caption[Parts loading dock]{Parts loading dock\protect\footnotemark}\label{fig:parts-loading-fixture}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.vinayakapolyproducts.com/vacuum-formed-packaging-trays-2186055.html}}
-\footnotetext[\value{footnote}]{\url{https://www.youtube.com/watch?v=2jYhdmk-pMg}}
-
-\begin{figure}[H]
-	\begin{floatrow}[3]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.22\textheight]{grasping/profile-vertical-fixture}}
-		{\caption[Aluminum profile vertical fixture]{Aluminum profile vertical fixture\protect\footnotemark[\value{footnote}]}\label{fig:profile-vertical-fixture}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.22\textheight]{grasping/profile-horizontal-fixture}}
-		{\caption[Aluminum profile horizontal fixture]{Aluminum profile horizontal fixture\protect\footnotemark[\value{footnote}]}\label{fig:profile-horizontal-fixture}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.22\textheight]{grasping/part-fixture-actuated}}
-		{\caption[Actuated object holder]{Actuated object holder\protect\footnotemark}\label{fig:part-fixture-actuated}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\value{footnote}]{\url{https://www.youtube.com/watch?v=MuKOPnrYS-Q}}
-
-
-
-\subsection{Alignment devices}
-
-Assembling objects is a very complex task that requires accurate perception and pose estimation of the assembly parts and also proper gripping positioning. For interconnected objects, force-torque sensors and alignment devices such as \glspl{rcc} (example in \cref{fig:remote-center-compensator}) can be very useful tools for tolerating small misalignments and ensuring proper part installation.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.88\linewidth]{grasping/remote-center-compensator}
-	\caption[Usage of a \glsentrytext{rcc} to tolerate slight part misalignments]{Usage of a \glsentrytext{rcc} to tolerate slight part misalignments\protect\footnotemark}
-	\label{fig:remote-center-compensator}
-\end{figure}
-\footnotetext{\url{http://www.ati-ia.com/products/compliance/Compensator_product_desc.aspx}}
-
-
-\subsection{Motion planners}
+\section{Motion planning}
 
 Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers in assembly operations requires advanced control \cite{Stolt2015} and path planning algorithms \cite{Kuffner2000,You2012,Fontanals2014,mopl2015} and needs to take in consideration the robot hardware configuration and manipulation capabilities along with the world state and assembly knowledge \cite{Tenorth14} (such as where are the parts to be assembled and in which sequence they will be installed). This knowledge integration is critical in order to generate the assembly graph with the proper part installation sequence that ensures that the robot will be able to use its end effectors to perform all the tasks \cite{Thomas2003ATP,Thomas2011} while avoiding unintended collisions.
+
+
+\subsection{Motion representation}
+
+There are several methods for modeling the robotic motions and relative spatial disposition of objects during an automated assembly process. One of the early approaches is the \gls{tff} \cite{Mason1981,Finkemeyer2004} which provides a practical technique for defining coordinate frames along with pose, velocity and force information required to perform compliant motion using robotic manipulators. This method was later extended with the Operational Space Approach \cite{Khatib1987,DeSapio2006} in order to support dynamic and multi-body robot models. More recent methods include the Task Function Approach \cite{Samson1991} which allows to model sensors and interaction with the environment and the \gls{itasc} framework \cite{DeSchutter-ijrr2007,Smits2010} which gives the possibility to model geometric uncertainty.
+
+
+\subsection{Path planning}
+
+FF
 
 
 %Articles:\\
@@ -416,168 +36,6 @@ Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers 
 %- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\ | Thomas2011
 %- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\ | Thomas2003ATP
 
-
-
-\section{Perception sensors}
-
-Perception sensors for object recognition have evolved dramatically in the last few years, with the emergence of RGB-D and \gls{tof} sensors (such as the Kinect 1 and 2) as an affordable and reasonably accurate technological solution. Other perception sensors commonly used include 2D and stereo cameras and also camera-laser systems.
-
-
-\subsection{Image acquisition}\label{sec:image-acquisition}
-
-With the increase of resolution and lens build quality, 2D sensors remain a viable and accurate solution for detecting objects and perform quality inspection. Moreover, when used to observe the environment from several perspectives, they can achieve good geometry reconstruction and allow accurate 3D perception of objects. The two main image acquisition technologies (\gls{cmos} and \gls{ccd}) are shown in \cref{fig:ccd} and \cref{fig:cmos}.
-
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/ccd}}
-		{\caption[\glsentrytext{ccd} sensor]{\glsentrytext{ccd} sensor\protect\footnotemark}\label{fig:ccd}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/cmos}}
-		{\caption[\glsentrytext{cmos} sensor]{\glsentrytext{cmos} sensor\protect\footnotemark}\label{fig:cmos}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://cctvsystemblog.blogspot.pt/2013/07/architecture-of-ccd.html}}
-\footnotetext[\value{footnote}]{\url{https://micro.magnet.fsu.edu/primer/digitalimaging/cmosimagesensors.html}}
-
-
-\subsection{Point cloud acquisition}\label{sec:point-cloud-acquisition}
-
-Point clouds can be retrieved with a wide range of sensors with varying levels of precision and acquisition time \cite{Sansoni2009}. The next sections provide a brief overview of the main technologies capable of generating accurate point clouds useful for 3D perception.
-
-
-\subsubsection{Camera-laser systems}
-
-Camera-laser systems can obtain 3D geometry information from the environment by analyzing the deformation pattern of the laser light that is projected into the scene at incremental positions (example in \cref{fig:laser-triangulation}). They can achieve very accurate results, but given the need to physically move the laser or the object to scan, they require longer acquisition periods than the methods presented below.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\linewidth]{sensors/laser-triangulation}
-	\caption[Camera laser 3D triangulation system]{Camera laser 3D triangulation system\protect\footnotemark}
-	\label{fig:laser-triangulation}
-\end{figure}
-\footnotetext{\url{http://www.vision-systems.com/articles/print/volume-20/issue-6/features/understanding-laser-based-3d-triangulation-methods.html}}
-
-
-\subsubsection{Stereo vision methods}
-
-Stereo vision systems (example in \cref{fig:stereo-cameras}) can generate 3D representations of the environment by comparing the displacement of corresponding points in the two ambient images (\cref{fig:stereo-vision} gives an overview of such a system). This can be achieved because the relative position of the cameras is known. As such, points farther away will have smaller displacement between images than points closer to the cameras. In the end, a disparity image is obtained, that can then be converted to a point cloud representation of the environment.
-
-Given that the accuracy of the disparity image relies heavily in the correct matching of points between the left and right image, some stereo vision systems employ active observation by projecting a pattern into the environment in order to refine the point matching (example of hardware setup in \cref{fig:pr2-active-stereo}). This can significantly improve the accuracy if the environment has a lot of smooth surfaces with homogeneous colors.
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{sensors/stereo-cameras}}
-		{\caption[Stereo vision system]{Stereo vision system \cite{Kaczurba2013}}\label{fig:stereo-cameras}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{sensors/pr2-active-stereo}}
-		{\caption[PR2 head capable of active stereo vision]{PR2 head capable of active stereo vision\protect\footnotemark}\label{fig:pr2-active-stereo}}
-	\end{floatrow}
-\end{figure}
-\footnotetext{\url{https://www.willowgarage.com/pages/pr2/overview}}
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[height=.33\textheight]{sensors/stereo-vision}
-	\caption[Stereo vision overview]{Stereo vision overview \cite{Yang2014}}
-	\label{fig:stereo-vision}
-\end{figure}
-
-
-\subsubsection{Structured light methods}
-
-Structured light methods can retrieve 3D geometry from images by projecting a known pattern into the environment and analyzing its deformation (examples in \Cref{fig:structured-light,fig:kinect1-ir}). They can achieve sample rates of 30 Hz and besides 3D geometry they can also retrieve color information.
-
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/structured-light}}
-		{\caption[Structured light system diagram]{Structured light system diagram\protect\footnotemark}\label{fig:structured-light}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.21\textheight]{sensors/kinect1-ir}}
-		{\caption[Kinect 1 \glsentrytext{ir} pattern]{Kinect 1 \glsentrytext{ir} pattern\protect\footnotemark}\label{fig:kinect1-ir}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.laserfocusworld.com/articles/2011/01/lasers-bring-gesture-recognition-to-the-home.html}}
-\footnotetext[\value{footnote}]{\url{https://jahya.net/blog/how-depth-sensor-works-in-5-minutes}}
-
-
-The Kinect sensor seen in \cref{fig:kinect1} is an example of a structured light system that can achieve measurements with millimeter accuracy for objects close to the sensor. Another similar sensor is the Occipital Structure IO\footnote{\url{http://structure.io/}} which is intended for mobile devices and can be seen in \cref{fig:structure-io}.
-
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[1.1\FBwidth]
-		{\includegraphics[height=.15\textheight]{sensors/kinect1}}
-		{\caption[Kinect 2 sensor]{Kinect sensor\protect\footnotemark}\label{fig:kinect1}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.15\textheight]{sensors/structure-io}}
-		{\caption[Structure IO sensor]{Structure IO sensor\protect\footnotemark}\label{fig:structure-io}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{https://msdn.microsoft.com/en-us/library/jj131033.aspx}}
-\footnotetext[\value{footnote}]{\url{http://structure.io/press}}
-
-
-\subsubsection{\glsentrydesc{tof} methods}\label{sec:tof-methods}
-
-\gls{tof} or \gls{toa} methods can be used to calculate distances based on the amount of time that a given wave takes from the moment it is created to the moment it is received (system operation overview in \cref{fig:time-of-flight}). By acquiring a large amount of sensor readings, a 3D representation of the environment can be achieved.
-
-Since these systems rely on active interaction with the environment, they can be used without being significantly affected by lighting interferences. Nevertheless, it should be taken in consideration the conditions in which the waves propagate and also the geometry of the environment, because it can affect the path that the waves take, and as a result, lead to the decrease of precision in the measurements.
-
-
-\paragraph{\glsentrytext{tof} cameras}
-
-\gls{tof} cameras (examples in \cref{fig:mesa-sr4000,fig:kinect2}) can acquire 3D measurements of the environment with very high frame rate (30 Hz or even higher) allowing perception and mapping of the environment with very low latency, which can be a critical requirement in perception tasks that must react very fast to changes in their surroundings.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{sensors/time-of-flight}
-	\caption[\glsentrydesc{tof} system diagram]{\glsentrydesc{tof} system diagram\protect\footnotemark}
-	\label{fig:time-of-flight}
-\end{figure}
-\footnotetext{\url{http://www.laserfocusworld.com/articles/2011/01/lasers-bring-gesture-recognition-to-the-home.html}}
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.16\textheight]{sensors/mesa-sr4000}}
-		{\caption[Mesa SR4000 sensor]{Mesa SR4000 sensor\protect\footnotemark}\label{fig:mesa-sr4000}}
-
-		\ffigbox[1.05\FBwidth]
-		{\includegraphics[height=.16\textheight]{sensors/kinect2}}
-		{\caption[Kinect 2 sensor]{Kinect 2 sensor\protect\footnotemark}\label{fig:kinect2}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.mesa-imaging.ch/products/product-overview}}
-\footnotetext[\value{footnote}]{\url{https://www.ifixit.com/Teardown/Xbox+One+Kinect+Teardown/19725}}
-
-
-\paragraph{\glsentrytext{lidar}}
-
-Light waves generated with lasers can estimate distances with millimeter accuracy at long ranges and their sensors usually have a low sample rate (below 20 Hz). Systems like \gls{lidar} (3D sensor example shown in \cref{fig:velodyne-hdl-64e}) take advantage of this fact and can be used to obtain a very detailed 3D point cloud of the environment (like the one showed in \cref{fig:lidar-scan}). Moreover, some \glspl{lidar} can also capture the environment reflectivity / intensity besides their 3D geometry.
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[]
-		{\includegraphics[height=.115\textheight]{sensors/velodyne-hdl-64e}}
-		{\caption[3D Velodyne HDL-64E]{3D Velodyne HDL-64E\protect\footnotemark}\label{fig:velodyne-hdl-64e}}
-
-		\ffigbox[]
-		{\includegraphics[height=.115\textheight]{sensors/lidar-scan-car}}
-		{\caption[\glsentrytext{lidar} scan]{\glsentrytext{lidar} scan\protect\footnotemark}\label{fig:lidar-scan}}
-	\end{floatrow}
-\end{figure}
-\footnotetext[\the\numexpr\value{footnote}-1\relax]{\url{http://www.velodynelidar.com/lidar/hdlproducts/hdl64e.aspx}}
-\footnotetext[\value{footnote}]{\url{http://www.popsci.com/cars/article/2013-09/google-self-driving-car}}
 
 
 \section{Perception systems}
@@ -695,10 +153,6 @@ Automation of assembly operations in industrial applications \cite{Thomas2001,Pa
 %- Skills for Vision-based Applications in Robotics Application to aeronautics assembly pilot station
 
 
-\subsection{Motion representation}
-
-There are several methods for modeling the robotic motions and relative spatial disposition of objects during an automated assembly process. One of the early approaches is the \gls{tff} \cite{Mason1981,Finkemeyer2004} which provides a practical technique for defining coordinate frames along with pose, velocity and force information required to perform compliant motion using robotic manipulators. This method was later extended with the Operational Space Approach \cite{Khatib1987,DeSapio2006} in order to support dynamic and multi-body robot models. More recent methods include the Task Function Approach \cite{Samson1991} which allows to model sensors and interaction with the environment and the \gls{itasc} framework \cite{DeSchutter-ijrr2007,Smits2010} which gives the possibility to model geometric uncertainty.
-
 
 \subsection{Cloud robotics}
 
@@ -789,16 +243,6 @@ There is a wide range of technologies that allow the exchange of information bet
 %- Geometrically-Correct Projection-Based Texture Mapping onto a Deformable Object
 
 
-\subsection{Natural language processing}
-
-Natural language processing \cite{Manning1999,Jurafsky2000,Manning2008} of voice commands or unstructured textual representations (using frameworks such as GATE\footnote{\url{https://gate.ac.uk}}, CoreNLP\footnote{\url{http://stanfordnlp.github.io/CoreNLP/}}, NLTK\footnote{\url{http://www.nltk.org}}) can be very useful for extracting assembly information from \glspl{sop} / operator manuals and speedup the robot learning process \cite{Tenorth2010,Stenmark2013,Stenmark2014,Stenmark2016} (for example identifying which objects will be assembled using \gls{ner} \cite{Ekbal2012,Rami2014} and also in which order and their approximate spatial distribution).
-
-%Articles:\\
-%- Connecting natural language to task demonstrations and low-level control of industrial robots\\
-%- Describing constraint-based assembly tasks in unstructured natural language\\
-%- Natural Language Programming of Industrial Robots\\
-%- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web | Tenorth2010
-
 
 \subsection{Human-robot cooperation}
 
@@ -821,357 +265,17 @@ Gesture recognition of operators hand movements \cite{Oikonomidis2012,Gleeson201
 %- Information Support Development with Human-Centered Approach for Human-Robot Collaboration in Cellular Manufacturing
 
 
-\section{Software frameworks}
 
-Cooperative assembly of objects by robots is a multidisciplinary problem that requires advanced computer software systems. In order to speed up the implementation and deployment of the assembly system, several frameworks and libraries will be used. Among the most important are the \gls{ros} for the system architecture, Gazebo for simulation and testing, \gls{opencv} / \gls{pcl} for 2D / 3D perception and the RoboEarth / RoboHow projects software for robotics cognition.
+\section{Natural language processing}
 
-\subsection{\glsentrytext{ros}}
+Natural language processing \cite{Manning1999,Jurafsky2000,Manning2008} of voice commands or unstructured textual representations (using frameworks such as GATE\footnote{\url{https://gate.ac.uk}}, CoreNLP\footnote{\url{http://stanfordnlp.github.io/CoreNLP/}}, NLTK\footnote{\url{http://www.nltk.org}}) can be very useful for extracting assembly information from \glspl{sop} / operator manuals and speedup the robot learning process \cite{Tenorth2010,Stenmark2013,Stenmark2014,Stenmark2016} (for example identifying which objects will be assembled using \gls{ner} \cite{Ekbal2012,Rami2014} and also in which order and their approximate spatial distribution).
 
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.88\textwidth]{software/ros-logo}
-	\caption{\glsentrytext{ros} logo}
-	\label{fig:ros-logo}
-\end{wrapfigure}
+%Articles:\\
+%- Connecting natural language to task demonstrations and low-level control of industrial robots\\
+%- Describing constraint-based assembly tasks in unstructured natural language\\
+%- Natural Language Programming of Industrial Robots\\
+%- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web | Tenorth2010
 
-\gls{ros}\footnote{\url{http://www.ros.org}} \cite{Quigley2009} is a software framework designed to ease the development of robot systems. It provides seamless integration between hardware drivers and software modules, allowing a fast transition between simulation and deployment. It's an open source project that offers a distributed computing framework with several core libraries and development tools that aims to speedup software prototyping, testing and deployment.
-
-
-\subsubsection{Architecture}
-
-The \gls{ros} architecture was designed from the beginning to be a distributed peer-to-peer software framework that could be deployed in several operating systems and implemented in a range of different programming languages. However, given that most of the \gls{ros} community prefers open source software, the Ubuntu\footnote{\url{http://www.ubuntu.com}} operating system is the main developing and testing environment, and as such, the recommended choice for \gls{ros} developers. Moreover, considering that robotics research requires software with both performance and maintainability at its core, the C++\footnote{\url{http://www.cplusplus.com}} programming language is used in most of the available packages, along with Python\footnote{\url{https://www.python.org}} and Java\footnote{\url{https://www.java.com}}.
-
-Being a distributed computing framework, \gls{ros} relies in network connections and exchange of messages to perform the intended tasks. As such, its architecture was developed to follow a publish / subscribe pattern (\gls{ros} topics\footnote{\url{http://wiki.ros.org/Topics}}) and request and reply communication paradigm (\gls{ros} services\footnote{\url{http://wiki.ros.org/Services}} and actions\footnote{\url{http://wiki.ros.org/actionlib}}). This allows \gls{ros} nodes\footnote{\url{http://wiki.ros.org/Nodes}} (operating system processes) to be deployed in different computing platforms with ease and simplifies testing and exchange of software modules.
-
-The next sections provide a more detailed description of the main \gls{ros} architecture concepts.
-
-
-\paragraph{Nodes}
-
-\gls{ros} nodes are operating system processes that are part of the peer-to-peer communication graph. They are the fundamental building blocks of any \gls{ros} system and can be spread among several computing platforms.
-
-In order to manage the communications between nodes, the \gls{ros} framework provides a master node (roscore\footnote{\url{http://wiki.ros.org/roscore}}) that uses \gls{xmlrpc} to maintain a communication graph of the system. This allows nodes to be started without knowing the location (\gls{ip} address and port) of the other nodes in the network and greatly simplifies their integration and exchange. Also, by using \gls{ros} launch files\footnote{\url{http://wiki.ros.org/roslaunch}} (\gls{xml} configuration files), the specification of a system communication data flow and configuration can be easily altered.
-
-Besides handling communications, the master node (roscore) also manages system configurations through the parameter server. This allows nodes to share and change the system configuration at runtime. However, given that the parameter server is usually queried only when a node starts up, the dynamic reconfigure\footnote{\url{http://wiki.ros.org/dynamic_reconfigure}} \gls{api} can be used instead, if it is necessary to change the configuration of a node when it is already running. This is achieved by providing a callback that is asynchronously called when a configuration change is requested.
-
-The flexibility provided by \gls{ros} in both module integration and exchange can greatly speedup testing and deployment and the possibility of changing the configuration of the system at runtime and restart software modules individually (nodes) is very useful when implementing system supervisors and recovery behaviors.
-
-
-\paragraph{Nodelets}
-
-A nodelet\footnote{\url{http://wiki.ros.org/nodelet}} is a special kind of node that aims to reduce the overhead of message exchange. This overhead can be significant when messages are very large, such as point clouds or high resolution images. To mitigate this problem, the nodelets exchange pointers to shared memory regions, instead of sending the entire messages between nodes.
-
-To achieve this overhead reduction, some architecture changes are required. The most important being the use of threads instead of processes, and the creation of a superclass that all nodelets must inherit. This leads to the creation of plugin libraries for each nodelet instead of an executable for each node.
-
-Another important change is the introduction of nodelet managers to allow loading and setup of nodelets in different threads inside the same process.
-
-In terms of implementation, the transition from nodes to nodelets requires few code changes and can lead to a significant improvement of the overall system performance.
-
-
-\paragraph{Topics}
-
-\gls{ros} topics are named communication buses that follow the publish / subscribe pattern. They provide a simple method for exchanging messages between nodes and allow the decoupling of information production (coming from sensors, or other processing modules) and consumption (for example sensor data processing or high level cognition). This is useful when there are multiple sources of the same information or there are multiple consumers that are interested in processing the same data for different purposes. Moreover, this communication architecture allows to log and replay the exchanged messages (datasets), which can be helpful to test different algorithms with the same data and move between simulation and hardware deployment seamlessly.
-
-Currently, topics can use either the \gls{tcp} or \gls{udp} protocols to exchange messages. The \gls{tcp} implementation is used by default and creates a bidirectional channel between each producer and subscriber while guaranteeing the delivery of all messages. The \gls{udp} implementation uses an unreliable and stateless transport approach, in which a subscriber listens to a given broadcast address, and has no guarantee that will receive all messages. As such, \gls{tcp} should be used when all messages must be processed, and \gls{udp} should be considered when the latency and the \gls{tcp} overhead are important issues.
-
-
-\paragraph{Services}
-
-\gls{ros} services are named communication buses that follow the request and reply protocol, in which a node asks for a given service and receives a response according to the data that was sent in the request message and the state of the service node. They are useful to query other nodes state or to request the execution of some behavior / action.
-
-
-\paragraph{Actions}
-
-\gls{ros} actions are a special kind of service in which the progress of the request can be queried and monitored. They are very useful when the request might take a long time and they provide the caller the necessary information to supervise the execution of the request and if necessary terminate its execution.
-
-
-\subsubsection{Build system}
-
-The latest \gls{ros} build system is named catkin\footnote{\url{http://wiki.ros.org/catkin}}, and is the successor of the original rosbuild\footnote{\url{http://wiki.ros.org/rosbuild}} system. It combines CMake\footnote{\url{http://www.cmake.org}} macros and Python scripts to allow building multiple dependent projects at the same time. It is a cross-platform build system, organized in packages and meta-packages (group of packages). Each package is a software module that can produce libraries or binaries from source code.
-
-Catkin was designed to deal with complex build configurations, which in the case of \gls{ros} packages involves a considerable amount of build dependencies for each project. As such, catkin provides a build system that can easily find, build and link both \gls{ros} and system dependencies. Moreover, it provides install targets to allow faster code releases and simplifies builds from source for the final users.
-
-Other useful features of the catkin build system are the concepts of workspace and overlays. Catkin uses a workspace with out-of-source builds to keep the source code separate from the build files. This allows the code directory structure to be clean of compiler generated files that are platform dependent. Moreover, it simplifies the concurrent usage of system and user modified packages (present in the workspace overlay), because catkin gives priority to workspace packages (in relation to system packages). This is particularly useful when it is necessary to modify and test some package that has been released and is installed in the system (without having to uninstall the stable release of that package).
-
-Finally, catkin is a cross-platform build system that can be used to build other projects that use CMake and are not related to \gls{ros}.
-
-
-\subsubsection{Development tools}
-
-\gls{ros} provides several development tools that allow introspection and visualization of the system state. They are very useful for testing, debugging and profiling.
-
-The next sections give an overview of the most important \gls{ros} tools that are currently available.
-
-
-\paragraph{Graphical User Interface tools}
-
-The \gls{ros} development tools that have graphical user interfaces are aggregated in the rqt framework\footnote{\url{http://wiki.ros.org/rqt}}, and are loaded as plugins at runtime (some can be started as standalone applications). Currently there is plugins to visualize sensor data (rviz\footnote{\url{http://wiki.ros.org/rviz}}); introspect the contents of topics; log and replay \gls{ros} messages (rosbag\footnote{\url{http://wiki.ros.org/rosbag}}); display node, package and coordinate systems graphs; list and filter debug messages; change configuration of running nodes (dynamic reconfigure); monitor nodes memory and processor usage and much more.
-
-
-\paragraph{Command line tools}
-
-The \gls{ros} command line tools\footnote{\url{http://wiki.ros.org/ROS/CommandLineTools}} are split across several executables and can be used for advanced introspection (rosnode, rostopic and rosservice), system configuration (rosparam), package building and management (catkin, rosdep and rosinstall) and also to search \gls{ros} message types documentation (rosmsg and rossrv). Finally, it is available a diagnostics tool (roswtf), that can detect packages / dependencies issues and configuration problems.
-
-
-\subsection{Gazebo}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.88\textwidth]{software/gazebo-logo}
-	\caption{Gazebo logo}
-	\label{fig:gazebo-logo}
-\end{wrapfigure}
-
-
-Gazebo\footnote{\url{http://gazebosim.org}} is a 3D multi-robot simulator capable of generating hardware sensor data for different kinds of robots while providing a realistic environment with physics simulation and 3D visualization. It is very useful to speedup testing of algorithms with different types of robots and environments. In \Cref{fig:gazebo-ros-integration} it is shown how Gazebo can be used instead of a real robot, without requiring any implementation code modification (because it implements the same \gls{ros} interfaces that the hardware drivers use).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.9\textwidth]{software/gazebo-ros-integration}
-	\caption[Integration of \glsentrytext{ros} and Gazebo]{Integration of \glsentrytext{ros} and Gazebo\protect\footnotemark}
-	\label{fig:gazebo-ros-integration}
-\end{figure}
-\footnotetext{\url{http://gazebosim.org/tutorials?tut=ros_control}}
-
-
-\subsection{RoboDK}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.9\textwidth]{software/robodk-logo}
-	\caption{RoboDK logo}
-	\label{fig:robodk-logo}
-\end{wrapfigure}
-
-The \gls{robodk} \footnote{\url{https://www.robodk.com}} is a 3D simulator and an offline programming environment for industrial robots with and extended library of robotic arms and is capable of \gls{gui} / script specification of robot motions with support for 2D / 3D visualization / inspection.
-
-
-\subsection{\glsentrytext{opencv}}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.6\textwidth]{software/opencv-logo}
-	\caption{\glsentrytext{opencv} logo}
-	\label{fig:opencv-logo}
-\end{wrapfigure}
-
-\gls{opencv}\footnote{\url{http://opencv.org}} provides a wide range of state of the art algorithms for processing image sensor data, from segmentation and object quality analysis to advanced object recognition using feature matching or machine learning. It also provides a set of modules for extracting 3D geometry using structured light or stereo vision methods along with image stitching, video stabilization, face / marker detection, among many others.
-
-
-\subsection{\glsentrytext{pcl}}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.88\textwidth]{software/pcl-logo}
-	\caption{\glsentrytext{pcl} logo}
-	\label{pcl-logo}
-\end{wrapfigure}
-
-\gls{pcl}\footnote{\url{http://pointclouds.org}} \cite{Rusu2011} is an open source project that provides algorithms for 3D perception. These algorithms can be used to filter and register point clouds as well as perform object segmentation, recognition and tracking. In \Cref{fig:pcl-dependency-graph} it is presented an overview of the main modules currently available in \gls{pcl}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.7\textwidth]{software/pcl-dependency-graph}
-	\caption[\glsentrydesc{pcl}]{\glsentrydesc{pcl}\protect\footnotemark}
-	\label{fig:pcl-dependency-graph}
-\end{figure}
-\footnotetext{\url{http://pointclouds.org/about}}
-
-
-\subsection{Robotics Library}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.99\textwidth]{software/robotics-library-logo}
-	\caption{Robotics Library logo}
-	\label{fig:robotics-library-logo}
-\end{wrapfigure}
-
-The Robotics Library\footnote{\url{http://www.roboticslibrary.org}} provides a set of C++ software libraries for managing robot arm kinematics, motion control, collision detection, path planing and visual inspection.
-
-
-\subsection{Orocos}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.52\textwidth]{software/orocos-logo}
-	\caption{Orocos project logo}
-	\label{fig:orocos-logo}
-\end{wrapfigure}
-
-The \gls{orocos}\footnote{\url{http://www.orocos.org/}} is a real-time robot control framework with a set of software libraries for managing forward / inverse robot arm kinematics, data filtering (Dynamic Bayesian Networks, Kalman filters, particle filters) and robot arm motion control using the \gls{itasc}.
-
-
-
-
-\subsection{RoboEarth}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.9\textwidth]{software/robo-earth-logo}
-	\caption{RoboEarth logo}
-	\label{fig:robo-earth-logo}
-\end{wrapfigure}
-
-During the RoboEarth\footnote{\url{http://roboearth.org}} project it was developed a set of modular software components that enabled robots to share reusable knowledge and offload heavy computation tasks to the cloud. In \cref{fig:robo-earth-software-interaction,fig:robo-earth-software-overview} it is given a brief overview of the main software modules of the RoboEarth project that will be presented in the next sections.
-
-
-\begin{figure}[H]
-	\begin{floatrow}[2]
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.35\textheight]{software/robo-earth-software-interaction}}
-		{\caption[Interaction between the RoboEarth software modules]{Interaction between the RoboEarth software modules \cite{DiMarco2013}}\label{fig:robo-earth-software-interaction}}
-
-		\ffigbox[\FBwidth]
-		{\includegraphics[height=.19\textheight]{software/robo-earth-software-overview}}
-		{\caption[Overview of the RoboEarth main software modules]{Overview of the RoboEarth main software modules\protect\footnotemark}\label{fig:robo-earth-software-overview}}
-	\end{floatrow}
-\end{figure}
-\footnotetext{\url{http://roboearth.org/software-components}}
-
-
-
-\subsubsection{Rapyuta}
-
-Rapyuta\footnote{\url{http://rapyuta.org}} \cite{Hunziker2013} is a \gls{paas} computing environment built on top of \gls{ros} that allows to offload heavy computation tasks (such as environment mapping, object recognition, machine learning, among others) from the robot's embedded systems to the cloud.
-
-
-\subsubsection{WIRE}
-
-The \gls{wire}\footnote{\url{http://wiki.ros.org/wire}} \cite{Elfring2013} is a probabilistic multi-object tracking system capable of maintaining a consistent world state of detected objects even when they are outside of the robot observable area or are partially occluded.
-
-
-\subsubsection{C2TAM}
-
-The \gls{c2tam}\footnote{\url{https://sites.google.com/site/c2tamvisualslam}} \cite{Riazuelo2014} is a remote and cooperative visual \gls{slam} system capable of estimating the robots cameras pose in the world while creating a consistent map of the environment using image feature matching and loop closing techniques. Other related work developed within the RoboEarth project includes the semantic mapping of the environment \cite{Riazuelo2015} and also the low cost mapping systems \cite{Mohanarajah2015}.
-
-
-\subsubsection{KnowRob}
-
-KnowRob\footnote{\url{http://www.knowrob.org}} \cite{tenorth2011PhD,Tenorth2013k} is a knowledge processing framework that combines world representation using ontologies with a Prolog reasoning engine in order to semantic learn new reusable skills from different data sources. It has integrated several reasoning, perception and human-machine interaction software packages\footnote{\url{http://wiki.ros.org/knowrob}} that allow to semantically analyze \gls{cad} models \cite{Lavoue2005,Tenorth2013cad}, visually edit robot tasks\footnote{\url{http://www.knowrob.org/doc/action_recipe_editor}} and semantic environment maps\footnote{\url{http://www.knowrob.org/doc/semantic_map_editor}} \cite{Pangercic2012} and also perform robot motions\footnote{\url{http://knowrob.org/doc/motion_constraints}} \cite{tenorth14motiontemplates} based on the semantic knowledge of the objects and the environment.
-
-
-\subsection{RoboHow}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.9\textwidth]{software/robo-how-logo}
-	\caption{RoboHow logo}
-	\label{fig:robo-how-logo}
-\end{wrapfigure}
-
-The RoboHow project\footnote{\url{https://robohow.eu}} continued the development of the RoboEarth research and added several new software packages targeted at service robotics and knowledge extraction. The next sections present the main software modules developed during this project.
-
-
-\subsubsection{FORTH 3D Hand Tracking library}
-
-The FORTH 3D Hand Tracking Library\footnote{\url{http://cvrlcode.ics.forth.gr/handtracking}} \cite{Oikonomidis2011,Kyriazis2012} provides an accurate and real-time approach (relying on \gls{gpu} acceleration) for tracking the 3D pose and orientation of the hand fingers of a person (26 degrees of freedom) using an RGB-D sensor.
-
-
-\subsubsection{\glsentrytext{cram}}
-
-The \gls{cram}\footnote{\url{http://www.cram-system.org/cram}} \cite{Beetz2010} is a software toolbox that allows to perform complex object manipulation tasks using flexible specification of reactive robot motion control plans using Common Lisp. In \cref{fig:cram-overview} it is shown the integration with the KnowRob for logic reasoning and semantic cognition.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.62\linewidth]{software/cram-overview}
-	\caption{Overview of the \glsentrytext{cram} main software modules}
-	\label{fig:cram-overview}
-\end{figure}
-
-
-\subsubsection{\glsentrytext{itasc}}
-
-The \gls{itasc}\footnote{\url{http://www.orocos.org/wiki/orocos/itasc-wiki}} \cite{DeSchutter-ijrr2007} is a software framework for generation of robot motions by specifying constraints between the objects, the robots and the environment. In \cref{fig:itasc-overview} it is presented an overview of the \gls{itasc} main software modules.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.56\linewidth]{software/itasc-overview}
-	\caption[Overview of the \glsentrytext{itasc} framework]{Overview of the \glsentrytext{itasc} framework\protect\footnotemark}
-	\label{fig:itasc-overview}
-\end{figure}
-\footnotetext{\url{http://www.orocos.org/wiki/orocos/itasc-wiki/2-itasc-software}}
-
-
-
-
-\subsection{\glsentrytext{openease}}
-
-%\vspace*{-1cm}
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.75\textwidth]{software/open-ease-logo}
-	\caption{\glsentrytext{openease} logo}
-	\label{fig:open-ease}
-\end{wrapfigure}
-
-The \gls{openease}\footnote{\url{http://www.open-ease.org}} \cite{Beetz2015} is a remote knowledge representation and processing service built on top of KnowRob\footnote{\url{http://www.knowrob.org}} and \gls{ros} that allows to interpret, analyze, visualize and learn from experience and demonstration.
-
-
-\subsection{OpenCyc}
-
-\begin{wrapfigure}{r}{0.23\textwidth}
-	\centering
-	\vspace*{-2em}
-	\includegraphics*[width=0.7\textwidth]{software/open-cyc-logo}
-	\caption{OpenCyc logo}
-	\label{fig:open-cyc}
-\end{wrapfigure}
-
-OpenCyc\footnote{\url{http://www.cyc.com/platform/opencyc}} is a reasoning engine with a large ontology and knowledge base that is capable of extracting semantic information from natural language. It also has \gls{ai} capabilities which make it suitable for implementing domain-specific expert systems and game \glspl{ai}.
-
-
-
-\section{Related conferences}
-
-A list with the most prestigious conferences in robotics is presented below.
-
-\begin{itemize}[leftmargin=2em]
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra}{ICRA} - IEEE International Conference on Robotics and Automation
-	\item \href{http://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros}{IROS} - IEEE / RSJ International Conference on Intelligent Robots and Systems
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/case}{CASE} - IEEE International Conference on Automation Science and Engineering
-	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/isam}{ISAM} - IEEE International Symposium on Assembly and Manufacturing
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/robotica}{ICARSC} - IEEE International Conference on Autonomous Robot Systems and Competitions
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icar}{ICAR} - International Conference on Advanced Robotics
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icarcv}{ICARCV} - International Conference on Control, Automation, Robotics and Vision 
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/iccas}{ICCAS} - International Conference on Control, Automation and Systems
-	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icinco}{ICINCO} - International Conference on Informatics in Control, Automation, and Robotics
-\end{itemize}
-
-
-
-\section{Related journals}
-
-A list with the most prestigious journals in robotics is presented below.
-
-\begin{itemize}[leftmargin=2em]
-	\item \href{http://ijr.sagepub.com/}{IJR} - SAGE International Journal of Robotics Research (\href{http://www.scimagojr.com/journalsearch.php?q=18050\&tip=sid\&clean=0}{SJR} - 4.184)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424}{TII} - IEEE Transactions on Industrial Informatics (\href{http://www.scimagojr.com/journalsearch.php?q=144912\&tip=sid\&clean=0}{SJR} - 2.973)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8860}{TR} - IEEE Transactions on Robotics (\href{http://www.scimagojr.com/journalsearch.php?q=95101\&tip=sid\&clean=0}{SJR} - 2.884)
-	\item \href{http://www.springer.com/engineering/robotics/journal/10514}{AR} - Springer Autonomous Robots (\href{http://www.scimagojr.com/journalsearch.php?q=18016\&tip=sid\&clean=0}{SJR} - 2.500)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856}{TASE} - IEEE Transactions on Automation Science and Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=17340\&tip=sid\&clean=0}{SJR} - 1.832)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=100}{RAM} - IEEE Robotics and Automation Magazine (\href{http://www.scimagojr.com/journalsearch.php?q=18027\&tip=sid\&clean=0}{SJR} - 1.792)
-	\item \href{http://www.journals.elsevier.com/computers-and-industrial-engineering/}{CIE} - Elsevier Computers and Industrial Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18164\&tip=sid\&clean=0}{SJR} - 1.630)
-	\item \href{http://www.journals.elsevier.com/robotics-and-computer-integrated-manufacturing/}{RCIM} - Elsevier Robotics and Computer-Integrated Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=18080\&tip=sid\&clean=0}{SJR} - 1.621)
-	%	\item \href{http://www.tandfonline.com/toc/tprs20/current}{JPR} - International Journal of Production Research (\href{http://www.scimagojr.com/journalsearch.php?q=27656\&tip=sid\&clean=0}{SJR} - 1.445)
-	\item \href{http://www.springer.com/business+\%26+management/production/journal/10845}{JIM} - Springer Journal of Intelligent Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=24363\&tip=sid\&clean=0}{SJR} - 1.397)
-	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=28}{TIA} - IEEE Transactions on Industry Applications (\href{http://www.scimagojr.com/journalsearch.php?q=17361\&tip=sid\&clean=0}{SJR} - 1.388)
-	\item \href{http://www.journals.elsevier.com/robotics-and-autonomous-systems/}{RAS} - Elsevier Robotics and Autonomous Systems (\href{http://www.scimagojr.com/journalsearch.php?q=18079\&tip=sid\&clean=0}{SJR} - 1.377)
-	\item \href{http://www.journals.elsevier.com/journal-of-manufacturing-systems/}{JMS} - Elsevier Journal of Manufacturing Systems (\href{http://www.scimagojr.com/journalsearch.php?q=14966\&tip=sid\&clean=0}{SJR} - 1.190)
-	\item \href{http://www.springer.com/computer/ai/journal/10515}{ASE} - Spinger Automated Software Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=24145\&tip=sid\&clean=0}{SJR} - 1.089)
-	%	\item \href{http://www.iospress.nl/journal/integrated-computer-aided-engineering/}{ICAE} - Integrated Computer-Aided Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18197\&tip=sid\&clean=0}{SJR} - 0.989)
-	\item \href{http://www.springer.com/engineering/production+engineering/journal/170}{JAMT} - Springer International Journal of Advanced Manufacturing Technology (\href{http://www.scimagojr.com/journalsearch.php?q=20428\&tip=sid\&clean=0}{SJR} - 0.915)
-\end{itemize}
 
 
 
@@ -1314,34 +418,76 @@ Automation of assembly operations is a multidisciplinary research field with a v
 %\section{Related research projects}
 %
 %Automation of assembly operations is a multidisciplinary research field with a very active community in both academia and also in the industry. In the list below is presented some of the most important projects in the area of cognitive robotics in the last decades.
+%
+%
+%\begin{itemize}
+%	\item \glsentrytext{acat}\footnote{\url{http://www.acat-project.eu}} - \glsdesc{acat}
+%	\item \glsentrytext{arms}\footnote{\url{http://www.nrec.ri.cmu.edu/projects/arms}} - \glsdesc{arms}
+%	\item \glsentrytext{charm}\footnote{\url{http://charm.sites.olt.ubc.ca}} - \glsdesc{charm}
+%	\item \glsentrytext{chris}\footnote{\url{http://www.chrisfp7.eu}} - \glsdesc{chris}
+%	\item \glsentrytext{cogimon}\footnote{\url{https://cogimon.eu}} - \glsdesc{cogimon}
+%	\item FourByThree\footnote{\url{http://fourbythree.eu}}
+%	\item \glsentrytext{jahir}\footnote{\url{http://www6.in.tum.de/Main/ResearchJahir}} - \glsdesc{jahir}
+%	\item \glsentrytext{james}\footnote{\url{http://www.james-project.eu}} - \glsdesc{james}
+%	\item \glsentrytext{jast}\footnote{\url{http://www6.in.tum.de/Main/ResearchJast}} - \glsdesc{jast}
+%	\item \glsentrytext{liaa}\footnote{\url{http://www.project-leanautomation.eu}} - \glsdesc{liaa}
+%	\item \glsentrytext{pisa}\footnote{\url{http://www.pisa-ip.org}} - \glsdesc{pisa}
+%	\item \glsentrytext{reconcell}\footnote{\url{http://www.reconcell.eu}} - \glsdesc{reconcell}
+%	\item RoboEarth\footnote{\url{http://roboearth.org}}
+%	\item RoboHow\footnote{\url{https://robohow.eu}}
+%	\item Robo-Partner\footnote{\url{http://www.robo-partner.eu}}
+%	\item \glsentrytext{rosetta}\footnote{\url{http://www.fp7rosetta.org}} - \glsdesc{rosetta}
+%	\item ROS-Industrial\footnote{\url{http://rosindustrial.org}}
+%	\item \glsentrytext{saphari}\footnote{\url{http://www.saphari.eu}} - \glsdesc{saphari}
+%	\item \glsentrytext{sarafun}\footnote{\url{http://h2020sarafun.eu}} - \glsdesc{sarafun}
+%	\item \glsentrytext{shrine}\footnote{\url{http://www.shrine-project.eu}} - \glsdesc{shrine}
+%	\item \glsentrytext{symbiotic}\footnote{\url{http://www.symbio-tic.eu}} - \glsdesc{symbiotic}
+%	\item SME-Robot\footnote{\url{http://www.smerobot.org}}
+%	\item SME-Robotics\footnote{\url{http://www.smerobotics.org}}
+%	\item \glsentrytext{xact}\footnote{\url{http://www.xact-project.eu}} - \glsdesc{xact}
+%	\item \glsentrytext{tapas}\footnote{\url{http://www.tapas-project.eu}} - \glsdesc{tapas}
+%\end{itemize}
 
-%\begin{multicols}{4}
-%	\begin{enumerate}
-%		\item \gls{acat}\footnote{\url{http://www.acat-project.eu}}
-%		\item \gls{arms}\footnote{\url{http://www.nrec.ri.cmu.edu/projects/arms}}
-%		\item \gls{charm}\footnote{\url{http://charm.sites.olt.ubc.ca}}
-%		\item \gls{chris}\footnote{\url{http://www.chrisfp7.eu}}
-%		\item \gls{cogimon}\footnote{\url{https://cogimon.eu}}
-%		\item FourByThree\footnote{\url{http://fourbythree.eu}}
-%		\item \gls{jahir}\footnote{\url{http://www6.in.tum.de/Main/ResearchJahir}}
-%		\item \gls{james}\footnote{\url{http://www.james-project.eu}}
-%		\item \gls{jast}\footnote{\url{http://www6.in.tum.de/Main/ResearchJast}}
-%		\item \gls{liaa}\footnote{\url{http://www.project-leanautomation.eu}}
-%		\item \gls{pisa}\footnote{\url{http://www.pisa-ip.org}}
-%		\item \gls{reconcell}\footnote{\url{http://www.reconcell.eu}}
-%		\item RoboEarth\footnote{\url{http://roboearth.org}}
-%		\item RoboHow\footnote{\url{https://robohow.eu}}
-%		\item Robo-Partner\footnote{\url{http://www.robo-partner.eu}}
-%		\item \gls{rosetta}\footnote{\url{http://www.fp7rosetta.org}}
-%		\item ROS-Industrial\footnote{\url{http://rosindustrial.org}}
-%		\item \gls{saphari}\footnote{\url{http://www.saphari.eu}}
-%		\item \gls{sarafun}\footnote{\url{http://h2020sarafun.eu}}
-%		\item \gls{shrine}\footnote{\url{http://www.shrine-project.eu}}
-%		\item \gls{symbiotic}\footnote{\url{http://www.symbio-tic.eu}}
-%		\item SME-Robot\footnote{\url{http://www.smerobot.org}}
-%		\item SME-Robotics\footnote{\url{http://www.smerobotics.org}}
-%		\item \gls{xact}\footnote{\url{http://www.xact-project.eu}}
-%		\item \gls{tapas}\footnote{\url{http://www.tapas-project.eu}}
-%	\end{enumerate}
-%\end{multicols}
+
+
+\section{Related journals}
+
+A list with the most prestigious journals in robotics is presented below.
+
+\begin{itemize}[leftmargin=2em]
+	\item \href{http://ijr.sagepub.com/}{IJR} - SAGE International Journal of Robotics Research (\href{http://www.scimagojr.com/journalsearch.php?q=18050\&tip=sid\&clean=0}{SJR} - 4.184)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424}{TII} - IEEE Transactions on Industrial Informatics (\href{http://www.scimagojr.com/journalsearch.php?q=144912\&tip=sid\&clean=0}{SJR} - 2.973)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8860}{TR} - IEEE Transactions on Robotics (\href{http://www.scimagojr.com/journalsearch.php?q=95101\&tip=sid\&clean=0}{SJR} - 2.884)
+	\item \href{http://www.springer.com/engineering/robotics/journal/10514}{AR} - Springer Autonomous Robots (\href{http://www.scimagojr.com/journalsearch.php?q=18016\&tip=sid\&clean=0}{SJR} - 2.500)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8856}{TASE} - IEEE Transactions on Automation Science and Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=17340\&tip=sid\&clean=0}{SJR} - 1.832)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=100}{RAM} - IEEE Robotics and Automation Magazine (\href{http://www.scimagojr.com/journalsearch.php?q=18027\&tip=sid\&clean=0}{SJR} - 1.792)
+	\item \href{http://www.journals.elsevier.com/computers-and-industrial-engineering/}{CIE} - Elsevier Computers and Industrial Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18164\&tip=sid\&clean=0}{SJR} - 1.630)
+	\item \href{http://www.journals.elsevier.com/robotics-and-computer-integrated-manufacturing/}{RCIM} - Elsevier Robotics and Computer-Integrated Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=18080\&tip=sid\&clean=0}{SJR} - 1.621)
+	%	\item \href{http://www.tandfonline.com/toc/tprs20/current}{JPR} - International Journal of Production Research (\href{http://www.scimagojr.com/journalsearch.php?q=27656\&tip=sid\&clean=0}{SJR} - 1.445)
+	\item \href{http://www.springer.com/business+\%26+management/production/journal/10845}{JIM} - Springer Journal of Intelligent Manufacturing (\href{http://www.scimagojr.com/journalsearch.php?q=24363\&tip=sid\&clean=0}{SJR} - 1.397)
+	\item \href{http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=28}{TIA} - IEEE Transactions on Industry Applications (\href{http://www.scimagojr.com/journalsearch.php?q=17361\&tip=sid\&clean=0}{SJR} - 1.388)
+	\item \href{http://www.journals.elsevier.com/robotics-and-autonomous-systems/}{RAS} - Elsevier Robotics and Autonomous Systems (\href{http://www.scimagojr.com/journalsearch.php?q=18079\&tip=sid\&clean=0}{SJR} - 1.377)
+	\item \href{http://www.journals.elsevier.com/journal-of-manufacturing-systems/}{JMS} - Elsevier Journal of Manufacturing Systems (\href{http://www.scimagojr.com/journalsearch.php?q=14966\&tip=sid\&clean=0}{SJR} - 1.190)
+	\item \href{http://www.springer.com/computer/ai/journal/10515}{ASE} - Spinger Automated Software Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=24145\&tip=sid\&clean=0}{SJR} - 1.089)
+	%	\item \href{http://www.iospress.nl/journal/integrated-computer-aided-engineering/}{ICAE} - Integrated Computer-Aided Engineering (\href{http://www.scimagojr.com/journalsearch.php?q=18197\&tip=sid\&clean=0}{SJR} - 0.989)
+	\item \href{http://www.springer.com/engineering/production+engineering/journal/170}{JAMT} - Springer International Journal of Advanced Manufacturing Technology (\href{http://www.scimagojr.com/journalsearch.php?q=20428\&tip=sid\&clean=0}{SJR} - 0.915)
+\end{itemize}
+
+
+
+\section{Related conferences}
+
+A list with the most prestigious conferences in robotics is presented below.
+
+\begin{itemize}[leftmargin=2em]
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra}{ICRA} - IEEE International Conference on Robotics and Automation
+	\item \href{http://www.ieee-ras.org/conferences-workshops/financially-co-sponsored/iros}{IROS} - IEEE / RSJ International Conference on Intelligent Robots and Systems
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/case}{CASE} - IEEE International Conference on Automation Science and Engineering
+	\item \href{http://www.ieee-ras.org/conferences-workshops/fully-sponsored/isam}{ISAM} - IEEE International Symposium on Assembly and Manufacturing
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/robotica}{ICARSC} - IEEE International Conference on Autonomous Robot Systems and Competitions
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icar}{ICAR} - International Conference on Advanced Robotics
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icarcv}{ICARCV} - International Conference on Control, Automation, Robotics and Vision 
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/iccas}{ICCAS} - International Conference on Control, Automation and Systems
+	\item \href{http://www.ieee-ras.org/conferences-workshops/technically-co-sponsored/icinco}{ICINCO} - International Conference on Informatics in Control, Automation, and Robotics
+\end{itemize}
 
