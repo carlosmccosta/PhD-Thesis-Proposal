@@ -18,9 +18,117 @@ The first stage of any disassembly planning system \cite{Whitney2004} is the col
 
 \subsection{Search for assembly / disassembly plan}
 
-The second stage includes the search of the optimal solution by either using exhaustive tree inspection or relying on the branch-and-bound algorithm \cite{Thomas2011,Thomas2015} for performing a systematic and guided expansion of the search tree while pruning branches that have a cumulative cost higher than a known feasible solution. The optimization cost function may take into consideration the physical constraints between the components while also relying in other information relevant for the particular use case under analysis. For robotic assembly, this usually means a search tree that relies on information retrieved from the detailed description of the work cell, such as the position of all the parts to assemble or disassemble along with the available robots and their tools, sensors, and higher-level perception and manipulation capabilities. Moreover, it might also be necessary to use ambient fixtures in order to ensure the mechanical stability of the product during assembly or disassembly. From this information, the cost function of the branch-and-bound algorithm may use the robot travel distance, the number of possible grasps and tool changes, along with the mechanical stability, geometric accessibility, parallelism and also the number of times it was required to move the product being assembled in order for the robot to be able to access the intended regions. This information may be stored in different data structures \cite{Thomas2001}, such as AND-OR graphs for modeling precedences, in 3D \gls{cad} models for specifying geometrical representations and spatial relations and also in knowledge databases.
+FF
+Planning Domain Definition Language (PDDL)
 
-When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks.
+\subsubsection{Optimization function}
+
+Traveling salesman
+Multi-objective optimization
+FF
+
+
+\subsubsection{Optimal search algorithms}
+
+FF
+
+\paragraph{Depth-first search}
+
+FF
+
+\paragraph{Iterative deepening depth-first search}
+
+FF
+
+\paragraph{Breadth-first search}
+
+FF
+
+\paragraph{Branch-and-bound search}
+
+FF
+
+\paragraph{Dijkstra}
+
+FF
+
+\subsubsection{Heuristic search algorithm}
+
+FF
+
+\paragraph{Beam search}
+
+FF
+
+\paragraph{Best-first search}
+
+FF
+
+\paragraph{A*}
+
+FF
+
+\paragraph{SMA*}
+
+FF
+
+\paragraph{Fringe search}
+
+FF
+
+\paragraph{Rule-based}
+
+FF
+
+\subsubsection{Evolutionary algorithms}
+
+FF
+
+
+\paragraph{Genetic algorithms}
+
+NSGA-II
+FF
+
+\paragraph{Artificial Bee Colony}
+
+FF
+
+\paragraph{Ant colony optimization}
+
+FF
+
+\paragraph{Particle swarm optimization}
+
+FF
+
+
+\subsubsection{Local optimization algorithms}
+
+FF
+
+\paragraph{Gradient descent}
+
+FF
+
+\paragraph{Hill climbing}
+
+FF
+Random restart hill climbing
+
+
+\paragraph{Simulated annealing}
+
+FF
+
+\paragraph{Tabu search}
+
+FF
+
+
+The second stage includes the search of the optimal solution by either using exhaustive tree inspection (using for example a depth-first / bread-first search algorithm) or relying on the branch-and-bound algorithm \cite{Thomas2011,Thomas2015} for performing a systematic and guided expansion of the search tree while pruning branches that have a cumulative cost higher than a known feasible solution. The optimization cost function may take into consideration the physical constraints between the components while also relying in other information relevant for the particular use case under analysis. For robotic assembly, this usually means a search tree that relies on information retrieved from the detailed description of the work cell, such as the position of all the parts to assemble or disassemble along with the available robots and their tools, sensors, and higher-level perception and manipulation capabilities. Moreover, it might also be necessary to use ambient fixtures in order to ensure the mechanical stability of the product during assembly or disassembly. From this information, the cost function of the branch-and-bound algorithm may use the robot travel distance, the number of possible grasps and tool changes, along with the mechanical stability, geometric accessibility, parallelism and also the number of times it was required to move the product being assembled in order for the robot to be able to access the intended regions. This information may be stored in different data structures \cite{Thomas2001}, such as AND-OR graphs for modeling precedences, in 3D \gls{cad} models for specifying geometrical representations and spatial relations and also in knowledge databases.
+
+When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks. On the other hand, a best-first search approach would also be suitable for quickly finding a good solution that then could be used as an upper-bound for optimal search algorithms.
 
 If a heuristic can be used to compute an upper bound from a feasible solution, then the search can be speed up further. The system presented in \cite{Johannsmeier2017} implemented a multi-agent system for modeling a team of human-robot partners assembling products cooperatively in which the task sequences were generated with an A* algorithm that took into consideration the execution time, resource costs (energy), risk factors (danger to humans), agent experience, reliability and also attention level of the agents.
 
