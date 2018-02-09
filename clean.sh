@@ -7,9 +7,9 @@ echo "##########################################################################
 
 
 rm -rf ./build
-mkdir -p build/references
+mkdir ./build
 
-ln -s "`pwd`/references/references.bib" "`pwd`/build/references/references.bib"
+ln -s "`pwd`/references.bib" "`pwd`/build/references.bib"
 
 
 
