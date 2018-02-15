@@ -7,7 +7,7 @@ This chapter presents an overview of the knowledge developed over the years in t
 
 
 
-\section{Assembly / disassembly planning}
+\section{Planning of assembly / disassembly operations}
 
 Several approaches have been proposed over the years for tackling the problem of finding optimal or close-to-optimal assembly / disassembly sequences. Even thought this is a research area with a wide range of algorithms with different goals and trade offs depending on the specific application domain for which they were developed, there is a set of common functionality that is required for implementing reliable planning system which will be discussed in the next sections.
 
@@ -18,7 +18,29 @@ Several approaches have been proposed over the years for tackling the problem of
 The first stage of any disassembly planning system \cite{Whitney2004} is the collection of all the necessary data to generate valid disassembly sequences and compute the cost function. Namely the loading of the disassembly precedences from a two dimensional matrix or from AND-OR graph. On the other hand, they can also be created \cite{Pintzos2016} at runtime using a generate and test approach \cite{Kaufman1996,Halperin2000} in which the spatial relationships and contacts between parts \cite{Tang2008} along with their relative disposition is analyzed for generating a set of possible decoupling directions which are later on validated using a collision / interference detection algorithm. During this stage it might also be useful to generate grasping positions \cite{Thomas2015} and also extract assembly meta-information from natural language instruction manuals \cite{CostaICARSC2017}, \glspl{sop} \cite{Stenmark2013} or web pages \cite{Tenorth2010}, such as the tools required for each step and a possible disassembly sequence. Moreover, the detailed description of the work cell \cite{Thomas2001} with the available robots, tools, fixtures and initial position of the parts is critical if the goal is to perform offline programming of the robots.
 
 
-%\subsection{Ontologies}
+
+\subsubsection{Liason graphs}
+
+FF
+
+
+\subsubsection{AND-OR graphs}
+
+FF
+
+
+\subsubsection{Natural language processing}
+
+Natural language processing \cite{Manning1999,Jurafsky2000,Manning2008} of voice commands or unstructured textual representations (using frameworks such as GATE\footnote{\url{https://gate.ac.uk}}, CoreNLP\footnote{\url{http://stanfordnlp.github.io/CoreNLP/}}, NLTK\footnote{\url{http://www.nltk.org}}) can be very useful for extracting assembly information from \glspl{sop} / operator manuals and speedup the robot learning process \cite{Tenorth2010,Stenmark2013,Stenmark2014,Stenmark2016} (for example identifying which objects will be assembled using \gls{ner} \cite{Ekbal2012,Rami2014} and also in which order and their approximate spatial distribution).
+
+%Articles:\\
+%- Connecting natural language to task demonstrations and low-level control of industrial robots\\
+%- Describing constraint-based assembly tasks in unstructured natural language\\
+%- Natural Language Programming of Industrial Robots\\
+%- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web | Tenorth2010
+
+
+\subsubsection{Ontologies}
 
 Ontologies allow to model world information in a structured and object oriented approach \cite{Lemaignan2012,Stenmark2015} (such as the \gls{owl}\footnote{\url{https://www.w3.org/OWL}}), which can be useful to store information about the environment, robot capabilities, configurations, sensors, tools as well as detailed descriptions of the assembly objects \cite{Perzylo2015}, such as its \gls{cad} data, their spatial disposition during the assembly process and other meta-information (for example the force / torque or direction required to insure proper coupling of objects).
 
@@ -26,6 +48,10 @@ Ontologies allow to model world information in a structured and object oriented 
 %+ An ontology for CAD data and geometric constraints as a link between product models and semantic robot task descriptions | Perzylo2015
 %+ Knowledge-based instruction of manipulation tasks for industrial robotics | Stenmark2015
 
+
+\subsubsection{Teaching by demonstration / lead-through programming}
+
+FF\
 
 
 \subsection{Search for assembly / disassembly plan}
@@ -43,144 +69,21 @@ Slack
 Makespan
 
 
+
 \subsubsection{Optimization function}
 
 The optimization cost function may take into consideration the physical constraints between the components while also relying in other information relevant for the particular use case under analysis. For robotic assembly, this usually means a search tree that relies on information retrieved from the detailed description of the work cell, such as the position of all the parts to assemble or disassemble along with the available robots and their tools, sensors, and higher-level perception and manipulation capabilities. Moreover, it might also be necessary to use ambient fixtures in order to ensure the mechanical stability of the product during assembly or disassembly. From this information, the cost function of the branch-and-bound algorithm may use the robot travel distance, the number of possible grasps and tool changes, along with the mechanical stability, geometric accessibility, parallelism and also the number of times it was required to move the product being assembled in order for the robot to be able to access the intended regions. This information may be stored in different data structures \cite{Thomas2001}, such as AND-OR graphs for modeling precedences, in 3D \gls{cad} models for specifying geometrical representations and spatial relations and also in knowledge databases.
 
 Multi-objective optimization
+	Pareto optimality / efficiency
+Linear programming
+	Simplex method
 FF
 
 
-
-\subsubsection{Optimal search algorithms}
-
-FF
-
-
-\paragraph{Depth-first search}
+\subsubsection{Sequence planning}
 
 FF
-
-
-\paragraph{Iterative deepening depth-first search}
-
-FF
-
-
-\paragraph{Breadth-first search}
-
-FF
-
-
-\paragraph{Branch-and-bound search}
-
-FF
-
-
-\paragraph{Dijkstra}
-
-FF
-
-
-\paragraph{Johnson's algorithm}
-
-FF
-
-
-\subsubsection{Heuristic search algorithm}
-
-When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks. On the other hand, a best-first search approach would also be suitable for quickly finding a good solution that then could be used as an upper-bound for optimal search algorithms.
-
-If a heuristic can be used to compute an upper bound from a feasible solution, then the search can be speed up further. The system presented in \cite{Johannsmeier2017} implemented a multi-agent system for modeling a team of human-robot partners assembling products cooperatively in which the task sequences were generated with an A* algorithm that took into consideration the execution time, resource costs (energy), risk factors (danger to humans), agent experience, reliability and also attention level of the agents.
-
-
-\paragraph{Beam search}
-
-FF
-
-
-\paragraph{Best-first search}
-
-FF
-
-
-\paragraph{A*}
-
-FF
-
-
-\paragraph{SMA*}
-
-FF
-
-
-\paragraph{Fringe search}
-
-FF
-
-
-\paragraph{Rule-based}
-
-rule based systems \cite{Smith2011} along with
-
-
-
-\subsubsection{Metaheuristic algorithms}
-
-For some particular applications, a feasible and reasonable solution might be enough. As such, evolutionary algorithms \cite{Elsayed2012} or even biologically inspired approaches such as artificial bee colony \cite{Yuan2016} or ant colony optimization \cite{Liu2012} might be employed for quickly finding a disassembly sequence solution (that can then be used as an upper bound for optimal search algorithms).
-
-
-\paragraph{Genetic algorithms}
-
-NSGA-II
-FF
-
-
-\paragraph{Artificial Bee Colony}
-
-FF
-
-
-\paragraph{Ant colony optimization}
-
-FF
-
-
-\paragraph{Particle swarm optimization}
-
-FF
-
-
-\paragraph{Cuckoo search}
-
-FF
-
-
-\subsubsection{Local optimization algorithms}
-
-FF
-
-
-\paragraph{Gradient descent}
-
-FF
-
-
-\paragraph{Hill climbing}
-
-FF
-Random restart hill climbing
-
-
-\paragraph{Simulated annealing}
-
-FF
-
-
-\paragraph{Tabu search}
-
-FF
-
 
 
 \subsubsection{Motion planning}
@@ -191,6 +94,17 @@ Planning the coordinated motion of robotic arms \cite{Rickert2011} and grippers 
 \paragraph{Motion representation}
 
 There are several methods for modeling the robotic motions and relative spatial disposition of objects during an automated assembly process. One of the early approaches is the \gls{tff} \cite{Mason1981,Finkemeyer2004} which provides a practical technique for defining coordinate frames along with pose, velocity and force information required to perform compliant motion using robotic manipulators. This method was later extended with the Operational Space Approach \cite{Khatib1987,DeSapio2006} in order to support dynamic and multi-body robot models. More recent methods include the Task Function Approach \cite{Samson1991} which allows to model sensors and interaction with the environment and the \gls{itasc} framework \cite{DeSchutter-ijrr2007,Smits2010} which gives the possibility to model geometric uncertainty.
+
+
+\paragraph{Collision detection}
+
+FF
+Space partitioning
+	kd-tree
+	Octrees
+Bounding volume hierarchy
+	axis-aligned bounding boxes
+	oriented bounding boxes
 
 
 \paragraph{Path planning}
@@ -206,18 +120,6 @@ FF
 %- MOPL - A Multi-Modal Path Planner for Generic Manipulation Tasks
 %- Assembly Planning and Task Planning - Two Prerequisites for Automated Robot Programming\\ | Thomas2011
 %- Efficient assembly sequence planning using stereographical projections of c-space obstacles\\ | Thomas2003
-
-
-
-\subsubsection{Natural language processing}
-
-Natural language processing \cite{Manning1999,Jurafsky2000,Manning2008} of voice commands or unstructured textual representations (using frameworks such as GATE\footnote{\url{https://gate.ac.uk}}, CoreNLP\footnote{\url{http://stanfordnlp.github.io/CoreNLP/}}, NLTK\footnote{\url{http://www.nltk.org}}) can be very useful for extracting assembly information from \glspl{sop} / operator manuals and speedup the robot learning process \cite{Tenorth2010,Stenmark2013,Stenmark2014,Stenmark2016} (for example identifying which objects will be assembled using \gls{ner} \cite{Ekbal2012,Rami2014} and also in which order and their approximate spatial distribution).
-
-%Articles:\\
-%- Connecting natural language to task demonstrations and low-level control of industrial robots\\
-%- Describing constraint-based assembly tasks in unstructured natural language\\
-%- Natural Language Programming of Industrial Robots\\
-%- Understanding and Executing Instructions for Everyday Manipulation Tasks from the World Wide Web | Tenorth2010
 
 
 
@@ -271,6 +173,174 @@ Given the reusable nature of assembly operations, cloud robotics can provide a c
 %+ Rapyuta - The RoboEarth Cloud Engine | Hunziker2013
 %+ Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed) | Witten2005
 
+
+
+\section{Search algorithms for assembly / disassembly planning}
+
+FF
+
+\subsection{Optimal search algorithms}
+
+FF
+
+
+\subsubsection{Depth-first search}
+
+FF
+
+
+\subsubsection{Iterative deepening depth-first search}
+
+FF
+
+
+\subsubsection{Breadth-first search}
+
+FF
+
+
+\subsubsection{Branch-and-bound search}
+
+FF
+
+
+\subsubsection{Dijkstra}
+
+FF
+
+
+\subsubsection{Johnson's algorithm}
+
+FF
+
+
+\subsection{Heuristic search algorithm}
+
+When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks. On the other hand, a best-first search approach would also be suitable for quickly finding a good solution that then could be used as an upper-bound for optimal search algorithms.
+
+If a heuristic can be used to compute an upper bound from a feasible solution, then the search can be speed up further. The system presented in \cite{Johannsmeier2017} implemented a multi-agent system for modeling a team of human-robot partners assembling products cooperatively in which the task sequences were generated with an A* algorithm that took into consideration the execution time, resource costs (energy), risk factors (danger to humans), agent experience, reliability and also attention level of the agents.
+
+
+\subsubsection{Beam search}
+
+FF
+
+
+\subsubsection{Best-first search}
+
+FF
+
+
+\subsubsection{A*}
+
+FF
+
+
+\subsubsection{SMA*}
+
+FF
+
+
+\subsubsection{Fringe search}
+
+FF
+
+
+\subsubsection{Gravitational search}
+
+FF
+
+
+\subsubsection{Rule-based}
+
+rule based systems \cite{Smith2011} along with
+
+
+
+\subsection{Local optimization algorithms}
+
+FF
+
+
+\subsubsection{Gradient descent}
+
+FF
+
+
+\subsubsection{Hill climbing}
+
+FF
+Random restart hill climbing
+
+
+
+\subsubsection{Tabu search}
+
+FF
+
+
+
+\subsection{Metaheuristic algorithms}
+
+For some particular applications, a feasible and reasonable solution might be enough. As such, evolutionary algorithms \cite{Elsayed2012} or even biologically inspired approaches such as artificial bee colony \cite{Yuan2016} or ant colony optimization \cite{Liu2012} might be employed for quickly finding a disassembly sequence solution (that can then be used as an upper bound for optimal search algorithms).
+
+
+\subsubsection{Simulated annealing}
+
+FF
+
+
+\subsubsection{Genetic algorithms}
+
+NSGA-II
+SPEA II
+FF
+
+
+\subsubsection{Differential evolution}
+
+FF
+
+
+\subsubsection{MOEA/D}
+
+FF
+
+
+\subsubsection{Artificial bee colony}
+
+FF
+
+
+\subsubsection{Ant colony optimization}
+
+FF
+
+
+\subsubsection{Particle swarm optimization}
+
+MOPSO
+FF
+
+
+\subsubsection{Gravitational search algorithm}
+
+FF
+
+
+\subsubsection{Harmony search}
+
+FF
+
+
+\subsubsection{Firefly algorithm}
+
+FF
+
+
+\subsubsection{Cuckoo search}
+
+FF
 
 
 
