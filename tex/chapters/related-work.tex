@@ -49,24 +49,19 @@ Ontologies allow to model world information in a structured and object oriented 
 %+ Knowledge-based instruction of manipulation tasks for industrial robotics | Stenmark2015
 
 
-\subsubsection{Teaching by demonstration / lead-through programming}
-
-FF\
-
 
 \subsection{Search for assembly / disassembly plan}
 
-The second stage includes the search of the optimal solution by either using exhaustive tree inspection (using for example a depth-first / bread-first search algorithm) or relying on the branch-and-bound algorithm \cite{Thomas2011,Thomas2015} for performing a systematic and guided expansion of the search tree while pruning branches that have a cumulative cost higher than a known feasible solution.
+The second stage includes the search for disassembly sequence that minimizes the cost function of the entire disassembly / assembly process.
 
-FF
-The traveing salesman problem
-	Christofides algorithm
-Planning Domain Definition Language (PDDL)
-Action description language (ADL)
-Critical path method (CPM)
-Program evaluation and review technique (PERT)
-Slack
-Makespan
+- The traveing salesman problem\\
+	+ Christofides algorithm\\
+- Planning Domain Definition Language (PDDL)\\
+- Action description language (ADL)\\
+- Critical path method (CPM)\\
+- Program evaluation and review technique (PERT)\\
+- Slack\\
+- Makespan\\
 
 
 
@@ -74,16 +69,74 @@ Makespan
 
 The optimization cost function may take into consideration the physical constraints between the components while also relying in other information relevant for the particular use case under analysis. For robotic assembly, this usually means a search tree that relies on information retrieved from the detailed description of the work cell, such as the position of all the parts to assemble or disassemble along with the available robots and their tools, sensors, and higher-level perception and manipulation capabilities. Moreover, it might also be necessary to use ambient fixtures in order to ensure the mechanical stability of the product during assembly or disassembly. From this information, the cost function of the branch-and-bound algorithm may use the robot travel distance, the number of possible grasps and tool changes, along with the mechanical stability, geometric accessibility, parallelism and also the number of times it was required to move the product being assembled in order for the robot to be able to access the intended regions. This information may be stored in different data structures \cite{Thomas2001}, such as AND-OR graphs for modeling precedences, in 3D \gls{cad} models for specifying geometrical representations and spatial relations and also in knowledge databases.
 
-Multi-objective optimization
-	Pareto optimality / efficiency
-Linear programming
-	Simplex method
+- Multi-objective optimization\\
+	+ Pareto optimality / efficiency\\
+- Linear programming\\
+	+ Simplex method\\
+
+
+
+\subsubsection{Sequence planning algorithms}
+
 FF
 
 
-\subsubsection{Sequence planning}
+\paragraph{Optimal search algorithms}
 
-FF
+The optimal solution can be found by either using exhaustive tree inspection (using for example a depth-first / bread-first search algorithm) or relying on the branch-and-bound algorithm \cite{Thomas2011,Thomas2015} for performing a systematic and guided expansion of the search tree while pruning branches that have a cumulative cost higher than a known feasible solution.
+
+- Depth-first search\\
+- Iterative deepening depth-first search\\
+- Breadth-first search\\
+- Branch-and-bound search\\
+- Dijkstra\\
+- Johnson's algorithm\\
+
+
+\paragraph{Heuristic search algorithm}
+
+When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks. On the other hand, a best-first search approach would also be suitable for quickly finding a good solution that then could be used as an upper-bound for optimal search algorithms.
+
+If a heuristic can be used to compute an upper bound from a feasible solution, then the search can be speed up further. The system presented in \cite{Johannsmeier2017} implemented a multi-agent system for modeling a team of human-robot partners assembling products cooperatively in which the task sequences were generated with an A* algorithm that took into consideration the execution time, resource costs (energy), risk factors (danger to humans), agent experience, reliability and also attention level of the agents.
+
+- Beam search\\
+- Best-first search\\
+- A*\\
+- SMA*\\
+- Fringe search\\
+- Gravitational search\\
+- Rule-based \cite{Smith2011}\\
+
+
+
+\paragraph{Local optimization algorithms}
+
+- Gradient descent\\
+- Hill climbing\\
+	+ Random restart hill climbing\\
+- Tabu search\\
+
+
+
+\paragraph{Metaheuristic algorithms}
+
+For some particular applications, a feasible and reasonable solution might be enough. As such, evolutionary algorithms \cite{Elsayed2012} or even biologically inspired approaches such as artificial bee colony \cite{Yuan2016} or ant colony optimization \cite{Liu2012} might be employed for quickly finding a disassembly sequence solution (that can then be used as an upper bound for optimal search algorithms).
+
+- Simulated annealing\\
+- Genetic algorithms\\
+	+ NSGA-II\\
+	+ SPEA II\\
+- Differential evolution\\
+- MOEA/D\\
+- Artificial bee colony\\
+- Ant colony optimization\\
+- Particle swarm optimization\\
+	+ MOPSO\\
+- Gravitational search algorithm\\
+- Harmony search\\
+- Firefly algorithm\\
+- Cuckoo search\\
+
 
 
 \subsubsection{Motion planning}
@@ -98,18 +151,21 @@ There are several methods for modeling the robotic motions and relative spatial 
 
 \paragraph{Collision detection}
 
-FF
-Space partitioning
-	kd-tree
-	Octrees
-Bounding volume hierarchy
-	axis-aligned bounding boxes
-	oriented bounding boxes
+- Space partitioning\\
+	+ kd-tree\\
+	+ Octrees\\
+- Bounding volume hierarchy\\
+	+ axis-aligned bounding boxes\\
+	+ oriented bounding boxes\\
 
 
 \paragraph{Path planning}
 
-FF
+- Robot kinematics\\
+- Path planning algorithms\\
+	+ Probabilistic roadmap
+	+ A*\\
+	+ RRT\\
 
 
 %Articles:\\
@@ -173,174 +229,6 @@ Given the reusable nature of assembly operations, cloud robotics can provide a c
 %+ Rapyuta - The RoboEarth Cloud Engine | Hunziker2013
 %+ Data Mining - Practical Machine Learning Tools and Techniques (3rd Ed) | Witten2005
 
-
-
-\section{Search algorithms for assembly / disassembly planning}
-
-FF
-
-\subsection{Optimal search algorithms}
-
-FF
-
-
-\subsubsection{Depth-first search}
-
-FF
-
-
-\subsubsection{Iterative deepening depth-first search}
-
-FF
-
-
-\subsubsection{Breadth-first search}
-
-FF
-
-
-\subsubsection{Branch-and-bound search}
-
-FF
-
-
-\subsubsection{Dijkstra}
-
-FF
-
-
-\subsubsection{Johnson's algorithm}
-
-FF
-
-
-\subsection{Heuristic search algorithm}
-
-When an optimal solution is not needed or it takes too much time to compute, sub-optimal algorithms can be used for finding a feasible and reasonable disassembly sequence. The first approach would be to modify the branch-and-bound algorithm \cite{Zhang2010} to search only $w$ branches at each tree expansion (a technique known as beam search) in order to limit the combinatorial explosion that may happen when generating search trees with a high branching factor. Moreover, the clustering of similar operations that are physically close would also allow to reduce the number of decision nodes, speeding up the search and allowing to identify parallelizable tasks. On the other hand, a best-first search approach would also be suitable for quickly finding a good solution that then could be used as an upper-bound for optimal search algorithms.
-
-If a heuristic can be used to compute an upper bound from a feasible solution, then the search can be speed up further. The system presented in \cite{Johannsmeier2017} implemented a multi-agent system for modeling a team of human-robot partners assembling products cooperatively in which the task sequences were generated with an A* algorithm that took into consideration the execution time, resource costs (energy), risk factors (danger to humans), agent experience, reliability and also attention level of the agents.
-
-
-\subsubsection{Beam search}
-
-FF
-
-
-\subsubsection{Best-first search}
-
-FF
-
-
-\subsubsection{A*}
-
-FF
-
-
-\subsubsection{SMA*}
-
-FF
-
-
-\subsubsection{Fringe search}
-
-FF
-
-
-\subsubsection{Gravitational search}
-
-FF
-
-
-\subsubsection{Rule-based}
-
-rule based systems \cite{Smith2011} along with
-
-
-
-\subsection{Local optimization algorithms}
-
-FF
-
-
-\subsubsection{Gradient descent}
-
-FF
-
-
-\subsubsection{Hill climbing}
-
-FF
-Random restart hill climbing
-
-
-
-\subsubsection{Tabu search}
-
-FF
-
-
-
-\subsection{Metaheuristic algorithms}
-
-For some particular applications, a feasible and reasonable solution might be enough. As such, evolutionary algorithms \cite{Elsayed2012} or even biologically inspired approaches such as artificial bee colony \cite{Yuan2016} or ant colony optimization \cite{Liu2012} might be employed for quickly finding a disassembly sequence solution (that can then be used as an upper bound for optimal search algorithms).
-
-
-\subsubsection{Simulated annealing}
-
-FF
-
-
-\subsubsection{Genetic algorithms}
-
-NSGA-II
-SPEA II
-FF
-
-
-\subsubsection{Differential evolution}
-
-FF
-
-
-\subsubsection{MOEA/D}
-
-FF
-
-
-\subsubsection{Artificial bee colony}
-
-FF
-
-
-\subsubsection{Ant colony optimization}
-
-FF
-
-
-\subsubsection{Particle swarm optimization}
-
-MOPSO
-FF
-
-
-\subsubsection{Gravitational search algorithm}
-
-FF
-
-
-\subsubsection{Harmony search}
-
-FF
-
-
-\subsubsection{Firefly algorithm}
-
-FF
-
-
-\subsubsection{Cuckoo search}
-
-FF
 
 
 
